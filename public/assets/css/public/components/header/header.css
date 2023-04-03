@@ -16,10 +16,27 @@
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
+}
+
+.mode-switch {
+  margin-right: 2rem;
 }
 
 .header__nav a {
   text-decoration: none;
   color: inherit;
+  position: relative;
+}
+
+.active::before {
+  position: absolute;
+  content: '';
+  left: -1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #fff;
 }

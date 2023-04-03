@@ -1,9 +1,9 @@
 <?php
 
-class Controller {
+class PublicController {
 
   public function view($name) {
-    $filename = '../app/views/'.$name.".view.php";
+    $filename = '../app/views/public/'.$name.".view.php";
 
     if (!file_exists($filename)) 
       $filename = '../app/views/404.view.php';
