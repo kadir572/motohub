@@ -1,0 +1,25 @@
+.header__container {
+  padding: 0.5rem 6rem 0.5rem 2rem;
+  background: rgba(0, 0, 0, 1);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.header__logo {
+  font-size: 1.6rem;
+  margin-right: auto;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.header__nav a {
+  text-decoration: none;
+  color: inherit;
+}
