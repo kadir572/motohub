@@ -29,4 +29,8 @@ class App {
     }
     call_user_func_array([$controller, $this->method], ['test']);
   }
+
+  public static function shout($string) {
+    show($string);
+  }
 }
