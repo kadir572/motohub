@@ -1,9 +1,16 @@
+<?php
+
+  $motorcycle = new Motorcycle;
+  $motorcycles = $motorcycle->findAll();
+
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
     <?php include_once 'partials/head-core.php'; ?>
     
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/public/pages/motorcycles.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/motorcycles.css">
     <title>Motohub | Motorcycles</title>
   </head>
   <body>
@@ -11,7 +18,7 @@
   <main>
     <h1>Motorcycles</h1>
     <div class="motorcycle__list">
-    <?php foreach($data as $motorcycle): ?>
+    <?php foreach($motorcycles as $motorcycle): ?>
       <div class="motorcycle__item">
       <span><?= $motorcycle->make?></span>
       <span><?= $motorcycle->model?></span>

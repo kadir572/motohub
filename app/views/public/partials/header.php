@@ -21,7 +21,7 @@ function setActiveLink($page = '') {
     <a class="header__logo" href="<?=ROOT?>">MotoHub</a>
     <div class="mode-switch">Icon</div>
     <nav class="header__nav">
-      <a <?= setActiveLink() ?> href="<?=ROOT?>">Home</a><a <?= setActiveLink('motorcycles') ?> href="<?=ROOT?>/home/motorcycles">Motorcycles<a <?= setActiveLink('contact') ?> href="<?=ROOT?>/home/contact">Contact</a>
+      <a <?= setActiveLink() ?> href="<?=ROOT?>">Home</a><a <?= setActiveLink('motorcycles') ?> href="<?=ROOT?>/home/motorcycles">Motorcycles</a><a <?= setActiveLink('contact') ?> href="<?=ROOT?>/home/contact">Contact</a>
     </nav>
   </div>
 </header>

@@ -6,9 +6,8 @@ class Home extends PublicController {
   }
 
   public function motorcycles() {
-    $motorcycle = new Motorcycle;
-    $data = $motorcycle->findAll();
-    $this->view('motorcycles', $data);
+    
+    $this->view('motorcycles');
   }
 
   public function contact() {
