@@ -22,4 +22,12 @@ class Admin extends AdminController {
   public function login() {
     $this->view('login');
   }
+
+  public function pages() {
+    $this->view('pages');
+  }
+
+  public function motorcycles() {
+    $this->view('motorcycles');
+  }
 }

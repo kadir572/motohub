@@ -27,6 +27,7 @@ function isAdminLoggedIn() {
     <nav class="header__nav">
       <?php if (isAdminLoggedIn()) { ?>
         <a <?= setActiveLink('dashboard') ?> href="<?=ROOT?>/admin/dashboard">Dashboard</a>
+        <a <?= setActiveLink('pages') ?> href="<?=ROOT?>/admin/pages">Pages</a>
         <a href="<?=ROOT?>/auth/logout">Logout</a>
       <?php } else { ?>
         <a <?= setActiveLink('login') ?> href="<?ROOT?>/admin/login">Login</a>

@@ -1,0 +1,12 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.page {
+  display: flex;
+  gap: 1rem;
+}

@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form__control {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 30rem;
+}
+
+.form__input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  border-radius: 9px;
+  max-width: 60%;
+}
+
+.form__label {
+  max-width: 4 0%;
+}
+
+.form__submit {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  border-radius: 9px;
+}
