@@ -19,7 +19,7 @@
   <div class="pages">
     <div class="page">
       <span>Motorcycles</span>
-      <a href="<?=ROOT?>/admin/motorcycles">Edit</a>
+      <a class="btn btn--secondary" href="<?=ROOT?>/admin/motorcycles">Edit</a>
     </div>
   </div>
   </main>

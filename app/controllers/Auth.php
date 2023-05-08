@@ -2,6 +2,9 @@
 
 class Auth {
   public function login() {
+    unset($_SESSION['username']);
+    unset($_SESSION['permission']);
+    unset($_SESSION['errors']);
     $_SESSION['errors'] = [];
     if (!empty($_POST['type']) && $_POST['type'] === 'login') {
       if (!empty($_POST['username']) && !empty($_POST['password'])) {

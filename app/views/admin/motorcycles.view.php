@@ -3,6 +3,9 @@
     array_push($_SESSION['errors'], '401 - Unauthorized');
     header("Location: ".ROOT."/admin/login");
   }
+
+  $motorcycle = new Motorcycle();
+  $motorcycles = $motorcycle->findAll();
 ?>
 
 <!DOCTYPE html>
