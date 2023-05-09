@@ -5,3 +5,27 @@ main {
   justify-content: center;
   gap: 1rem;
 }
+
+.motorcycles__list {
+  width: 50vw;
+  display: grid;
+  grid-template-columns: 6rem 3fr 3fr 1fr 1fr;
+}
+
+.motorcycles__list > * {
+  background-color: gray;
+}
+
+.motorcycles__list > *:nth-child(10n + 1),
+.motorcycles__list > *:nth-child(10n + 2),
+.motorcycles__list > *:nth-child(10n + 3),
+.motorcycles__list > *:nth-child(10n + 4),
+.motorcycles__list > *:nth-child(10n + 5) {
+  background-color: lightgray;
+}
+
+.motorcycles__list > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

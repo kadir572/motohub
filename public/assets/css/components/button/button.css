@@ -4,6 +4,10 @@
   border-radius: 9px;
 }
 
+.btn--small {
+  padding: 0.2rem 0.4rem;
+}
+
 .btn--primary {
   background-color: red;
   color: #000;

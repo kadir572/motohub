@@ -8,6 +8,8 @@ class Auth {
     $_SESSION['errors'] = [];
     if (!empty($_POST['type']) && $_POST['type'] === 'login') {
       if (!empty($_POST['username']) && !empty($_POST['password'])) {
+        $_POST['username'] = desinfect($_POST['username']);
+        $_POST['password'] = desinfect($_POST['password']);
         $userModel = new User();
         $foundUser = $userModel->first(['username' => $_POST['username']]);
 

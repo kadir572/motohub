@@ -6,8 +6,19 @@ class Home extends PublicController {
   }
 
   public function motorcycles() {
+
+    if (isset($_GET['type'])) {
+
+      switch ($_GET['type']) {
+        case 'details':
+          $this->view('motorcycleDetails', ['id' => desinfect($_GET['id'])]);
+          break;
+      }
+
+    } else {
+      $this->view('motorcycles');
+    }
     
-    $this->view('motorcycles');
   }
 
   public function contact() {

@@ -30,6 +30,7 @@ function isAdminLoggedIn() {
         <a <?= setActiveLink('pages') ?> href="<?=ROOT?>/admin/pages">Pages</a>
         <a href="<?=ROOT?>/auth/logout">Logout</a>
       <?php } else { ?>
+        <a href="<?=ROOT?>">Public Homepage</a>
         <a <?= setActiveLink('login') ?> href="<?ROOT?>/admin/login">Login</a>
       <?php } ?>
     </nav>

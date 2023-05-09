@@ -1,5 +1,13 @@
 # Motohub Developer Manual
 
+## Folder Structure
+
+The project is divided into two main folders. The **public** folder contains all the data that the client is going to see. The **app** folder contains all the backend related files.
+
+## Access/Navigate
+
+The root of the application is not "/", it is "/public". So to open the application go to _http://localhost/{project-name}/public_.
+
 ## CMS
 
 The CMS can be accessed over the route /admin.
