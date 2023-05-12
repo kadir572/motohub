@@ -35,7 +35,7 @@ class Admin extends AdminController {
         case 'remove':
           $motorcycleModel->delete(desinfect($_GET['id']));
           header("Location: ".ROOT."/admin/motorcycles");
-          $this->view('motorcycles');
+          // $this->view('motorcycles');
           break;
         case 'edit':
           $this->view('editMotorcycle', ['id' => desinfect($_GET['id'])]);
@@ -47,7 +47,7 @@ class Admin extends AdminController {
 
           $motorcycleModel->update(desinfect($_GET['id']), ['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
           header("Location: ".ROOT."/admin/motorcycles");
-          $this->view('motorcycles');
+          // $this->view('motorcycles');
           break;
         case 'new':
           $this->view('newMotorcycle');
@@ -59,7 +59,7 @@ class Admin extends AdminController {
 
           $motorcycleModel->insert(['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
           header("Location:".ROOT."/admin/motorcycles");
-          $this->view('motorcycles');
+          // $this->view('motorcycles');
           break;
       }
       

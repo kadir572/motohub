@@ -11,7 +11,7 @@
 <html lang="en">
   <head>
     <?php include_once 'partials/head-core.php'; ?>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/editMotorcycle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/motorcycle/new.css">
     <title>Admin | Motorcycles</title>
   </head>
   <body>

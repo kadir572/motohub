@@ -3,7 +3,7 @@
   <head>
     <?php include_once 'partials/head-core.php'; ?>
     
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/contact.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/contact.css">
     <title>Motohub | Contact Us</title>
   </head>
   <body>

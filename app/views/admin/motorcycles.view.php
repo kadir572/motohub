@@ -12,7 +12,7 @@
 <html lang="en">
   <head>
     <?php include_once 'partials/head-core.php'; ?>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/adminMotorcycles.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/motorcycle/motorcycles.css">
     <title>Admin | Motorcycles</title>
   </head>
   <body>

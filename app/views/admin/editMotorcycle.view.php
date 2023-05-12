@@ -12,7 +12,7 @@
 <html lang="en">
   <head>
     <?php include_once 'partials/head-core.php'; ?>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/editMotorcycle.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/motorcycle/edit.css">
     <title>Admin | Motorcycles</title>
   </head>
   <body>
@@ -30,7 +30,7 @@
       </div>
       <div class="form__control">
         <label class="form__label" for="imageUrl">Image Url</label>
-        <input class="form__input" type="text" id="imageUrl" name="imageUrl" value="<?=ucfirst($motorcycle->imageUrl)?>">
+        <input class="form__input" type="text" id="imageUrl" name="imageUrl" value="<?=$motorcycle->imageUrl?>">
       </div>
       <button type="submit">Save</button>
       <a href="<?=ROOT?>/admin/motorcycles">Cancel</a>

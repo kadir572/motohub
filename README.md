@@ -4,6 +4,10 @@
 
 The project is divided into two main folders. The **public** folder contains all the data that the client is going to see. The **app** folder contains all the backend related files.
 
+## Config File Location
+
+Path: {rootDirectory}/app/core/config.php
+
 ## Access/Navigate
 
 The root of the application is not "/", it is "/public". So to open the application go to _http://localhost/{project-name}/public_.
@@ -22,6 +26,11 @@ For testing purposes a mail testing service is being used. Here we use [MailTrap
 
 username:&emsp;admin<br>
 password:&emsp;Admin123!
+
+### User Credentials
+
+username:&emsp;user<br>
+password:&emsp;User123!
 
 ### MailTrap Credentials
 

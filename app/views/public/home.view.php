@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <?php include_once 'partials/head-core.php'; ?>
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/home.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/home.css">
     <title>MotoHub | Homepage</title>
   </head>
   <body>

@@ -10,7 +10,7 @@
   <head>
     <?php include_once 'partials/head-core.php'; ?>
     
-    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/motorcycles.css">
+    <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/motorcycle/details.css">
     <title>Motohub | Motorcycles</title>
   </head>
   <body>

@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <?php include_once 'partials/head-core.php'; ?>
-<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/login.css">
-  <title>Admin Login</title>
+<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/login.css">
+  <title>User Login</title>
 </head>
 <body>
   <?php include_once 'partials/header.php'; ?>
 <main>
-  <h1>Admin Login</h1>
+  <h1>User Login</h1>
   <?php
   if (!empty($_GET['error'])) {
     echo "<span>".$_GET['error']."</span>";
@@ -16,7 +16,7 @@
   ?>
   <form method="POST" action="<?=ROOT?>/auth">
     <input type="hidden" name="type" value="login">
-    <input type="hidden" name="user" value="admin">
+    <input type="hidden" name="user" value="user">
     <div class="form__control">
       <label class="form__label" for="username">Username</label>
       <input class="form__input" type="text" id="username" name="username">
