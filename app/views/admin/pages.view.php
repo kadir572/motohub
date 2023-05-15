@@ -1,7 +1,6 @@
 <?php
   if (empty($_SESSION['username'])) {
-    array_push($_SESSION['errors'], '401 - Unauthorized');
-    header("Location: ".ROOT."/admin/login");
+    redirectWithError('401 - Unauthorized', '/admin/login');
   }
 ?>
 
@@ -15,13 +14,14 @@
 <body>
 <?php include_once 'partials/header.php'; ?>
   <main>
-  <h1>Admin Pages</h1>
-  <div class="pages">
-    <div class="page">
-      <span>Motorcycles</span>
-      <a class="btn btn--secondary" href="<?=ROOT?>/admin/motorcycles">Edit</a>
+    <div class="bg-img"></div>
+    <h1>Admin Pages</h1>
+    <div class="pages">
+      <div class="page">
+        <span>Motorcycles</span>
+        <a class="btn btn--secondary" href="<?=ROOT?>/admin/motorcycles">Edit</a>
+      </div>
     </div>
-  </div>
   </main>
   <?php include_once 'partials/footer.php'; ?>
 </body>

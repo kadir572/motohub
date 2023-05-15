@@ -1,10 +1,7 @@
 <?php
   if (empty($_SESSION['username'])) {
-    array_push($_SESSION['errors'], '401 - Unauthorized');
-    header("Location: ".ROOT."/public/login");
+    redirectWithError('401 - Unauthorized', '/public/login');
   }
-
-
 
   $userModel = new User();
   $user = $userModel->first(['username' => $_SESSION['username']]);
@@ -21,8 +18,9 @@
 <body>
 <?php include_once 'partials/header.php'; ?>
   <main>
-  <h1>User Settings</h1>
-  <a href="<?=ROOT?>/home/user?type=delete&id=<?=$user->id?>">Delete account</a>
+    <div class="bg-img"></div>
+    <h1>User Settings</h1>
+    <a href="<?=ROOT?>/home/user?type=delete&id=<?=$user->id?>">Delete account</a>
   </main>
   <?php include_once 'partials/footer.php'; ?>
 </body>

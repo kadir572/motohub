@@ -9,6 +9,7 @@
   <body>
   <?php include_once 'partials/header.php'; ?>
   <main>
+    <div class="bg-img"></div>
     <h1>Oops!</h1>
     <h2>404 - Page not found</h2>
     <p>The resource you are looking for does not exist.</p>

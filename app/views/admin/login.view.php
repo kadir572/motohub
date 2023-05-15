@@ -8,22 +8,25 @@
 <body>
   <?php include_once 'partials/header.php'; ?>
 <main>
-  <h1>Admin Login</h1>
+  <div class="bg-img"></div>
+  <h2>Admin Login</h2>
+  
+  <form method="POST" action="<?=ROOT?>/auth">
   <?php
   if (!empty($_GET['error'])) {
-    echo "<span>".$_GET['error']."</span>";
+    echo "<span class='error'>"."<i class='fa-solid fa-circle-exclamation'></i>"."&nbsp;&nbsp;".$_GET['error']."</span>";
   }
   ?>
-  <form method="POST" action="<?=ROOT?>/auth">
     <input type="hidden" name="type" value="login">
     <input type="hidden" name="user" value="admin">
     <div class="form__control">
+      
+      <input class="form__input" type="text" id="username" name="username" placeholder="Username">
       <label class="form__label" for="username">Username</label>
-      <input class="form__input" type="text" id="username" name="username">
     </div>
     <div class="form__control">
+      <input class="form__input" type="password" name="password" id="password" placeholder="Password">
       <label class="form__label" for="password">Password</label>
-      <input class="form__input" type="password" name="password" id="password">
     </div>
     <button class="form__submit" type="submit">Login</button>
   </form>

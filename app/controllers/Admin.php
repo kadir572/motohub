@@ -8,9 +8,7 @@ class Admin extends AdminController {
       if (!empty($_SESSION['permission'] && $_SESSION['permission'] === 1)) {
         header("Location: ".ROOT."/admin/dashboard");
       } else {
-        array_push($_SESSION['errors'], '401 - Unauthorized');
-
-        header("Location: ".ROOT."/auth/logout");
+        redirectWithError('401 - Unauthorized', '/auth/logout');
       }
     }
   }

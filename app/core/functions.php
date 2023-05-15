@@ -102,3 +102,19 @@ function redirectWithError($error, $redirectPath) {
   $redirectPath = $redirectPath."?error=$error";
   header("Location: ".ROOT.$redirectPath);
 }
+
+function getCurrentDate() {
+  return date('d-m-y h:i:s');
+}
+
+function clearSessionLogin() {
+  unset($_SESSION['username']);
+  unset($_SESSION['permission']);
+  unset($_SESSION['loginDate']);
+}
+
+function setSessionLogin($username, $permission) {
+  $_SESSION['username'] = $username;
+  $_SESSION['permission'] = $permission;
+  $_SESSION['loginDate'] = getCurrentDate();
+}

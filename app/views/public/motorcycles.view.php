@@ -16,6 +16,7 @@
   <body>
   <?php include_once 'partials/header.php'; ?>
   <main>
+    <div class="bg-img"></div>
     <h1>Motorcycles</h1>
     <div class="motorcycle__list">
     <?php foreach($motorcycles as $motorcycle): ?>

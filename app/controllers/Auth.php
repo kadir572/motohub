@@ -7,11 +7,7 @@ class Auth {
     if (!empty($_POST['type'])) {
       switch ($_POST['type']) {
         case 'login':
-          // Reset Session variables
-          unset($_SESSION['username']);
-          unset($_SESSION['permission']);
-          unset($_SESSION['errors']);
-          $_SESSION['errors'] = [];
+          clearSessionLogin();
 
           $username = $_POST['username'] ?? '';
           $password = $_POST['password'] ?? '';
@@ -19,11 +15,7 @@ class Auth {
           $this->login(['username' => desinfect(trim($username)), 'password' => desinfect(trim($password)), 'user' => desinfect($_POST['user'])]);
           break;
         case 'register':
-          // Reset Session variables
-          unset($_SESSION['username']);
-          unset($_SESSION['permission']);
-          unset($_SESSION['errors']);
-          $_SESSION['errors'] = [];
+          clearSessionLogin();
           
           $username = $_POST['username'] ?? '';
           $email = $_POST['email'] ?? '';
@@ -68,14 +60,12 @@ class Auth {
             return;
           }
 
-          $_SESSION['username'] = ucfirst($foundUser->username);
-          $_SESSION['permission'] = $foundUser->isAdmin;
-          $_SESSION['errors'] = [];
+          setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
           header("Location: ".ROOT."/home/dashboard");
           break;
         case 'admin':
           if (empty($data['username']) || empty($data['password'])) {
-            redirectWithError('Missing credentials', '/admin');
+            redirectWithError('Missing credentials', '/admin/login');
             return;
           }
 
@@ -83,25 +73,23 @@ class Auth {
           $foundUser = $userModel->first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
-            redirectWithError('Invalid credentials', '/admin');
+            redirectWithError('Invalid credentials', '/admin/login');
             return;
           }
 
           if ($foundUser->isAdmin !== 1) {
-            redirectWithError('Invalid credentials', '/admin');
+            redirectWithError('Invalid credentials', '/admin/login');
             return;
           }
 
           $pwdMatches = password_verify($data['password'], $foundUser->hash);
 
           if (!$pwdMatches) {
-            redirectWithError('Invalid credentials', '/admin');
+            redirectWithError('Invalid credentials', '/admin/login');
             return;
           }
 
-          $_SESSION['username'] = ucfirst($foundUser->username);
-          $_SESSION['permission'] = $foundUser->isAdmin;
-          unset($_SESSION['errors']);
+          setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
           header("Location: ".ROOT."/admin");
           break;
         default:
@@ -122,19 +110,6 @@ class Auth {
       return;
       
     }
-
-    //  // validate username, email, password and password2
-    //  if (!validateCredentials($data['username'], $data['email'], $data['password'], $data['password2'])) {
-    //   return;
-    //  }
-
-    
-
-    
-
-    
-
-
 
     $userModel = new User();
     $foundUserByUsername = $userModel->first(['username' => $data['username']]);
@@ -166,9 +141,7 @@ class Auth {
 
     // Log in if successfully created
     if ($foundUser) {
-      $_SESSION['username'] = $foundUser->username;
-      $_SESSION['permission'] = $foundUser->isAdmin;
-      $_SESSION['errors'] = [];
+      setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
 
       header("Location: ".ROOT."/home/dashboard");
     } else {
@@ -178,8 +151,7 @@ class Auth {
 
   public function logout() {
     $permission = $_SESSION['permission'];
-    unset($_SESSION['username']);
-    unset($_SESSION['permission']);
+    clearSessionLogin();
 
     if ($permission === 1) {
       header("Location: ".ROOT."/admin");

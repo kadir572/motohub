@@ -22,6 +22,18 @@ class Home extends PublicController {
   }
 
   public function contact() {
+    if (isset($_GET['type'])) {
+      switch ($_GET['type']) {
+        case 'send':
+          header("Location: ".ROOT."/home/contact?success=Your message was successfully sent");
+          break;
+        default:
+          header("Location: ".ROOT);
+          break;
+      }
+     return; 
+    }
+
     $this->view('contact');
   }
 
@@ -40,8 +52,7 @@ class Home extends PublicController {
       switch ($_GET['type']) {
         case 'delete':
           $userModel->delete(desinfect($_GET['id']));
-          unset($_SESSION['username']);
-          unset($_SESSION['permission']);
+          clearSessionLogin();
           header("Location: ".ROOT);
           break;
         case 'edit':

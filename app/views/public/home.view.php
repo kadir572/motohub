@@ -8,6 +8,7 @@
   <body>
     <?php include_once 'partials/header.php'; ?>
     <main>
+      <div class="bg-img"></div>
       <h1>Welcome to MotoHub</h1>
       <h2>Get to know your dream bike!</h2>
     </main>

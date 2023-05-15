@@ -8,10 +8,6 @@ The project is divided into two main folders. The **public** folder contains all
 
 Path: {rootDirectory}/app/core/config.php
 
-## Access/Navigate
-
-The root of the application is not "/", it is "/public". So to open the application go to _http://localhost/{project-name}/public_.
-
 ## CMS
 
 The CMS can be accessed over the route /admin.
@@ -23,6 +19,8 @@ For testing purposes a mail testing service is being used. Here we use [MailTrap
 ## Credentials
 
 ### Admin Credentials
+
+URL:&emsp;localhost:{PORT}/{projectName}/public/admin
 
 username:&emsp;admin<br>
 password:&emsp;Admin123!
