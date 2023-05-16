@@ -22,7 +22,7 @@ function isAdminLoggedIn() {
 
 <header>
   <div class="header__container">
-    <a class="header__logo" href="<?=ROOT?>">MotoHub</a>
+  <a class="header__logo__link" href="<?=ROOT?>"><img class="header__logo" src="<?=ROOT?>/assets/images/logo-white.svg" alt="Motohub logo"></a>
     <div class="mode-switch">Icon</div>
     <nav class="header__nav">
       <?php if (isAdminLoggedIn()) { ?>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include_once 'partials/head-core.php'; ?>
+<?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/login.css">
   <title>User Login</title>
 </head>
@@ -12,11 +12,7 @@
   <div class="bg-img"></div>
   <h2>User Registration</h2>
   <form method="POST" action="<?=ROOT?>/auth">
-    <?php
-    if (!empty($_GET['error'])) {
-      echo "<span class='error'>"."<i class='fa-solid fa-circle-exclamation'></i>"."&nbsp;&nbsp;".$_GET['error']."</span>";
-    }
-    ?>
+    <?php include_once 'partials/notification.php'; ?>
     <input type="hidden" name="type" value="register">
     <input type="hidden" name="user" value="user">
     <div class="form__control">
@@ -38,6 +34,6 @@
     <button class="form__submit" type="submit">Register</button>
   </form>
 </main>
-  <?php include_once 'partials/footer.php'; ?>
+  <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>
 </html>

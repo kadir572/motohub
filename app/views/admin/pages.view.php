@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include_once 'partials/head-core.php'; ?>
+<?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/pages.css">
 <title>Admin | Pages</title>
 </head>
@@ -23,6 +23,6 @@
       </div>
     </div>
   </main>
-  <?php include_once 'partials/footer.php'; ?>
+  <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>
 </html>

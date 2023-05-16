@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php include_once 'partials/head-core.php'; ?>
+    <?php include_once '../app/views/common/partials/head-core.php'; ?>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/motorcycle/edit.css">
     <title>Admin | Motorcycles</title>
   </head>
@@ -21,21 +21,21 @@
       <h1>Admin Edit Motorcycle</h1>
       <form action="<?=ROOT?>/admin/motorcycles?type=update&id=<?=$motorcycle->id?>" method="POST">
         <div class="form__control">
+          <input class="form__input" type="text" id="make" name="make" value="<?=ucfirst($motorcycle->make)?>" placeholder="Make">
           <label class="form__label" for="make">Make</label>
-          <input class="form__input" type="text" id="make" name="make" value="<?=ucfirst($motorcycle->make)?>">
         </div>
         <div class="form__control">
+          <input class="form__input" type="text" id="model" name="model" value="<?=ucfirst($motorcycle->model)?>" placeholder="Model">
           <label class="form__label" for="model">Model</label>
-          <input class="form__input" type="text" id="model" name="model" value="<?=ucfirst($motorcycle->model)?>">
         </div>
         <div class="form__control">
+          <input class="form__input" type="text" id="imageUrl" name="imageUrl" value="<?=$motorcycle->imageUrl?>" placeholder="Image URL">
           <label class="form__label" for="imageUrl">Image Url</label>
-          <input class="form__input" type="text" id="imageUrl" name="imageUrl" value="<?=$motorcycle->imageUrl?>">
         </div>
-        <button type="submit">Save</button>
-        <a href="<?=ROOT?>/admin/motorcycles">Cancel</a>
+        <button class="form__submit" type="submit">Save</button>
+        <a class="form__submit" href="<?=ROOT?>/admin/motorcycles">Cancel</a>
       </form>
     </main>
-    <?php include_once 'partials/footer.php'; ?>
+    <?php include_once '../app/views/common/partials/footer.php'; ?>
   </body>
 </html>

@@ -59,47 +59,54 @@ function validateUsername($username) {
   return true;
 }
 
-function validatePassword($password, $password2) {
+function validatePassword($password, $password2, $redirect, $queries = []) {
   if ($password !== $password2) {
-    redirectWithError('Passwords must match', '/home/register');
+    redirectWithError('Passwords must match', $redirect, $queries);
     return false;
    }
 
    if (strlen($password) < 8) {
-    redirectWithError('Password must be atleast 8 characters long', '/home/register');
+    redirectWithError('Password must be atleast 8 characters long', $redirect, $queries);
     return false;
    }
 
    if (!preg_match('/[a-z]/', $password)) {
-    redirectWithError('Password must contain lowercase characters', '/home/register');
+    redirectWithError('Password must contain lowercase characters', $redirect, $queries);
     return false;
    }
 
    if (!preg_match('/[A-Z]/', $password)) {
-    redirectWithError('Password must contain uppercase characters', '/home/register');
+    redirectWithError('Password must contain uppercase characters', $redirect, $queries);
     return false;
    }
 
    if(!preg_match('/[0-9]/', $password)) {
-    redirectWithError('Password must contain numbers', '/home/register');
+    redirectWithError('Password must contain numbers', $redirect, $queries);
     return false;
    }
 
+   /*
    if(!preg_match("/[!\[^\'£$%^&*()}{@:\'#~?><>,;@\|\\\-=\-_+\-¬\`\]]/", $password)) {
-    redirectWithError('Password must contain special characters', '/home/register');
+    redirectWithError('Password must contain special characters', $redirect, $queries);
     return false;
    }
+   */
 
    if (preg_match('/\s/',$password)) {
-    redirectWithError('Password can not contain blank spaces', '/home/register');
+    redirectWithError('Password can not contain blank spaces', $redirect, $queries);
     return false;
    }
 
    return true;
 }
 
-function redirectWithError($error, $redirectPath) {
+function redirectWithError($error, $redirectPath, $queries = []) {
   $redirectPath = $redirectPath."?error=$error";
+  if (count($queries) > 0) {
+    foreach ($queries as $key => $value) {
+      $redirectPath .= "&".$key."=".$value;
+    }
+  }
   header("Location: ".ROOT.$redirectPath);
 }
 
@@ -118,3 +125,15 @@ function setSessionLogin($username, $permission) {
   $_SESSION['permission'] = $permission;
   $_SESSION['loginDate'] = getCurrentDate();
 }
+
+function capitalizeWordsInString($str) {
+  $strArr = explode(" ", $str);
+
+  foreach ($strArr as &$word) {
+    $word = ucfirst($word);
+  }
+
+  $capitalizedStr = implode(' ', $strArr);
+
+  return $capitalizedStr;
+} 

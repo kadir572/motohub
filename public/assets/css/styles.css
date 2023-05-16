@@ -43,3 +43,8 @@ p {
   background-position: left;
   filter: brightness(0.5);
 }
+
+.link {
+  color: #fff;
+  text-decoration: underline;
+}

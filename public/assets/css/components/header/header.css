@@ -8,9 +8,12 @@
   gap: 3rem;
 }
 
-.header__logo {
-  font-size: 1.6rem;
+.header__logo__link {
   margin-right: auto;
+}
+
+.header__logo {
+  height: 2.4rem;
 }
 
 .header__nav {

@@ -130,7 +130,7 @@ class Auth {
       return;
     }
 
-    if (!validatePassword($data['password'], $data['password2'])) return;
+    if (!validatePassword($data['password'], $data['password2'], '/home/register')) return;
 
     $hash = password_hash($data['password'], PASSWORD_DEFAULT);
 

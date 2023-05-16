@@ -9,7 +9,7 @@ class User {
   protected $allowedColumns = [
     'username',
     'email',
-    'password'
+    'hash'
   ];
 
   

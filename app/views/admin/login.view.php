@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<?php include_once 'partials/head-core.php'; ?>
+<?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/login.css">
   <title>Admin Login</title>
 </head>
@@ -29,8 +29,9 @@
       <label class="form__label" for="password">Password</label>
     </div>
     <button class="form__submit" type="submit">Login</button>
+    <a class="link" href="<?=ROOT?>/resetpwd">Forgot password?</a>
   </form>
 </main>
-  <?php include_once 'partials/footer.php'; ?>
+  <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>
 </html>
