@@ -6,12 +6,12 @@
   <title>User Forgotten Password</title>
 </head>
 <body>
-  <?php include_once 'partials/header.php'; ?>
+  <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
   <h2>User Forgotten Password</h2>
   <form method="POST" action="<?=ROOT?>/resetpwd/sendRequest">
-    <?php include_once 'partials/notification.php'; ?>
+    <?php include_once '../app/views/common/partials/notification.php';?>
     <div class="form__control">
       <input class="form__input" type="email" id="email" name="email" placeholder="Email">
       <label class="form__label" for="email">Email</label>

@@ -14,7 +14,7 @@
     <title>Motohub | Motorcycles</title>
   </head>
   <body>
-  <?php include_once 'partials/header.php'; ?>
+  <?php include_once '../app/views/common/partials/header.php'; ?>
   <main>
     <div class="bg-img"></div>
     <h1>Motorcycles</h1>

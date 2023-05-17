@@ -21,11 +21,11 @@
 <title>User | Settings</title>
 </head>
 <body>
-<?php include_once 'partials/header.php'; ?>
+<?php include_once '../app/views/common/partials/header.php'; ?>
   <main>
     <div class="bg-img"></div>
     <h1>User Settings</h1>
-    <?php include_once 'partials/notification.php'; ?>
+    <?php include_once '../app/views/common/partials/notification.php';?>
     <a href="<?=ROOT?>/home/user?type=delete&id=<?=$user->id?>">Delete account</a>
   </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>

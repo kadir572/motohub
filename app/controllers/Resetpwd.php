@@ -12,7 +12,7 @@ class Resetpwd extends PublicController {
       return;
     }
 
-    $email = desinfect(trim($_POST['email']));
+    $email = sanitize(trim($_POST['email']));
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       redirectWithError('Invalid email', '/resetpwd');
@@ -29,10 +29,10 @@ class Resetpwd extends PublicController {
 
   // after successful validation, updates the password for the user and deletes the reset password request from the database
   public function reset() {
-    $selector = desinfect(trim($_POST['selector']));
-    $validator = desinfect(trim($_POST['validator']));
-    $password = desinfect(trim($_POST['password']));
-    $password2 = desinfect(trim($_POST['password2']));
+    $selector = sanitize(trim($_POST['selector']));
+    $validator = sanitize(trim($_POST['validator']));
+    $password = sanitize(trim($_POST['password']));
+    $password2 = sanitize(trim($_POST['password2']));
 
     if (empty($password) || empty($password2)) {
       redirectWithError('Please fill out all fields', '/resetpwd/resetPasswordForm', ['selector' => $selector, 'validator' => $validator]);

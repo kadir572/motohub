@@ -6,17 +6,13 @@
   <title>Admin Login</title>
 </head>
 <body>
-  <?php include_once 'partials/header.php'; ?>
+  <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
   <h2>Admin Login</h2>
   
   <form method="POST" action="<?=ROOT?>/auth">
-  <?php
-  if (!empty($_GET['error'])) {
-    echo "<span class='error'>"."<i class='fa-solid fa-circle-exclamation'></i>"."&nbsp;&nbsp;".$_GET['error']."</span>";
-  }
-  ?>
+    <?php include_once '../app/views/common/partials/notification.php';?>
     <input type="hidden" name="type" value="login">
     <input type="hidden" name="user" value="admin">
     <div class="form__control">

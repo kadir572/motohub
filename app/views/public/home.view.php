@@ -6,7 +6,8 @@
     <title>MotoHub | Homepage</title>
   </head>
   <body>
-    <?php include_once 'partials/header.php'; ?>
+    <?php include_once '../app/views/common/partials/header.php'; ?>
+    <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <div class="bg-img"></div>
       <h1>Welcome to MotoHub</h1>

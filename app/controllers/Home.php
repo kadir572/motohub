@@ -11,7 +11,7 @@ class Home extends PublicController {
 
       switch ($_GET['type']) {
         case 'details':
-          $this->view('motorcycleDetails', ['id' => desinfect($_GET['id'])]);
+          $this->view('motorcycleDetails', ['id' => sanitize($_GET['id'])]);
           break;
       }
 
@@ -25,12 +25,12 @@ class Home extends PublicController {
     if (isset($_GET['type'])) {
       switch ($_GET['type']) {
         case 'send':
-          $pronounce = desinfect(trim($_POST['pronounce']));
-          $name = desinfect(trim($_POST['name']));
-          $email = desinfect(trim($_POST['email']));
-          $reason = desinfect(trim($_POST['reason']));
-          $message = desinfect(trim($_POST['message']));
-          $getCopy = desinfect(trim($_POST['getCopy']));
+          $pronounce = sanitize(trim($_POST['pronounce']));
+          $name = sanitize(trim($_POST['name']));
+          $email = sanitize(trim($_POST['email']));
+          $reason = sanitize(trim($_POST['reason']));
+          $message = sanitize(trim($_POST['message']));
+          $getCopy = sanitize(trim($_POST['getCopy']));
 
           if (empty($pronounce)) {
             redirectWithError('Pronounce is required', '/home/contact');
@@ -104,15 +104,15 @@ class Home extends PublicController {
             redirectWithError('401 - Unauthorized', '/home/userSettings');
             return;
           } 
-          $userModel->delete(desinfect($_GET['id']));
+          $userModel->delete(sanitize($_GET['id']));
           clearSessionLogin();
           header("Location: ".ROOT);
           break;
         case 'edit':
-          $username = desinfect(trim($_POST['username']));
-          $email = desinfect(trim($_POST['email']));
-          $password = desinfect(trim($_POST['password']));
-          $password2 = desinfect(trim($_POST['password2']));
+          $username = sanitize(trim($_POST['username']));
+          $email = sanitize(trim($_POST['email']));
+          $password = sanitize(trim($_POST['password']));
+          $password2 = sanitize(trim($_POST['password2']));
 
           
           break;

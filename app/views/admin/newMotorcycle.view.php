@@ -14,11 +14,12 @@
     <title>Admin | Motorcycles</title>
   </head>
   <body>
-    <?php include_once 'partials/header.php'; ?>
+    <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <div class="bg-img"></div>
       <h1>Admin New Motorcycle</h1>
       <form action="<?=ROOT?>/admin/motorcycles?type=create" method="POST">
+        <?php include_once '../app/views/common/partials/notification.php';?>
         <div class="form__control">
           <input class="form__input" type="text" id="make" name="make" placeholder="Make">
           <label class="form__label" for="make">Make</label>

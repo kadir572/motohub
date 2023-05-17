@@ -4,8 +4,8 @@
     return;
   }
 
-  $selector = desinfect(trim($_GET['selector']));
-  $validator = desinfect(trim($_GET['validator']));
+  $selector = sanitize(trim($_GET['selector']));
+  $validator = sanitize(trim($_GET['validator']));
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +16,12 @@
   <title>User Reset Password</title>
 </head>
 <body>
-  <?php include_once 'partials/header.php'; ?>
+  <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
   <h2>User Reset Password</h2>
   <form method="POST" action="<?=ROOT?>/resetpwd/reset">
-    <?php include_once 'partials/notification.php'; ?>
+    <?php include_once '../app/views/common/partials/notification.php';?>
     <input type="hidden" name="selector" value="<?= $selector?>">
     <input type="hidden" name="validator" value="<?= $validator?>">
     <div class="form__control">

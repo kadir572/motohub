@@ -18,12 +18,9 @@ function splitParams() {
   return $paramsArr;
 }
 
-function desinfect($str) {
-  $str1 = strip_tags($str);
-  $str2 = preg_replace('/\x00|<[^>]*>?/', '', $str1);
-  $str3 = str_replace(["'", '"'], ['&#39;', '&#34;'], $str2);
-  $str4 = htmlspecialchars($str3);
-  return $str4;
+function sanitize($str) {
+  $sanitized = htmlspecialchars(strip_tags(preg_replace('/\x00|<[^>]*>/', '', $str)));
+  return $sanitized;
 }
 
 function validateEmail($email) {
@@ -84,13 +81,11 @@ function validatePassword($password, $password2, $redirect, $queries = []) {
     redirectWithError('Password must contain numbers', $redirect, $queries);
     return false;
    }
-
-   /*
-   if(!preg_match("/[!\[^\'£$%^&*()}{@:\'#~?><>,;@\|\\\-=\-_+\-¬\`\]]/", $password)) {
+ 
+   if(!preg_match("/[\W]/", $password)) {
     redirectWithError('Password must contain special characters', $redirect, $queries);
     return false;
    }
-   */
 
    if (preg_match('/\s/',$password)) {
     redirectWithError('Password can not contain blank spaces', $redirect, $queries);
@@ -128,12 +123,7 @@ function setSessionLogin($username, $permission) {
 
 function capitalizeWordsInString($str) {
   $strArr = explode(" ", $str);
-
-  foreach ($strArr as &$word) {
-    $word = ucfirst($word);
-  }
-
-  $capitalizedStr = implode(' ', $strArr);
-
+  $capitalizedArr = array_map('ucfirst', $strArr);
+  $capitalizedStr = implode(' ', $capitalizedArr);
   return $capitalizedStr;
-} 
+}

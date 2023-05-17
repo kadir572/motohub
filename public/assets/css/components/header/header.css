@@ -1,4 +1,4 @@
-.header__container {
+.main__nav__container {
   padding: 0.5rem 6rem 0.5rem 2rem;
   background: rgba(0, 0, 0, 1);
   color: #fff;
@@ -9,7 +9,7 @@
 }
 
 .header__logo__link {
-  margin-right: auto;
+  /* margin-right: auto; */
 }
 
 .header__logo {
@@ -19,11 +19,7 @@
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 3rem;
-}
-
-.mode-switch {
-  margin-right: 2rem;
+  gap: 2rem;
 }
 
 .header__nav a {
@@ -35,7 +31,7 @@
 .active::before {
   position: absolute;
   content: '';
-  left: -1.2rem;
+  left: -0.8rem;
   top: 50%;
   transform: translateY(-50%);
   width: 0.5rem;

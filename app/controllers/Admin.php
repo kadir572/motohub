@@ -31,19 +31,19 @@ class Admin extends AdminController {
 
       switch ($_GET['type']) {
         case 'remove':
-          $motorcycleModel->delete(desinfect($_GET['id']));
+          $motorcycleModel->delete(sanitize($_GET['id']));
           header("Location: ".ROOT."/admin/motorcycles");
           // $this->view('motorcycles');
           break;
         case 'edit':
-          $this->view('editMotorcycle', ['id' => desinfect($_GET['id'])]);
+          $this->view('editMotorcycle', ['id' => sanitize($_GET['id'])]);
           break;
         case 'update':
-          $make = desinfect($_POST['make']);
-          $model = desinfect($_POST['model']);
-          $imageUrl = desinfect($_POST['imageUrl']);
+          $make = sanitize($_POST['make']);
+          $model = sanitize($_POST['model']);
+          $imageUrl = sanitize($_POST['imageUrl']);
 
-          $motorcycleModel->update(desinfect($_GET['id']), ['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
+          $motorcycleModel->update(sanitize($_GET['id']), ['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
           header("Location: ".ROOT."/admin/motorcycles");
           // $this->view('motorcycles');
           break;
@@ -51,9 +51,9 @@ class Admin extends AdminController {
           $this->view('newMotorcycle');
           break;
         case 'create':
-          $make = desinfect($_POST['make']);
-          $model = desinfect($_POST['model']);
-          $imageUrl = desinfect($_POST['imageUrl']);
+          $make = sanitize($_POST['make']);
+          $model = sanitize($_POST['model']);
+          $imageUrl = sanitize($_POST['imageUrl']);
 
           $motorcycleModel->insert(['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
           header("Location:".ROOT."/admin/motorcycles");

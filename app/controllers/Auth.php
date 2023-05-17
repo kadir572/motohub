@@ -12,7 +12,7 @@ class Auth {
           $username = $_POST['username'] ?? '';
           $password = $_POST['password'] ?? '';
 
-          $this->login(['username' => desinfect(trim($username)), 'password' => desinfect(trim($password)), 'user' => desinfect($_POST['user'])]);
+          $this->login(['username' => sanitize(trim($username)), 'password' => sanitize(trim($password)), 'user' => sanitize($_POST['user'])]);
           break;
         case 'register':
           clearSessionLogin();
@@ -22,7 +22,7 @@ class Auth {
           $password = $_POST['password'] ?? '';
           $password2 = $_POST['password2'] ?? '';
 
-          $this->register(['username' => desinfect(trim($username)), 'email' => desinfect(trim($email)), 'password' => desinfect(trim($password)), 'password2' => desinfect(trim($password2)), 'user' => desinfect($_POST['user'])]);
+          $this->register(['username' => sanitize(trim($username)), 'email' => sanitize(trim($email)), 'password' => sanitize(trim($password)), 'password2' => sanitize(trim($password2)), 'user' => sanitize($_POST['user'])]);
 
           break;
         default:

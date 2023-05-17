@@ -8,12 +8,12 @@
     <title>Motohub | Contact Us</title>
   </head>
   <body>
-  <?php include_once 'partials/header.php'; ?>
+  <?php include_once '../app/views/common/partials/header.php'; ?>
   <main>
     <div class="bg-img"></div>
     <h2>Contact Us</h2>
     <form action="<?=ROOT?>/home/contact?type=send" method="POST">
-      <?php include_once 'partials/notification.php'; ?>
+      <?php include_once '../app/views/common/partials/notification.php';?>
       <div class="form__control--radio">
         
         <label class="form__label--radio" for="pronounce__mr"><input type="radio" name="pronounce" value="mr." id="pronounce__mr">&nbsp;Mr.</label>
