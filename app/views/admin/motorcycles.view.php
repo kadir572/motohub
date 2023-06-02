@@ -3,7 +3,7 @@
     redirectWithError('401 - Unauthorized', '/admin/login');
   }
 
-  $motorcycleModel = new Motorcycle();
+  $motorcycleModel = new MotorcycleModel();
   $motorcycles = $motorcycleModel->findAll();
 ?>
 

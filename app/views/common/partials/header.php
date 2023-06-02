@@ -40,23 +40,24 @@ function isUserLoggedIn() {
       <a <?=setActiveLink('motorcycles')?> href="<?=ROOT?>/home/motorcycles">Motorcycles</a>
       <a <?=setActiveLink('contact')?> href="<?=ROOT?>/home/contact">Contact</a>
     </nav>
-  </div>
-  <nav role="user-navigation">
-      <?php if (isLoggedIn()) { ?>
-        <?php if (isAdmin()) { ?>
-          <a <?=setActiveLink('dashboard')?> href="<?=ROOT?>/admin">Dashboard</a>
-          <a <?=setActiveLink('pages')?> href="<?=ROOT?>/admin/pages">Pages</a>
-        <?php } else { ?>
-          <a <?=setActiveLink('dashboard')?> href="<?=ROOT?>/home/dashboard">Dashbaord</a>
-          <a <?=setActiveLink('userSettings')?> href="<?=ROOT?>/home/userSettings">Settings</a>
-        <?php } ?>
-        <a href="<?=ROOT?>/auth/logout">Logout</a>
-      <?php } else { ?>
-        <?php if ($isAdminRoute) { ?>
-          <a <?=setActiveLink('login')?> href="<?=ROOT?>/admin">Login</a>
-        <?php } else { ?>
-          <a <?=setActiveLink('login')?> href="<?=ROOT?>/home/login">Login</a>
-        <?php } ?>
+    <nav role="user-navigation">
+      <?php if (!isLoggedIn() && !$isAdminRoute) { ?>
+        <a <?=setActiveLink('login')?> href="<?=ROOT?>/home/login"><i class="fa-solid fa-user"></i>Login</a>
+      <?php } elseif (isLoggedIn()) { ?>
+        <div class="user__actions">
+        <button class="user__btn"><i class="fa-solid fa-user"></i><?=$_SESSION['username']?><i class="fa-solid fa-chevron-down"></i></button>
+        <div class="user__dropdown">
+          <?php if (isAdmin()) { ?>
+            <a href="<?=ROOT?>/admin"><i class="fa-solid fa-gauge"></i>Dashboard</a>
+            <a href="<?=ROOT?>/admin/pages"><i class="fa-solid fa-gear"></i>Pages</a>
+          <?php } else { ?>
+            <a href="<?=ROOT?>/user"><i class="fa-solid fa-gauge"></i>Dashbaord</a>
+            <a href="<?=ROOT?>/user/settings"><i class="fa-solid fa-gear"></i>Settings</a>
+          <?php } ?>
+          <a href="<?=ROOT?>/auth/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+        </div>
+        </div>
       <?php } ?>
     </nav>
+  </div>
 </header>

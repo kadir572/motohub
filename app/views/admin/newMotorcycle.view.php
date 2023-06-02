@@ -3,7 +3,7 @@
     redirectWithError('401 - Unauthorized', '/admin/login');
   }
 
-  $motorcycleModel = new Motorcycle();
+  $motorcycleModel = new MotorcycleModel();
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
     <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <div class="bg-img"></div>
-      <h1>Admin New Motorcycle</h1>
+      <h1>Admin new MotorcycleModel</h1>
       <form action="<?=ROOT?>/admin/motorcycles?type=create" method="POST">
         <?php include_once '../app/views/common/partials/notification.php';?>
         <div class="form__control">

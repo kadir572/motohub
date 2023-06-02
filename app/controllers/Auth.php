@@ -31,7 +31,7 @@ class Auth {
       }
     }
   }
-  public function login($data) {
+  private function login($data) {
     
       switch ($data['user']) {
         case 'user':
@@ -40,7 +40,7 @@ class Auth {
             return;
           }
 
-          $userModel = new User();
+          $userModel = new UserModel();
           $foundUser = $userModel->first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
@@ -61,7 +61,7 @@ class Auth {
           }
 
           setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
-          header("Location: ".ROOT."/home/dashboard");
+          header("Location: ".ROOT."/user");
           break;
         case 'admin':
           if (empty($data['username']) || empty($data['password'])) {
@@ -69,7 +69,7 @@ class Auth {
             return;
           }
 
-          $userModel = new User();
+          $userModel = new UserModel();
           $foundUser = $userModel->first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
@@ -98,7 +98,7 @@ class Auth {
       }   
   }
 
-  public function register($data) {
+  private function register($data) {
     // user defines whether the register form is for a regular user or an admin. Currently only regular users can register.
     if ($data['user'] !== 'user') {
       redirectWithError('401 - Permission denied', '/home/register');
@@ -111,7 +111,7 @@ class Auth {
       
     }
 
-    $userModel = new User();
+    $userModel = new UserModel();
     $foundUserByUsername = $userModel->first(['username' => $data['username']]);
 
     if ($foundUserByUsername) {
@@ -143,7 +143,7 @@ class Auth {
     if ($foundUser) {
       setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
 
-      header("Location: ".ROOT."/home/dashboard");
+      header("Location: ".ROOT."/user");
     } else {
       header("Location: ".ROOT);
     }

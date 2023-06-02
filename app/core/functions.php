@@ -82,7 +82,7 @@ function validatePassword($password, $password2, $redirect, $queries = []) {
     return false;
    }
  
-   if(!preg_match("/[\W]/", $password)) {
+   if(!preg_match('/(?=\S*[^a-zA-Z0-9])/', $password)) {
     redirectWithError('Password must contain special characters', $redirect, $queries);
     return false;
    }

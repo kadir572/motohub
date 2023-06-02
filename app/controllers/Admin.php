@@ -1,6 +1,11 @@
 <?php
 
-class Admin extends AdminController {
+class Admin extends Controller {
+
+  public function __construct() {
+    $this->directory = 'admin';
+  }
+
   public function index() {
     if (empty($_SESSION['username'])) {
       header("Location: ".ROOT."/admin/login");
@@ -27,7 +32,7 @@ class Admin extends AdminController {
 
   public function motorcycles() {
     if (isset($_GET['type'])) {
-      $motorcycleModel = new Motorcycle();
+      $motorcycleModel = new MotorcycleModel();
 
       switch ($_GET['type']) {
         case 'remove':

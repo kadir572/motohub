@@ -10,6 +10,7 @@
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
+  <div class="container">
   <h2>User Registration</h2>
   <form method="POST" action="<?=ROOT?>/auth">
     <?php include_once '../app/views/common/partials/notification.php';?>
@@ -32,7 +33,9 @@
       <label class="form__label" for="password2">Repeat password</label>
     </div>
     <button class="form__submit" type="submit">Register</button>
+    <a class="link" href="<?=ROOT?>/home/login">Already have an account? Log in here</a>
   </form>
+  </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>

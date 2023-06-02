@@ -1,6 +1,6 @@
 <?php
 
-class Motorcycle {
+class MotorcycleModel {
   
   use Model;
 

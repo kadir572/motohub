@@ -1,6 +1,6 @@
 <?php
 
-  $motorcycleModel = new Motorcycle;
+  $motorcycleModel = new MotorcycleModel;
   $motorcycle = $motorcycleModel->first(['id' => $data['id']]);
 
 ?>

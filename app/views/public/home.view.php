@@ -10,8 +10,11 @@
     <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <div class="bg-img"></div>
-      <h1>Welcome to MotoHub</h1>
-      <h2>Get to know your dream bike!</h2>
+      <div class="container">
+      <h1>We only regret the rides we didn't take!</h1>
+      <!-- <h2>Get to know your dream bike!</h2> -->
+      <a href="<?=ROOT?>/home/motorcycles" class="btn btn--primary btn--xl">Find your dream bike</a>
+      </div>
     </main>
     <?php include_once '../app/views/common/partials/footer.php'; ?>
   </body>

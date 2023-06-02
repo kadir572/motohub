@@ -1,6 +1,11 @@
 <?php
 
-class Home extends PublicController {
+class Home extends Controller {
+
+  public function __construct() {
+    $this->directory = 'public';
+  }
+
   public function index() {
     $this->view('home');
   }
@@ -31,29 +36,30 @@ class Home extends PublicController {
           $reason = sanitize(trim($_POST['reason']));
           $message = sanitize(trim($_POST['message']));
           $getCopy = sanitize(trim($_POST['getCopy']));
+          $formInfo = ['pronounce' => $pronounce, 'name' => $name, 'email' => $email, 'reason' => $reason, 'message' => $message, 'getCopy' => $getCopy];
 
           if (empty($pronounce)) {
-            redirectWithError('Pronounce is required', '/home/contact');
+            redirectWithError('Pronounce is required', '/home/contact', $formInfo);
             return;
           }
 
           if (empty($name)) {
-            redirectWithError('Name is required', '/home/contact');
+            redirectWithError('Name is required', '/home/contact', $formInfo);
             return;
           }
 
           if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            redirectWithError('Invalid email', '/home/contact');
+            redirectWithError('Invalid email', '/home/contact', $formInfo);
             return;
           }
 
           if (empty($reason)) {
-            redirectWithError('Reason is required', '/home/contact');
+            redirectWithError('Reason is required', '/home/contact', $formInfo);
             return;
           }
 
           if (empty($message)) {
-            redirectWithError('Message is required', '/home/contact');
+            redirectWithError('Message is required', '/home/contact', $formInfo);
             return;
           }
 
@@ -92,41 +98,6 @@ class Home extends PublicController {
 
   public function register() {
     $this->view('register');
-  }
-
-  public function user() {
-    if (isset($_GET['type'])) {
-
-      $userModel = new User();
-      switch ($_GET['type']) {
-        case 'delete':
-          if ($_SESSION['permission'] !== 0) {
-            redirectWithError('401 - Unauthorized', '/home/userSettings');
-            return;
-          } 
-          $userModel->delete(sanitize($_GET['id']));
-          clearSessionLogin();
-          header("Location: ".ROOT);
-          break;
-        case 'edit':
-          $username = sanitize(trim($_POST['username']));
-          $email = sanitize(trim($_POST['email']));
-          $password = sanitize(trim($_POST['password']));
-          $password2 = sanitize(trim($_POST['password2']));
-
-          
-          break;
-
-      }
-    }
-  }
-
-  public function userSettings() {
-    $this->view('userSettings');
-  }
-
-  public function dashboard() {
-    $this->view('dashboard');
   }
 
 }

@@ -1,11 +1,23 @@
 .error {
-  background: red;
+  background: #f2232d;
   color: #fff;
   padding: 0.2rem 1rem;
+  position: absolute;
+  border-radius: 9px;
+
+  top: -3rem;
+  left: 0;
+  width: 100%;
 }
 
 .success {
   background: green;
   color: #fff;
   padding: 0.2rem 1rem;
+  position: absolute;
+  border-radius: 9px;
+
+  top: -7rem;
+  left: 0;
+  width: 100%;
 }

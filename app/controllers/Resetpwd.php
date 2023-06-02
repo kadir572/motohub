@@ -1,6 +1,11 @@
 <?php
 
-class Resetpwd extends PublicController {
+class Resetpwd extends Controller {
+
+  public function __construct() {
+    $this->directory = 'public';
+  }
+
   public function index() {
     $this->view('forgottenPassword');
   }
@@ -43,7 +48,7 @@ class Resetpwd extends PublicController {
 
      $currentDate = date("U");
      
-     $resetModel = new ResetPassword;
+     $resetModel = new ResetPasswordModel;
      $resetRequest = $resetModel->first(['selector' => $selector]);
 
      if (!$resetRequest) {
@@ -65,7 +70,7 @@ class Resetpwd extends PublicController {
      }
 
      $email = $resetRequest->email;
-     $userModel = new User;
+     $userModel = new UserModel;
      $user = $userModel->first(['email' => $email]);
      if (!$user) {
       redirectWithError('There was an error', '/resetpwd');

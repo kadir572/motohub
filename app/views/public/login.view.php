@@ -9,6 +9,7 @@
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
+  <div class="container">
   <h2>User Login</h2>
   <form method="POST" action="<?=ROOT?>/auth">
     <?php include_once '../app/views/common/partials/notification.php';?>
@@ -24,7 +25,9 @@
     </div>
     <button class="form__submit" type="submit">Login</button>
     <a class="link" href="<?=ROOT?>/resetpwd">Forgot password?</a>
+    <a class="link" href="<?=ROOT?>/home/register">No account yet? Register here</a>
   </form>
+  </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>

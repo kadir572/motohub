@@ -1,7 +1,8 @@
 .main__nav__container {
-  padding: 0.5rem 6rem 0.5rem 2rem;
-  background: rgba(0, 0, 0, 1);
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.1));
   color: #fff;
+  position: relative;
 
   display: flex;
   align-items: center;
@@ -9,7 +10,7 @@
 }
 
 .header__logo__link {
-  /* margin-right: auto; */
+  margin-right: 3rem;
 }
 
 .header__logo {
@@ -20,6 +21,8 @@
   display: flex;
   align-items: center;
   gap: 2rem;
+
+  margin-right: auto;
 }
 
 .header__nav a {
@@ -38,4 +41,50 @@
   height: 0.5rem;
   border-radius: 50%;
   background-color: #fff;
+}
+
+.user__actions {
+  position: relative;
+  /* background-color: red; */
+}
+
+.user__dropdown {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(90deg) scale(0.1);
+  z-index: 5;
+
+  display: flex;
+  gap: 1rem;
+  min-width: max-content;
+
+  /* display: none; */
+  opacity: 0;
+
+  transition: transform 0.3s, left 0.3s, opacity 0.3s;
+}
+
+.show {
+  /* display: flex; */
+  opacity: 1;
+  left: -400%;
+  transform: rotateY(0) scale(1);
+}
+
+nav[role='user-navigation'] a,
+nav[role='user-navigation'] button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.user__btn > .fa-chevron-down {
+  transform: rotate(0);
+  left: 0;
+  transition: transform 0.3s;
+}
+
+.dropdown--open {
+  left: 10rem;
 }

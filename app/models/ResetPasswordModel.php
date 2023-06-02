@@ -1,6 +1,6 @@
 <?php
 
-class ResetPassword {
+class ResetPasswordModel {
 
   use Model;
 

@@ -68,7 +68,7 @@ Trait Model {
     if(!empty($this->allowedColumns)) {
       foreach ($data as $key => $value) {
         if (!in_array($key, $this->allowedColumns)) {
-          unset($dta[$key]);
+          unset($data[$key]);
         }
       }
     }

@@ -1,8 +1,6 @@
 <?php
-
-  $motorcycle = new Motorcycle;
+  $motorcycle = new MotorcycleModel;
   $motorcycles = $motorcycle->findAll();
-
 ?>
 
 <!DOCTYPE html>

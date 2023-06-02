@@ -15,8 +15,8 @@ class Mailer {
 
   public function __construct() 
   {
-    $this->resetModel = new ResetPassword;
-    $this->userModel = new User;
+    $this->resetModel = new ResetPasswordModel;
+    $this->userModel = new UserModel;
     // taken from MailTrap SMTP settings
     $this->mail = new PHPMailer();
     $this->mail->isSMTP();

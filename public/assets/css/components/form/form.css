@@ -3,6 +3,8 @@ form {
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+
+  position: relative;
 }
 
 .form__control {
@@ -17,8 +19,9 @@ form {
 
 .form__control--radio {
   display: flex;
-  gap: 0.5rem;
+  gap: 2rem;
   color: #fff;
+  width: 100%;
 }
 
 .form__control--checkbox {
@@ -31,6 +34,7 @@ form {
   padding: 0.5rem 1rem;
   border: 1px solid #000;
   border-radius: 9px;
+  width: 100%;
   /* max-width: 60%; */
   /* z-index: 2; */
 }

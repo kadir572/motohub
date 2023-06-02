@@ -2,15 +2,26 @@
   padding: 0.5rem 1rem;
   border: 1px solid #000;
   border-radius: 9px;
+
+  transition: all 0.2s;
 }
 
 .btn--small {
   padding: 0.2rem 0.4rem;
 }
 
+.btn--xl {
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+}
+
 .btn--primary {
-  background-color: red;
-  color: #000;
+  background-color: #d2232d;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: #f2232d;
 }
 
 .btn--secondary {
