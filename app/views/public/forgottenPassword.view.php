@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
-<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/resetPassword.css">
+<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/forgottenPassword.css">
   <title>User Forgotten Password</title>
 </head>
 <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
+  <div class="container">
   <h2>User Forgotten Password</h2>
   <form method="POST" action="<?=ROOT?>/resetpwd/sendRequest">
     <?php include_once '../app/views/common/partials/notification.php';?>
@@ -18,6 +19,7 @@
     </div>
     <button class="form__submit" type="submit">Submit</button>
   </form>
+  </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>

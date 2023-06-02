@@ -12,13 +12,14 @@
 <html lang="en">
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
-<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/login.css">
+<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/resetPassword.css">
   <title>User Reset Password</title>
 </head>
 <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
+  <div class="container">
   <h2>User Reset Password</h2>
   <form method="POST" action="<?=ROOT?>/resetpwd/reset">
     <?php include_once '../app/views/common/partials/notification.php';?>
@@ -34,6 +35,7 @@
     </div>
     <button class="form__submit" type="submit">Register</button>
   </form>
+  </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>
