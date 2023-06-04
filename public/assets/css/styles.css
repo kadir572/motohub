@@ -14,10 +14,6 @@ main {
   position: relative;
 }
 
-form {
-  max-width: fit-content;
-}
-
 h1 {
   font-size: 6rem;
   font-weight: 600;

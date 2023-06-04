@@ -7,7 +7,7 @@ main {
   top: 50%;
   left: 20%;
   transform: translate(-20%, -50%);
-  width: fit-content;
+  max-width: fit-content;
 
   display: flex;
   flex-direction: column;

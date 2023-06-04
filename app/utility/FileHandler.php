@@ -2,25 +2,31 @@
 
 class FileHandler {
   private static $maxFileSize = 10048576;
+  private static $minImageWidth = 800;
+  private static $minImageHeight = 600;
+  private static $imageAspectRatio = 4/3;
   private static $allowedMimeTypes = ['image/png', 'image/jpeg', 'image/webp'];
 
   private static function checkError($file, $path, $queries = []) {
+    $hasErr = false;
+    $errMsg = '';
     if ($file['error'] !== 0) {
+      $hasErr = true;
       switch ($file['error']) {
         case 1:
         case 2:
-          redirectWithError('Filesize too large', $path, $queries);
+          $errMsg = 'Filesize too large';
           break;
         case 3:
-          redirectWithError('File incomplete', $path, $queries);
+          $errMsg = 'FIle incomplete';
           break;
         case 4:
-          redirectWithError('File missing', $path, $queries);
+          $errMsg = 'File missing';
           break;
         case 6:
         case 7:
         case 8:
-          redirectWithError('500 - Internal error', $path, $queries);
+          $errMsg = '500 - Internal error';
           break;
         default:
           header("Location: ". ROOT);
@@ -28,7 +34,7 @@ class FileHandler {
       }
     }
     
-    return true;
+    return $hasErr ? redirectWithError($errMsg, $path, $queries) : true;
   }
 
   private static function checkMaxFileSize($file, $path, $queries = []) {
@@ -36,6 +42,28 @@ class FileHandler {
       return redirectWithError('Filesize too large', $path, $queries);
     }
     return true;
+  }
+
+  private static function checkImageSize($file, $path, $queries = []) {
+    $hasErr = false;
+    $errMsg = '';
+    $dimensions = getimagesize($file['tmp_name']);
+    switch ($dimensions) {
+      case $dimensions[0] < self::$minImageWidth:
+        $hasErr = true;
+        $errMsg = 'Image width too small (expected min width: '. self::$minImageWidth .', received: '.$dimensions[0].')';
+        break;
+      case $dimensions[1] < self::$minImageHeight:
+        $hasErr = true;
+        $errMsg = 'Image height too small (expected min height: '. self::$minImageHeight .', received: '.$dimensions[1].')';
+        break;
+      case $dimensions[0] / $dimensions[1] !== self::$imageAspectRatio:
+        $hasErr = true;
+        $errMsg = 'Aspect ratio incorrect (expected: '. self::$imageAspectRatio .', received: '.$dimensions[0] . '/' . $dimensions[1].')';
+        break;
+    }
+
+    return $hasErr ? redirectWithError($errMsg, $path, $queries) : true;
   }
 
   private static function checkMimeType($file, $path, $queries = []) {
@@ -61,6 +89,7 @@ class FileHandler {
     if (!self::checkError($file, $path, $queries)) return;
     if (!self::checkMaxFileSize($file, $path, $queries)) return;
     if (!self::checkMimeType($file, $path, $queries)) return;
+    if (!self::checkImageSize($file, $path, $queries)) return;
 
     $validatedName = self::validateName($file);
     $base = $validatedName['base'];

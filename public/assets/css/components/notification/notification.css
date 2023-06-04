@@ -1,23 +1,16 @@
-.error {
-  background: #f2232d;
+.notification {
   color: #fff;
   padding: 0.2rem 1rem;
-  position: absolute;
+
   border-radius: 9px;
 
-  top: -3rem;
-  left: 0;
   width: 100%;
+}
+
+.error {
+  background: #f2232d;
 }
 
 .success {
   background: green;
-  color: #fff;
-  padding: 0.2rem 1rem;
-  position: absolute;
-  border-radius: 9px;
-
-  top: -7rem;
-  left: 0;
-  width: 100%;
 }

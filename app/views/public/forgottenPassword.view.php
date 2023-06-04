@@ -10,7 +10,7 @@
 <main>
   <div class="bg-img"></div>
   <div class="container">
-  <h2>User Forgotten Password</h2>
+  <h2>Forgotten Password</h2>
   <form method="POST" action="<?=ROOT?>/resetpwd/sendRequest">
     <?php include_once '../app/views/common/partials/notification.php';?>
     <div class="form__control">

@@ -20,8 +20,9 @@
       <div class="bg-img"></div>
       <div class="container">
       <h1>Add Motorcycle</h1>
+      <?php include_once '../app/views/common/partials/notification.php';?>
       <form action="<?=ROOT?>/admin/motorcycles?type=create" method="POST" enctype="multipart/form-data">
-        <?php include_once '../app/views/common/partials/notification.php';?>
+        
         <div class="form__control">
           <input class="form__input" type="text" id="make" name="make" placeholder="Make" <?= !empty($_GET['make']) ? 'value="'.$_GET['make'].'"': '' ?>>
           <label class="form__label" for="make">Make</label>

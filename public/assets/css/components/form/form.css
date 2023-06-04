@@ -5,6 +5,8 @@ form {
   gap: 2rem;
 
   position: relative;
+
+  max-width: fit-content;
 }
 
 .form__control {
