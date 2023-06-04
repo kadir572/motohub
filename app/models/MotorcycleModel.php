@@ -9,7 +9,7 @@ class MotorcycleModel {
   protected $allowedColumns = [
     'make',
     'model',
-    'imageUrl'
+    'imagePath'
   ];
 
   public function validate($data) {

@@ -51,6 +51,32 @@ form {
   color: #fff;
 }
 
+.form__control--file {
+  display: flex;
+  gap: 1rem;
+}
+
+.form__control--file input {
+  display: none;
+  color: #fff;
+}
+
+.form__control--file label {
+  color: #fff;
+  cursor: pointer;
+
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.form__control--file img {
+  background: #fff;
+  width: 4rem;
+  height: 3rem;
+  object-fit: cover;
+}
+
 .form__input:focus + .form__label {
   transform: translate(-1rem, -2.2rem);
   opacity: 1;

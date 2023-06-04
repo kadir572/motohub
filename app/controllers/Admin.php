@@ -36,9 +36,12 @@ class Admin extends Controller {
 
       switch ($_GET['type']) {
         case 'remove':
-          $motorcycleModel->delete(sanitize($_GET['id']));
+          $id = sanitize($_GET['id']);
+          $motorcycle = $motorcycleModel->first(['id' => $id]);
+          $imagePath = $motorcycle->imagePath;
+          FileHandler::removeFile($imagePath);
+          $motorcycleModel->delete($id);
           header("Location: ".ROOT."/admin/motorcycles");
-          // $this->view('motorcycles');
           break;
         case 'edit':
           $this->view('editMotorcycle', ['id' => sanitize($_GET['id'])]);
@@ -46,11 +49,16 @@ class Admin extends Controller {
         case 'update':
           $make = sanitize($_POST['make']);
           $model = sanitize($_POST['model']);
-          $imageUrl = sanitize($_POST['imageUrl']);
+          if ($_FILES['imageUpload']['error'] === 0) {
+            FileHandler::upload($_FILES['imageUpload'], '/admin/motorcycles');
+            $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
+            $motorcycleModel->update(sanitize($_GET['id']), ['make' => $make, 'model' => $model, 'imagePath' => $imagePath]);
+          } else {
+            $motorcycleModel->update(sanitize($_GET['id']), ['make' => $make, 'model' => $model]);
+          }
 
-          $motorcycleModel->update(sanitize($_GET['id']), ['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
+          
           header("Location: ".ROOT."/admin/motorcycles");
-          // $this->view('motorcycles');
           break;
         case 'new':
           $this->view('newMotorcycle');
@@ -58,11 +66,17 @@ class Admin extends Controller {
         case 'create':
           $make = sanitize($_POST['make']);
           $model = sanitize($_POST['model']);
-          $imageUrl = sanitize($_POST['imageUrl']);
 
-          $motorcycleModel->insert(['make' => $make, 'model' => $model, 'imageUrl' => $imageUrl]);
+          $inputsArr = ['make' => $make, 'model' => $model];
+
+          if (!$make) return redirectWithError('Make can not be empty', '/admin/motorcycles?type=new', $inputsArr);
+          if (!$model) return redirectWithError('Model can not be empty', '/admin/motorcycles?type=new', $inputsArr);
+
+          FileHandler::upload($_FILES['imageUpload'], '/admin/motorcycles?type=new', $inputsArr);
+          $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
+
+          $motorcycleModel->insert(['make' => $make, 'model' => $model, 'imagePath' => $imagePath]);
           header("Location:".ROOT."/admin/motorcycles");
-          // $this->view('motorcycles');
           break;
       }
       

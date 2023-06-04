@@ -100,4 +100,8 @@ class Home extends Controller {
     $this->view('register');
   }
 
+  public function test() {
+    $this->view('test');
+  }
+
 }

@@ -23,7 +23,7 @@
       <span><?= $motorcycle->make?></span>
       <span><?= $motorcycle->model?></span>
       <div class="motorcycle__image-wrapper">
-        <img src="<?= $motorcycle->imageUrl?>" alt="Image of <?=$motorcycle->make?> <?=$motorcycle->model?>">
+        <img src="<?= ROOT.'/'.$motorcycle->imagePath?>" alt="Image of <?=$motorcycle->make?> <?=$motorcycle->model?>">
       </div>
       </div>
     </div>

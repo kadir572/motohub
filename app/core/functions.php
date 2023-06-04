@@ -96,7 +96,12 @@ function validatePassword($password, $password2, $redirect, $queries = []) {
 }
 
 function redirectWithError($error, $redirectPath, $queries = []) {
-  $redirectPath = $redirectPath."?error=$error";
+  if (strpos($redirectPath, '?')) {
+    $redirectPath = $redirectPath."&error=$error";
+  } else {
+    $redirectPath = $redirectPath."?error=$error";
+  }
+  
   if (count($queries) > 0) {
     foreach ($queries as $key => $value) {
       $redirectPath .= "&".$key."=".$value;

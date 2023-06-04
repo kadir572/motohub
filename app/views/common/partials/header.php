@@ -4,6 +4,7 @@ $isAdminRoute = $URL[0] === 'admin' ? true : false;
 
 function setActiveLink($page = '') {
   $URL = splitUrl();
+  if ($URL[0] === 'admin') return;
   
   if (isset($URL[1])) {
     if ($page === $URL[1]) {
