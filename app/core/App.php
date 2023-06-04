@@ -24,6 +24,8 @@ class App {
 
     if (!empty($URL[1])) {
       if (method_exists($controller, $URL[1])) {
+        $reflection = new ReflectionMethod($controller, $URL[1]);
+        if (!$reflection->isPublic()) return header("Location: ".ROOT);
         $this->method = $URL[1];
       } else {
         $filename = '../app/controllers/_404.php';

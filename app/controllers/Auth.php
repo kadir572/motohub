@@ -29,6 +29,8 @@ class Auth {
           header("Location: ".ROOT);
           break;
       }
+    } else {
+      header("Location: ".ROOT);
     }
   }
   private function login($data) {

@@ -60,5 +60,33 @@ function isUserLoggedIn() {
         </div>
       <?php } ?>
     </nav>
+    <div class="mobile__nav__btn mobile__nav__btn--open"><i class="fa-solid fa-bars"></i></div>
+    <div class="mobile__menu">
+    <div class="mobile__nav__btn mobile__nav__btn--close"><i class="fa-solid fa-x"></i>
+    </div>
+    <div class="mobile__menu__container">
+        <nav role="main-navigation--mobile">
+          <span><i class="fa-solid fa-location-arrow"></i>Navigation</span>
+          <a <?=setActiveLink()?> href="<?=ROOT?>"><i class="fa-solid fa-house"></i>Home</a>
+          <a <?=setActiveLink('motorcycles')?> href="<?=ROOT?>/home/motorcycles"><i class="fa-solid fa-motorcycle"></i>Motorcycles</a>
+          <a <?=setActiveLink('contact')?> href="<?=ROOT?>/home/contact"><i class="fa-solid fa-address-book"></i>Contact</a>
+        </nav>
+        <nav role="user-navigation--mobile">
+          <?php if (!isLoggedIn() && !$isAdminRoute) { ?>
+            <a <?=setActiveLink('login')?> href="<?=ROOT?>/home/login"><i class="fa-solid fa-user"></i>Login</a>
+          <?php } elseif (isLoggedIn()) { ?>
+            <span><i class="fa-solid fa-user"></i><?=$_SESSION['username']?></span>
+            <?php if (isAdmin()) { ?>
+            <a href="<?=ROOT?>/admin"><i class="fa-solid fa-gauge"></i>Dashboard</a>
+            <a href="<?=ROOT?>/admin/pages"><i class="fa-solid fa-gear"></i>Pages</a>
+          <?php } else { ?>
+            <a href="<?=ROOT?>/user"><i class="fa-solid fa-gauge"></i>Dashbaord</a>
+            <a href="<?=ROOT?>/user/settings"><i class="fa-solid fa-gear"></i>Settings</a>
+          <?php } ?>
+          <a href="<?=ROOT?>/auth/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+          <?php } ?>
+        </nav>
+      </div>
+    </div>
   </div>
 </header>

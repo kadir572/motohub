@@ -11,5 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/styles.css" />
 <?php if (!empty($_SESSION['username'])) : ?>
-  <script src="<?=ROOT?>/assets/js/header.js" defer type="module"></script>
+  <script src="<?=ROOT?>/assets/js/headerAuthenticated.js" defer type="module"></script>
 <?php endif; ?>
+<script src="<?=ROOT?>/assets/js/headerMobile.js" defer type="module"></script>

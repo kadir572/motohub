@@ -45,7 +45,6 @@
 
 .user__actions {
   position: relative;
-  /* background-color: red; */
 }
 
 .user__dropdown {
@@ -59,14 +58,12 @@
   gap: 1rem;
   min-width: max-content;
 
-  /* display: none; */
   opacity: 0;
 
   transition: transform 0.3s, left 0.3s, opacity 0.3s;
 }
 
 .show {
-  /* display: flex; */
   opacity: 1;
   left: -400%;
   transform: rotateY(0) scale(1);
@@ -87,4 +84,127 @@ nav[role='user-navigation'] button {
 
 .dropdown--open {
   left: 10rem;
+}
+
+.mobile__nav__btn {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9px;
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile__nav__btn i {
+  font-size: 1.5rem;
+}
+
+.mobile__nav__btn--open {
+  display: none;
+}
+
+.mobile__nav__btn--close {
+}
+
+.mobile__menu {
+  height: 100vh;
+  width: fit-content;
+  max-width: 100%;
+  background-color: #000;
+  box-shadow: -1px 0 2px 1px rgba(0, 0, 0, 0.3);
+
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  transform: translateX(100%);
+
+  transition: transform 0.4s ease-in-out;
+}
+
+.mobile__menu--open {
+  transform: translateX(0);
+}
+
+.mobile__menu__container {
+  width: 100%;
+  margin-top: calc(100% - 4rem);
+  position: relative;
+  padding-inline: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+nav[role='main-navigation--mobile'],
+nav[role='user-navigation--mobile'] {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+nav[role='main-navigation--mobile'] a,
+nav[role='main-navigation--mobile'] span {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav[role='main-navigation--mobile'] a::before,
+nav[role='user-navigation--mobile'] a::before {
+  left: -1.2rem;
+}
+
+nav[role='main-navigation--mobile'] span {
+  margin-bottom: 0.5rem;
+}
+
+nav[role='main-navigation--mobile'] span::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  bottom: -0.5rem;
+}
+
+nav[role='user-navigation--mobile'] a,
+nav[role='user-navigation--mobile'] span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  position: relative;
+}
+
+nav[role='user-navigation--mobile'] span {
+  margin-bottom: 0.5rem;
+}
+
+nav[role='user-navigation--mobile'] span::before {
+  position: absolute;
+  content: '';
+  bottom: -0.5rem;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+}
+
+@media (max-width: 68.75em) {
+  nav[role='main-navigation'],
+  nav[role='user-navigation'] {
+    display: none;
+  }
+
+  .mobile__nav__btn--open {
+    display: flex;
+  }
 }

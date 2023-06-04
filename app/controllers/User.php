@@ -7,6 +7,13 @@ class User extends Controller {
   }
 
   public function index() {
+    if (empty($_SESSION['username'])) {
+      return redirectWithError('401 - Unauthorized', '/home/login');
+    }
+    $this->dashboard();
+  }
+
+  public function dashboard() {
     $this->view('dashboard');
   }
 
