@@ -66,6 +66,10 @@ form {
 .form__control--file label {
   color: #fff;
   cursor: pointer;
+  background-color: #000;
+  border-radius: 9px;
+  border: 1px solid #fff;
+  padding-inline: 1rem;
 
   display: flex;
   gap: 1rem;

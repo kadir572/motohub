@@ -24,6 +24,7 @@ class App {
 
     if (!empty($URL[1])) {
       if (method_exists($controller, $URL[1])) {
+        // Reflection is used to check if method is public
         $reflection = new ReflectionMethod($controller, $URL[1]);
         if (!$reflection->isPublic()) return header("Location: ".ROOT);
         $this->method = $URL[1];

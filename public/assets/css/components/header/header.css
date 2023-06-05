@@ -124,6 +124,8 @@ nav[role='user-navigation'] button {
   z-index: 10;
   transform: translateX(100%);
 
+  display: none;
+
   transition: transform 0.4s ease-in-out;
 }
 
@@ -206,5 +208,9 @@ nav[role='user-navigation--mobile'] span::before {
 
   .mobile__nav__btn--open {
     display: flex;
+  }
+
+  .mobile__menu {
+    display: block;
   }
 }
