@@ -3,7 +3,7 @@
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/login.css">
-  <title>User Login</title>
+  <title>MotoHub | Login</title>
 </head>
 <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>

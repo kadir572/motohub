@@ -13,7 +13,7 @@
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/resetPassword.css">
-  <title>User Reset Password</title>
+  <title>MotoHub | User Reset Password</title>
 </head>
 <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>

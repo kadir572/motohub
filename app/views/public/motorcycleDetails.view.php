@@ -11,7 +11,7 @@
     <?php include_once '../app/views/common/partials/head-core.php'; ?>
     
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/motorcycle/details.css">
-    <title>Motohub | Motorcycles</title>
+    <title>MotoHub | Motorcycles</title>
   </head>
   <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>

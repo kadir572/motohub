@@ -50,3 +50,31 @@ p {
   color: #fff;
   text-decoration: underline;
 }
+
+@media (max-width: 100em) {
+  h1 {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 83.125em) {
+  h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 31.25em) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 21.875em) {
+  h2 {
+    font-size: 2rem;
+  }
+}

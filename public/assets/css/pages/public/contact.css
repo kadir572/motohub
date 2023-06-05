@@ -13,3 +13,19 @@ main {
   flex-direction: column;
   gap: 3rem;
 }
+
+@media (max-width: 68.75em) {
+  .container {
+    left: 40%;
+    transform: translate(-40%, -50%);
+  }
+}
+
+@media (max-width: 50em) {
+  .container {
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    align-items: center;
+  }
+}

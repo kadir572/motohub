@@ -9,7 +9,7 @@
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/dashboard.css">
-<title>Admin | Dashboard</title>
+<title>MotoHub | Dashboard</title>
 </head>
 <body>
 <?php include_once '../app/views/common/partials/header.php'; ?>

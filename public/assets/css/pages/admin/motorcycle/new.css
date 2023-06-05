@@ -13,3 +13,12 @@ main {
   flex-direction: column;
   gap: 3rem;
 }
+
+.requirements {
+  color: #fff;
+}
+
+.requirements ul {
+  list-style-type: circle;
+  margin-left: 1rem;
+}

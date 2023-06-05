@@ -4,7 +4,7 @@
     <?php include_once '../app/views/common/partials/head-core.php'; ?>
     
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/404.css">
-    <title>Motohub | 404 Not Found</title>
+    <title>MotoHub | 404 Not Found</title>
   </head>
   <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>

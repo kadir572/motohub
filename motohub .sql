@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2023 at 01:50 AM
+-- Generation Time: Jun 05, 2023 at 01:30 AM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -44,19 +44,16 @@ CREATE TABLE `motorcycle` (
   `id` int(11) NOT NULL,
   `make` varchar(30) NOT NULL,
   `model` varchar(30) NOT NULL,
-  `imageUrl` text NOT NULL
+  `imagePath` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `motorcycle`
 --
 
-INSERT INTO `motorcycle` (`id`, `make`, `model`, `imageUrl`) VALUES
-(2, 'Yamaha', 'Yzf-r3', 'Https://www.moto-data.net/media/yamaha/pics/yamaha-yzf-r3-2023[1].jpg'),
-(3, 'Honda', 'Cbr650r', 'Https://www.de.honda.ch/content/dam/central/motorcycles/supersports/cbr650r_2023/360-view/Matte_Gunpowder_black_metallic/angle001-0x3.5x10.png/jcr:content/renditions/fb_r.png'),
-(6, 'Aprilia', 'Rs660', 'https://www.moto-data.net/media/aprilia/pics/aprilia-rs-660-2021[1].jpg'),
-(9, 'Kawasaki', 'Ninja 400', 'https://storage.kawasaki.eu/public/kawasaki.eu/en-EU/model/23MY_Ninja_400_GN1_STU__2_.png'),
-(10, 'Ducati', 'Diavel', 'https://images5.1000ps.net/b-f_W3005023-ducati-diavel-1260-2019-636769593774289817.jpg');
+INSERT INTO `motorcycle` (`id`, `make`, `model`, `imagePath`) VALUES
+(22, 'Yamaha', 'Yzf-r3', 'assets/images/motorcycles/Yamaha_Yzf-r3_image.jpg'),
+(23, 'Honda', 'Cbr650r', 'assets/images/motorcycles/Honda_Cbr650r_image.jpg');
 
 -- --------------------------------------------------------
 
@@ -77,7 +74,7 @@ CREATE TABLE `pwdreset` (
 --
 
 INSERT INTO `pwdreset` (`id`, `email`, `selector`, `token`, `expires`) VALUES
-(8, 'user@gmail.com', '616d4896647d2475', '$2y$10$FiDTaFrDDgNG94a/JH6zLOqpB00CPduvEfTIoZMSGaV6G1aAFzqoq', '1684240085');
+(9, 'user@gmail.com', '456ef570b0d4a8c8', '$2y$10$TptlAz5njJR.hcLZnx3KhedjHWBJ1fjhz24rso8ONN12D.r8wpgny', '1685748297');
 
 -- --------------------------------------------------------
 
@@ -143,13 +140,13 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `motorcycle`
 --
 ALTER TABLE `motorcycle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `pwdreset`
 --
 ALTER TABLE `pwdreset`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`

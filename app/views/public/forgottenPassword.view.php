@@ -3,7 +3,7 @@
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/forgottenPassword.css">
-  <title>User Forgotten Password</title>
+  <title>MotoHub | Forgotten Password</title>
 </head>
 <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>

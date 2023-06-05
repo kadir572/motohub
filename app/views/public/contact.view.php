@@ -5,7 +5,7 @@
     
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/contact.css">
     <script defer type="module" src="<?=ROOT?>/assets/js/contact.js"></script>
-    <title>Motohub | Contact Us</title>
+    <title>MotoHub | Contact Us</title>
   </head>
   <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>

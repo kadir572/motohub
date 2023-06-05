@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
-<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/login.css">
-  <title>User Login</title>
+<link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/register.css">
+  <title>MotoHub | Registration</title>
 </head>
 <body>
   <?php include_once '../app/views/common/partials/header.php'; ?>
@@ -32,6 +32,17 @@
       <input class="form__input" type="password" name="password2" id="password2" placeholder="Repeat password">
       <label class="form__label" for="password2">Repeat password</label>
     </div>
+    <div class="requirements">
+          <span>Requirements:</span>
+          <ul>
+            <li>All fields are required</li>
+            <li>Username must be between 4 and 16 characters long</li>
+            <li>Username can not contain blank spaces or special characters</li>
+            <li>Password must be at least 8 characters long</li>
+            <li>Password can not contain blank spaces</li>
+            <li>Password must contain at least one of each character: lower case, upper case, number, special character</li>
+          </ul>
+        </div>
     <button class="form__submit" type="submit">Register</button>
     <a class="link" href="<?=ROOT?>/home/login">Already have an account? Log in here</a>
   </form>

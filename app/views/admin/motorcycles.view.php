@@ -12,7 +12,7 @@
   <head>
     <?php include_once '../app/views/common/partials/head-core.php'; ?>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/motorcycle/motorcycles.css">
-    <title>Admin | Motorcycles</title>
+    <title>MotoHub | Motorcycles</title>
   </head>
   <body>
     <?php include_once '../app/views/common/partials/header.php'; ?>

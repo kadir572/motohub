@@ -18,7 +18,7 @@
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/user/settings.css">
-<title>User | Settings</title>
+<title>MotoHub | Settings</title>
 </head>
 <body>
 <?php include_once '../app/views/common/partials/header.php'; ?>
