@@ -42,8 +42,7 @@ class Auth {
             return;
           }
 
-          $userModel = new UserModel();
-          $foundUser = $userModel->first(['username' => $data['username']]);
+          $foundUser = UserModel::first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
             redirectWithError('Invalid credentials', '/home/login');
@@ -71,8 +70,7 @@ class Auth {
             return;
           }
 
-          $userModel = new UserModel();
-          $foundUser = $userModel->first(['username' => $data['username']]);
+          $foundUser = UserModel::first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
             redirectWithError('Invalid credentials', '/admin/login');
@@ -113,8 +111,7 @@ class Auth {
       
     }
 
-    $userModel = new UserModel();
-    $foundUserByUsername = $userModel->first(['username' => $data['username']]);
+    $foundUserByUsername = UserModel::first(['username' => $data['username']]);
 
     if ($foundUserByUsername) {
       redirectWithError('Username not available', '/home/register');
@@ -125,7 +122,7 @@ class Auth {
 
     if (!validateEmail($data['email'])) return;
 
-    $foundUserByEmail = $userModel->first(['email' => $data['email']]);
+    $foundUserByEmail = UserModel::first(['email' => $data['email']]);
 
     if ($foundUserByEmail) {
       redirectWithError('Email not available', '/home/register');
@@ -137,9 +134,9 @@ class Auth {
     $hash = password_hash($data['password'], PASSWORD_DEFAULT);
 
     // User registered
-    $userModel->insert(['username' => $data['username'], 'email' => $data['email'], 'hash' => $hash]);
+    UserModel::insert(['username' => $data['username'], 'email' => $data['email'], 'hash' => $hash]);
 
-    $foundUser = $userModel->first(['username' => $data['username']]);
+    $foundUser = UserModel::first(['username' => $data['username']]);
 
     // Log in if successfully created
     if ($foundUser) {

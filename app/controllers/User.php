@@ -22,26 +22,24 @@ class User extends Controller {
   }
 
   public function delete() {
-    $userModel = new UserModel;
 
     if ($_SESSION['permission'] !== 0) {
       redirectWithError('401 - Unauthorized', '/user/settings');
       return;
     } 
 
-    $user = $userModel->first(['username' => $_SESSION['username']]);
+    $user = UserModel::first(['username' => $_SESSION['username']]);
     if ($user->isAdmin) {
       redirectWithError('401 - Unauthorized', '/user/settings');
       return;
     }
 
-    $userModel->delete(sanitize($_GET['id']));
+    UserModel::delete(sanitize($_GET['id']));
     clearSessionLogin();
     header("Location: ".ROOT);
   }
 
   public function edit() {
-      $userModel = new UserModel;
       
       $username = sanitize(trim($_POST['username']));
       $email = sanitize(trim($_POST['email']));

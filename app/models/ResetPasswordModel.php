@@ -1,12 +1,10 @@
 <?php
 
-class ResetPasswordModel {
+class ResetPasswordModel extends Model {
 
-  use Model;
+  protected static $table = 'pwdreset';
 
-  protected $table = 'pwdreset';
-
-  protected $allowedColumns = [
+  protected static $allowedColumns = [
     'email',
     'selector',
     'token',

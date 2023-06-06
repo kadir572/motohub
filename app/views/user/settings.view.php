@@ -8,8 +8,7 @@
     return;
   }
 
-  $userModel = new UserModel();
-  $user = $userModel->first(['username' => $_SESSION['username']]);
+  $user = UserModel::first(['username' => $_SESSION['username']]);
 
 ?>
 

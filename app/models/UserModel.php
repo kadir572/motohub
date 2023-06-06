@@ -1,12 +1,10 @@
 <?php
 
-class UserModel {
+class UserModel extends Model {
 
-  use Model;
+  protected static $table = 'user';
 
-  protected $table = 'user';
-
-  protected $allowedColumns = [
+  protected static $allowedColumns = [
     'username',
     'email',
     'hash'

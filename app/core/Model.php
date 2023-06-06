@@ -1,25 +1,27 @@
 <?php
 
-Trait Model {
+class Model {
 
   use Database;
 
-  protected $limit = 10;
-  protected $offset = 0;
-  protected $order_type = 'desc';
-  protected $order_column = 'id';
+  protected static $limit = 10;
+  protected static $offset = 0;
+  protected static $order_type = 'desc';
+  protected static $order_column = 'id';
   public $errors = [];
+  protected static $table = '';
+  protected static $allowedColumns = [];
 
-  public function findAll() {
-    $query = "select * from $this->table order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+  public static function findAll() {
+    $query = "select * from " . static::$table . " order by " . self::$order_column . " " . self::$order_type . " limit " . self::$limit . " offset " . self::$offset;
 
-    return $this->query($query);
+    return self::query($query);
   }
 
-  public function where($data, $data_not = []) {
+  public static function where($data, $data_not = []) {
     $keys = array_keys($data);
     $keys_not = array_keys($data_not);
-    $query = "select * from $this->table where ";
+    $query = "select * from " . static::$table . " where ";
 
     foreach ($keys as $key) {
       $query .= $key . " =:". $key . " && ";
@@ -31,16 +33,16 @@ Trait Model {
 
     $query = trim($query, " && ");
 
-    $query .= " order by $this->order_column $this->order_type limit $this->limit offset $this->offset";
+    $query .= " order by " . self::$order_column . " " . self::$order_type . " limit " . self::$limit . " offset " . self::$offset;
     $data = array_merge($data, $data_not);
 
-    return $this->query($query, $data);
+    return self::query($query, $data);
   }
 
-  public function first($data, $data_not = []) {
+  public static function first($data, $data_not = []) {
     $keys = array_keys($data);
     $keys_not = array_keys($data_not);
-    $query = "select * from $this->table where ";
+    $query = "select * from " . static::$table . " where ";
 
     foreach ($keys as $key) {
       $query .= $key . " = :". $key . " && ";
@@ -52,10 +54,10 @@ Trait Model {
 
     $query = trim($query, " && ");
 
-    $query .= " limit $this->limit offset $this->offset";
+    $query .= " limit " . self::$limit . " offset " . self::$offset;
     $data = array_merge($data, $data_not);
 
-    $result = $this->query($query, $data);
+    $result = self::query($query, $data);
     if ($result) {
       return $result[0];
     }
@@ -63,11 +65,11 @@ Trait Model {
     return false;
   }
 
-  public function insert($data) {
+  public static function insert($data) {
     /** remove unwated data */
-    if(!empty($this->allowedColumns)) {
+    if(!empty(static::$allowedColumns)) {
       foreach ($data as $key => $value) {
-        if (!in_array($key, $this->allowedColumns)) {
+        if (!in_array($key, static::$allowedColumns)) {
           unset($data[$key]);
         }
       }
@@ -75,24 +77,24 @@ Trait Model {
 
     $keys = array_keys($data);
 
-    $query = "insert into $this->table (".implode(",", $keys).") values (:".implode(",:", $keys).")";
-    $this->query($query, $data);
+    $query = "insert into " . static::$table . " (".implode(",", $keys).") values (:".implode(",:", $keys).")";
+    self::query($query, $data);
 
     return false;
   }
 
-  public function update($id, $data, $id_column = "id") {
+  public static function update($id, $data, $id_column = "id") {
     /** remove unwated data */
-    if (!empty($this->allowedColumns)) {
+    if (!empty(static::$allowedColumns)) {
       foreach ($data as $key => $value) {
-        if (!in_array($key, $this->allowedColumns)) {
+        if (!in_array($key, static::$allowedColumns)) {
           unset($data[$key]);
         }
       }
     }
 
     $keys = array_keys($data);
-    $query = "update $this->table set ";
+    $query = "update " . static::$table . " set ";
 
     foreach ($keys as $key){
       $query .= $key . " = :". $key . ", ";
@@ -104,14 +106,14 @@ Trait Model {
 
     $data[$id_column] = $id;
 
-    $this->query($query, $data);
+    self::query($query, $data);
     return false;
   }
 
-  public function delete($id, $id_column = 'id') {
+  public static function delete($id, $id_column = 'id') {
     $data[$id_column] = $id;
-    $query = "delete from $this->table where $id_column = :$id_column ";
-    $this->query($query, $data);
+    $query = "delete from " . static::$table . " where $id_column = :$id_column ";
+    self::query($query, $data);
 
     return false;
   }

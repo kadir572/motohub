@@ -48,8 +48,7 @@ class Resetpwd extends Controller {
 
      $currentDate = date("U");
      
-     $resetModel = new ResetPasswordModel;
-     $resetRequest = $resetModel->first(['selector' => $selector]);
+     $resetRequest = ResetPasswordModel::first(['selector' => $selector]);
 
      if (!$resetRequest) {
       redirectWithError('Sorry. The link is no longer valid.', "/resetpwd");
@@ -70,8 +69,7 @@ class Resetpwd extends Controller {
      }
 
      $email = $resetRequest->email;
-     $userModel = new UserModel;
-     $user = $userModel->first(['email' => $email]);
+     $user = UserModel::first(['email' => $email]);
      if (!$user) {
       redirectWithError('There was an error', '/resetpwd');
       return;
@@ -79,9 +77,9 @@ class Resetpwd extends Controller {
 
      $hash = password_hash($password, PASSWORD_DEFAULT);
 
-     $userModel->update($email, ['hash' => $hash], 'email');
+     UserModel::update($email, ['hash' => $hash], 'email');
 
-     $resetModel->delete($email, 'email');
+     ResetPasswordModel::delete($email, 'email');
 
      setSessionLogin($user->username, $user->isAdmin);
 

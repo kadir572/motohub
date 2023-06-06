@@ -2,9 +2,7 @@
   if (empty($_SESSION['username'])) {
     redirectWithError('401 - Unauthorized', '/admin/login');
   }
-
-  $motorcycleModel = new MotorcycleModel();
-  $motorcycles = $motorcycleModel->findAll();
+  $motorcycles = MotorcycleModel::findAll();
 ?>
 
 <!DOCTYPE html>

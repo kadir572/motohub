@@ -1,12 +1,10 @@
 <?php
 
-class MotorcycleModel {
-  
-  use Model;
+class MotorcycleModel extends Model {
 
-  protected $table = 'motorcycle';
+  protected static $table = 'motorcycle';
 
-  protected $allowedColumns = [
+  protected static $allowedColumns = [
     'make',
     'model',
     'year',

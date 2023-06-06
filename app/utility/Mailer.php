@@ -9,14 +9,10 @@ require_once '../app/libs/PHPMailer/src/SMTP.php';
 
 
 class Mailer {
-  private $resetModel;
-  private $userModel;
   private $mail;
 
   public function __construct() 
   {
-    $this->resetModel = new ResetPasswordModel;
-    $this->userModel = new UserModel;
     // taken from MailTrap SMTP settings
     $this->mail = new PHPMailer();
     $this->mail->isSMTP();
@@ -40,9 +36,9 @@ class Mailer {
     // Expiration date will last for half an hour
     $expires = date("U") + 1800;
 
-    $this->resetModel->delete($email, 'email');
+    ResetPasswordModel::delete($email, 'email');
 
-    $user = $this->userModel->first(['email' => $email]);
+    $user = UserModel::first(['email' => $email]);
 
     if (!$user) {
       // For security: To simulate the process time of sending the email
@@ -53,7 +49,7 @@ class Mailer {
 
     $hashedToken = password_hash($token, PASSWORD_DEFAULT);
 
-    $this->resetModel->insert(['email' => $email, 'selector' => $selector, 'token' => $hashedToken, 'expires' => $expires]);
+    ResetPasswordModel::insert(['email' => $email, 'selector' => $selector, 'token' => $hashedToken, 'expires' => $expires]);
 
     $subject = "Reset your password";
     $message = "<p>We received a password reset request.</p>";

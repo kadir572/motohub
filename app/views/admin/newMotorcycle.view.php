@@ -2,8 +2,6 @@
   if (empty($_SESSION['username'])) {
     redirectWithError('401 - Unauthorized', '/admin/login');
   }
-
-  $motorcycleModel = new MotorcycleModel();
 ?>
 
 <!DOCTYPE html>

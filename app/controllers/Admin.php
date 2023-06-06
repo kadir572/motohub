@@ -32,15 +32,14 @@ class Admin extends Controller {
 
   public function motorcycles() {
     if (isset($_GET['type'])) {
-      $motorcycleModel = new MotorcycleModel();
 
       switch ($_GET['type']) {
         case 'remove':
           $id = sanitize($_GET['id']);
-          $motorcycle = $motorcycleModel->first(['id' => $id]);
+          $motorcycle = MotorcycleModel::first(['id' => $id]);
           $imagePath = $motorcycle->imagePath;
           FileHandler::removeFile($imagePath);
-          $motorcycleModel->delete($id);
+          MotorcycleModel::delete($id);
           header("Location: ".ROOT."/admin/motorcycles");
           break;
         case 'edit':
@@ -66,9 +65,9 @@ class Admin extends Controller {
             FileHandler::upload($_FILES['imageUpload'], '/admin/motorcycles');
             $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
             $inputsArr += ['imagePath' => $imagePath];
-            $motorcycleModel->update(sanitize($_GET['id']), $inputsArr);
+            MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);
           } else {
-            $motorcycleModel->update(sanitize($_GET['id']), $inputsArr);
+            MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);
           }
 
           
@@ -98,7 +97,7 @@ class Admin extends Controller {
 
           $inputsArr += ['imagePath' => $imagePath];
 
-          $motorcycleModel->insert($inputsArr);
+          MotorcycleModel::insert($inputsArr);
           header("Location:".ROOT."/admin/motorcycles");
           break;
       }

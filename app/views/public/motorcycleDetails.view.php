@@ -1,8 +1,5 @@
 <?php
-
-  $motorcycleModel = new MotorcycleModel;
-  $motorcycle = $motorcycleModel->first(['id' => $data['id']]);
-
+  $motorcycle = MotorcycleModel::first(['id' => $data['id']]);
 ?>
 
 <!DOCTYPE html>
