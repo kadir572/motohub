@@ -18,6 +18,7 @@
     <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <div class="bg-img"></div>
+      <div class="container">
       <h1>Admin Motorcycles</h1>
       <a class="link" href="<?=ROOT?>/admin/motorcycles?type=new">New</a>
       <div class="motorcycles__list">
@@ -32,6 +33,7 @@
         <?php else : ?>
           <span>No motorcycles found</span>
         <?php endif; ?>
+      </div>
       </div>
     </main>
     <?php include_once '../app/views/common/partials/footer.php'; ?>

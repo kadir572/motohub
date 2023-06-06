@@ -9,28 +9,58 @@ class MotorcycleModel {
   protected $allowedColumns = [
     'make',
     'model',
-    'imagePath'
+    'year',
+    'imagePath',
+    'displacement',
+    'horsepower',
+    'peakHorsepowerRpm',
+    'torque',
+    'peakTorqueRpm'
   ];
 
-  public function validate($data) {
-    $this->errors = [];
+  public static function validate($inputsArr, $redirectPath) {
+    $hasErr = false;
+    $errMsg = '';
 
-    if (empty($data['make'])) {
-      $this->errors['make'] = "Motorcycle make is required";
+    foreach($inputsArr as $key => $value) {
+      if (!$value) {
+        $hasErr = true;
+        $errMsg = ucfirst($key) . " can not be empty";
+        break;
+      }
     }
 
-    if (empty($data['model'])) {
-      $this->errors['model'] = 'Motorcycle model is required';
+    if ($hasErr) {
+      redirectWithError($errMsg, $redirectPath, $inputsArr);
+      return false;
     }
 
-    if (empty($data['imageUrl'])) {
-      $this->errors['imageUrl'] = 'Motorcycle image url is required';
+    if (strlen($inputsArr['year']) !== 4 || !preg_match('/[0-9]/', $inputsArr['year'])) {
+      $hasErr = true;
+      $errMsg = 'Year must consist of 4 digits (0-9)';
+    } elseif (!preg_match('/[0-9]/', $inputsArr['displacement'])) {
+      $hasErr = true;
+      $errMsg = 'Displacement must only consist of digits (0-9)';
+    } elseif (!preg_match('/\d+\.?\d*/', $inputsArr['horsepower'])) {
+      $hasErr = true;
+      $errMsg = 'Horsepower can only be an integer or decimal number';
+    } elseif (!preg_match('/[0-9]/', $inputsArr['peakHorsepowerRpm'])) {
+      $hasErr = true;
+      $errMsg = 'Peak horsepower rpm must consist of digits (0-9)';
+    } elseif (!preg_match('/\d+\.?\d*/', $inputsArr['torque'])) {
+      $hasErr = true;
+      $errMsg = 'Torque can only be an integer or decimal number';
+    } elseif (!preg_match('/[0-9]/', $inputsArr['peakTorqueRpm'])) {
+      $hasErr = true;
+      $errMsg = 'Peak torque rpm must consist of digits (0-9)';
     }
 
-    if (empty($this->errors)) {
-      return true;
+    if ($hasErr) {
+      redirectWithError($errMsg, $redirectPath, $inputsArr);
+      return false;
     }
-    return false;
+
+    return true;
+    
   }
-  
 }

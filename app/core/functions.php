@@ -110,6 +110,26 @@ function redirectWithError($error, $redirectPath, $queries = []) {
   header("Location: ".ROOT.$redirectPath);
 }
 
+function checkError($inputArr, $redirectPath) {
+  $hasErr = false;
+  $errMsg = '';
+
+  foreach($inputArr as $key => $value) {
+    if (!$value) {
+      $hasErr = true;
+      $errMsg = ucfirst($key) . " can not be empty";
+      break;
+    }
+  }
+
+  if ($hasErr) {
+    redirectWithError($errMsg, $redirectPath, $inputArr);
+    return false;
+  }
+
+  return true;
+}
+
 function getCurrentDate() {
   return date('d-m-y h:i:s');
 }

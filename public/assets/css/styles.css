@@ -1,18 +1,13 @@
 @import 'components/components.css';
 body {
-  min-height: 110vh;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
-
-  display: flex;
-  flex-direction: column;
 }
 
 main {
-  flex-grow: 1;
   position: relative;
-  overflow-y: hidden;
+  padding-block: 5rem;
 }
 
 h1 {
@@ -30,6 +25,23 @@ h2 {
 p {
   font-size: 1.2rem;
   color: #fff;
+}
+
+span {
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  transform: translateX(10%);
+  min-height: 110vh;
 }
 
 .bg-img {

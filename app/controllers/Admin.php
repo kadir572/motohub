@@ -49,12 +49,26 @@ class Admin extends Controller {
         case 'update':
           $make = sanitize($_POST['make']);
           $model = sanitize($_POST['model']);
+          $year = sanitize($_POST['year']);
+          $displacement = sanitize($_POST['displacement']);
+          $horsepower = sanitize($_POST['horsepower']);
+          $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
+          $torque = sanitize($_POST['torque']);
+          $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
+
+          $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
+
+          $redirectPath = '/admin/motorcycles?type=edit';
+
+          if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
+
           if ($_FILES['imageUpload']['error'] === 0) {
             FileHandler::upload($_FILES['imageUpload'], '/admin/motorcycles');
             $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
-            $motorcycleModel->update(sanitize($_GET['id']), ['make' => $make, 'model' => $model, 'imagePath' => $imagePath]);
+            $inputsArr += ['imagePath' => $imagePath];
+            $motorcycleModel->update(sanitize($_GET['id']), $inputsArr);
           } else {
-            $motorcycleModel->update(sanitize($_GET['id']), ['make' => $make, 'model' => $model]);
+            $motorcycleModel->update(sanitize($_GET['id']), $inputsArr);
           }
 
           
@@ -66,16 +80,25 @@ class Admin extends Controller {
         case 'create':
           $make = sanitize($_POST['make']);
           $model = sanitize($_POST['model']);
+          $year = sanitize($_POST['year']);
+          $displacement = sanitize($_POST['displacement']);
+          $horsepower = sanitize($_POST['horsepower']);
+          $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
+          $torque = sanitize($_POST['torque']);
+          $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
 
-          $inputsArr = ['make' => $make, 'model' => $model];
+          $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
 
-          if (!$make) return redirectWithError('Make can not be empty', '/admin/motorcycles?type=new', $inputsArr);
-          if (!$model) return redirectWithError('Model can not be empty', '/admin/motorcycles?type=new', $inputsArr);
+          $redirectPath = '/admin/motorcycles?type=new';
 
-          FileHandler::upload($_FILES['imageUpload'], '/admin/motorcycles?type=new', $inputsArr);
+          if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
+
+          FileHandler::upload($_FILES['imageUpload'], $redirectPath, $inputsArr);
           $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
 
-          $motorcycleModel->insert(['make' => $make, 'model' => $model, 'imagePath' => $imagePath]);
+          $inputsArr += ['imagePath' => $imagePath];
+
+          $motorcycleModel->insert($inputsArr);
           header("Location:".ROOT."/admin/motorcycles");
           break;
       }

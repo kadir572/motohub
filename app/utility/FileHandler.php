@@ -123,9 +123,17 @@ class FileHandler {
 
     $filename = scandir(UPLOAD_PATH)[2];
     $fileExtension = explode('.', $filename)[1];
-    rename(UPLOAD_PATH.'/'.$filename, $destDirPath.'/'.$destFilename.'.'.$fileExtension);
+    
+    $i = 1;
 
-    return $destDirPath.'/'.$destFilename.'.'.$fileExtension;
+    while (file_exists($destDirPath.'/'.$destFilename.'.'.$fileExtension)) {
+      $destFilename = $destFilename . "($i)";
+      $i++;
+    }
+
+    $destFilePath = $destDirPath.'/'.$destFilename.'.'.$fileExtension;
+    rename(UPLOAD_PATH.'/'.$filename, $destFilePath);
+    return $destFilePath;
   }
 
   public static function removeFile($path) {

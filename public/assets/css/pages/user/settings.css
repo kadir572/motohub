@@ -1,15 +1,1 @@
-main {
-  position: relative;
-}
 
-.container {
-  position: absolute;
-  top: 50%;
-  left: 20%;
-  transform: translate(-20%, -50%);
-  width: fit-content;
-
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}

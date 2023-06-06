@@ -31,6 +31,36 @@
           <input class="form__input" type="text" id="model" name="model" placeholder="Model" <?= !empty($_GET['model']) ? 'value="'.$_GET['model'].'"': '' ?>>
           <label class="form__label" for="model">Model</label>
         </div>
+        <div class="form__control">
+          <input type="text" class="form__input" id="year" name="year" placeholder="Year" <?= !empty($_GET['year']) ? 'value="'.$_GET['year'].'"': '' ?>>
+          <label for="year" class="form__label">Year</label>
+        </div>
+        <div class="form__control">
+          <input type="text" class="form__input" id="displacement" name="displacement" placeholder="Displacement" <?= !empty($_GET['displacement']) ? 'value="'.$_GET['displacement'].'"': '' ?>>
+          <label for="displacement" class="form__label">Displacement</label>
+        </div>
+        <div class="form__control__group">
+        <div class="form__control">
+          <input type="text" class="form__input" id="horsepower" name="horsepower" placeholder="Horsepower" <?= !empty($_GET['horsepower']) ? 'value="'.$_GET['horsepower'].'"': '' ?>>
+          <label for="horsepower" class="form__label">Horsepower</label>
+        </div>
+        <span>@</span>
+        <div class="form__control">
+          <input type="text" class="form__input" id="peakHorsepowerRpm" name="peakHorsepowerRpm" placeholder="Rpm" <?= !empty($_GET['peakHorsepowerRpm']) ? 'value="'.$_GET['peakHorsepowerRpm'].'"': '' ?>>
+          <label for="peakHorsepowerRpm" class="form__label">Rpm</label>
+        </div>
+        </div>
+        <div class="form__control__group">
+        <div class="form__control">
+          <input type="text" class="form__input" id="torque" name="torque" placeholder="Torque" <?= !empty($_GET['torque']) ? 'value="'.$_GET['torque'].'"': '' ?>>
+          <label for="torque" class="form__label">Torque</label>
+        </div>
+        <span>@</span>
+        <div class="form__control">
+          <input type="text" class="form__input" id="peakTorqueRpm" name="peakTorqueRpm" placeholder="Rpm" <?= !empty($_GET['peakTorqueRpm']) ? 'value="'.$_GET['peakTorqueRpm'].'"': '' ?>>
+          <label for="peakTorqueRpm" class="form__label">Rpm</label>
+        </div>
+        </div>
           <div class="form__control--file">
             <input type="file" class="form__input--file" id="imageUpload" name="imageUpload">
             <label for="imageUpload" class="form__label--file" id="imageUploadLabel"><i class="fa-solid fa-upload"></i><span></span></label>

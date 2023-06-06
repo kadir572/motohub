@@ -9,6 +9,16 @@ form {
   max-width: fit-content;
 }
 
+.form__control__group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form__control__group span {
+  color: #fff;
+}
+
 .form__control {
   display: flex;
   gap: 1rem;
@@ -59,8 +69,11 @@ form {
 }
 
 .form__control--file input {
-  display: none;
   color: #fff;
+}
+
+.form__input--hidden {
+  display: none;
 }
 
 .form__control--file label {

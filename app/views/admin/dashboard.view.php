@@ -15,6 +15,7 @@
 <?php include_once '../app/views/common/partials/header.php'; ?>
   <main>
     <div class="bg-img"></div>
+    <div class="container">
     <h1>Admin Dashboard</h1>
     <h2>Welcome <?=$_SESSION['username']?></h2>
     <?php if (isset($_SESSION['username'])) : ?>
@@ -25,6 +26,7 @@
         <?php endforeach; ?>
       </div>
     <?php endif; ?>
+    </div>
   </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
 </body>

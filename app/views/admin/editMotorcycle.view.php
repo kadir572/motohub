@@ -20,7 +20,7 @@
     <main>
       <div class="bg-img"></div>
       <div class="container">
-      <h1>Admin Edit Motorcycle</h1>
+      <h1>Edit Motorcycle</h1>
       <form action="<?=ROOT?>/admin/motorcycles?type=update&id=<?=$motorcycle->id?>" method="POST" enctype="multipart/form-data">
         <?php include_once '../app/views/common/partials/notification.php';?>
         <div class="form__control">
@@ -30,6 +30,36 @@
         <div class="form__control">
           <input class="form__input" type="text" id="model" name="model" value="<?=ucfirst($motorcycle->model)?>" placeholder="Model">
           <label class="form__label" for="model">Model</label>
+        </div>
+        <div class="form__control">
+          <input type="text" class="form__input" id="year" name="year" placeholder="Year" value="<?=$motorcycle->year?>">
+          <label for="year" class="form__label">Year</label>
+        </div>
+        <div class="form__control">
+          <input type="text" class="form__input" id="displacement" name="displacement" placeholder="Displacement" value="<?=$motorcycle->displacement?>">
+          <label for="displacement" class="form__label">Displacement</label>
+        </div>
+        <div class="form__control__group">
+        <div class="form__control">
+          <input type="text" class="form__input" id="horsepower" name="horsepower" placeholder="Horsepower" value="<?=$motorcycle->horsepower?>">
+          <label for="horsepower" class="form__label">Horsepower</label>
+        </div>
+        <span>@</span>
+        <div class="form__control">
+          <input type="text" class="form__input" id="peakHorsepowerRpm" name="peakHorsepowerRpm" placeholder="Rpm" value="<?=$motorcycle->peakHorsepowerRpm?>">
+          <label for="peakHorsepowerRpm" class="form__label">Rpm</label>
+        </div>
+        </div>
+        <div class="form__control__group">
+        <div class="form__control">
+          <input type="text" class="form__input" id="torque" name="torque" placeholder="Torque" value="<?=$motorcycle->torque?>">
+          <label for="torque" class="form__label">Torque</label>
+        </div>
+        <span>@</span>
+        <div class="form__control">
+          <input type="text" class="form__input" id="peakTorqueRpm" name="peakTorqueRpm" placeholder="Rpm" value="<?=$motorcycle->peakTorqueRpm?>">
+          <label for="peakTorqueRpm" class="form__label">Rpm</label>
+        </div>
         </div>
         <div class="form__control--file">
             <input type="file" class="form__input--file" id="imageUpload" name="imageUpload">
