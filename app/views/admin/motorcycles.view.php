@@ -23,8 +23,8 @@
         <?php if ($motorcycles): ?>
           <?php foreach($motorcycles as $motorcycle): ?>
           <img src="<?=ROOT.'/'.$motorcycle->imagePath?>" alt="Thumbnail image of <?=$motorcycle->make?> <?=ucfirst($motorcycle->model)?>">
-          <div><span><?=$motorcycle->make?></span></div>
-          <div><span><?=$motorcycle->model?></span></div>
+          <div><span><?=ucfirst($motorcycle->make)?></span></div>
+          <div><span><?=ucfirst($motorcycle->model)?></span></div>
           <div><a class="link" href="<?=ROOT?>/admin/motorcycles?type=edit&id=<?=$motorcycle->id?>">Edit</a></div>
           <div><a class="link" href="<?=ROOT?>/admin/motorcycles?type=remove&id=<?=$motorcycle->id?>">Remove</a></div>
         <?php endforeach; ?>

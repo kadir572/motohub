@@ -44,7 +44,7 @@
           </ul>
         </div>
     <button class="form__submit" type="submit">Register</button>
-    <a class="link" href="<?=ROOT?>/home/login">Already have an account? Log in here</a>
+    <span>Already have an account? <a href="<?=ROOT?>/home/login" class="link">Log in</a></span>
   </form>
   </div>
 </main>

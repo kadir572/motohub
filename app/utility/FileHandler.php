@@ -118,17 +118,19 @@ class FileHandler {
     return true;
   }
 
-  public static function moveFile($destDirPath, $destFilename) {
+  public static function moveFile($destDirPath, $destFilename, $shouldReplace = false) {
     if (count(scandir(UPLOAD_PATH)) <= 2) return;
 
     $filename = scandir(UPLOAD_PATH)[2];
     $fileExtension = explode('.', $filename)[1];
     
-    $i = 1;
+    if (!$shouldReplace) {
+      $i = 1;
 
     while (file_exists($destDirPath.'/'.$destFilename.'.'.$fileExtension)) {
       $destFilename = $destFilename . "($i)";
       $i++;
+    }
     }
 
     $destFilePath = $destDirPath.'/'.$destFilename.'.'.$fileExtension;

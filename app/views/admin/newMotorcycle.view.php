@@ -34,28 +34,28 @@
           <label for="year" class="form__label">Year</label>
         </div>
         <div class="form__control">
-          <input type="text" class="form__input" id="displacement" name="displacement" placeholder="Displacement" <?= !empty($_GET['displacement']) ? 'value="'.$_GET['displacement'].'"': '' ?>>
+          <input type="text" class="form__input" id="displacement" name="displacement" placeholder="Displacement" <?= !empty($_GET['displacement']) ? 'value="'.$_GET['displacement'].'"': '' ?>><span>cc</span>
           <label for="displacement" class="form__label">Displacement</label>
         </div>
         <div class="form__control__group">
         <div class="form__control">
-          <input type="text" class="form__input" id="horsepower" name="horsepower" placeholder="Horsepower" <?= !empty($_GET['horsepower']) ? 'value="'.$_GET['horsepower'].'"': '' ?>>
+          <input type="text" class="form__input" id="horsepower" name="horsepower" placeholder="Horsepower" <?= !empty($_GET['horsepower']) ? 'value="'.$_GET['horsepower'].'"': '' ?>><span>hp</span>
           <label for="horsepower" class="form__label">Horsepower</label>
         </div>
         <span>@</span>
         <div class="form__control">
-          <input type="text" class="form__input" id="peakHorsepowerRpm" name="peakHorsepowerRpm" placeholder="Rpm" <?= !empty($_GET['peakHorsepowerRpm']) ? 'value="'.$_GET['peakHorsepowerRpm'].'"': '' ?>>
+          <input type="text" class="form__input" id="peakHorsepowerRpm" name="peakHorsepowerRpm" placeholder="Rpm" <?= !empty($_GET['peakHorsepowerRpm']) ? 'value="'.$_GET['peakHorsepowerRpm'].'"': '' ?>><span>rpm</span>
           <label for="peakHorsepowerRpm" class="form__label">Rpm</label>
         </div>
         </div>
         <div class="form__control__group">
         <div class="form__control">
-          <input type="text" class="form__input" id="torque" name="torque" placeholder="Torque" <?= !empty($_GET['torque']) ? 'value="'.$_GET['torque'].'"': '' ?>>
+          <input type="text" class="form__input" id="torque" name="torque" placeholder="Torque" <?= !empty($_GET['torque']) ? 'value="'.$_GET['torque'].'"': '' ?>><span>nm</span>
           <label for="torque" class="form__label">Torque</label>
         </div>
         <span>@</span>
         <div class="form__control">
-          <input type="text" class="form__input" id="peakTorqueRpm" name="peakTorqueRpm" placeholder="Rpm" <?= !empty($_GET['peakTorqueRpm']) ? 'value="'.$_GET['peakTorqueRpm'].'"': '' ?>>
+          <input type="text" class="form__input" id="peakTorqueRpm" name="peakTorqueRpm" placeholder="Rpm" <?= !empty($_GET['peakTorqueRpm']) ? 'value="'.$_GET['peakTorqueRpm'].'"': '' ?>><span>rpm</span>
           <label for="peakTorqueRpm" class="form__label">Rpm</label>
         </div>
         </div>

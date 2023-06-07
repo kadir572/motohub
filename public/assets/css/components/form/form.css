@@ -16,13 +16,15 @@ form {
   gap: 0.5rem;
 }
 
-.form__control__group span {
-  color: #fff;
+.form__control span {
+  position: absolute;
+  right: 1rem;
+  color: #858585;
 }
 
 .form__control {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
   align-items: center;
   justify-content: space-between;
 
@@ -48,12 +50,9 @@ form {
   border: 1px solid #000;
   border-radius: 9px;
   width: 100%;
-  /* max-width: 60%; */
-  /* z-index: 2; */
 }
 
 .form__label {
-  /* max-width: 40%; */
   position: absolute;
   left: 1rem;
   top: 0.5rem;

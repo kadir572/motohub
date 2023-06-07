@@ -24,8 +24,10 @@
       <label class="form__label" for="password">Password</label>
     </div>
     <button class="form__submit" type="submit">Login</button>
+    <div class="links">
     <a class="link" href="<?=ROOT?>/resetpwd">Forgot password?</a>
-    <a class="link" href="<?=ROOT?>/home/register">No account yet? Register here</a>
+    <span>No account? <a class="link" href="<?=ROOT?>/home/register">Sign up</a></span>
+    </div>
   </form>
   </div>
 </main>

@@ -23,6 +23,8 @@
       <h1>Edit Motorcycle</h1>
       <form action="<?=ROOT?>/admin/motorcycles?type=update&id=<?=$motorcycle->id?>" method="POST" enctype="multipart/form-data">
         <?php include_once '../app/views/common/partials/notification.php';?>
+        <input type="hidden" name="originalMake" value="<?=$motorcycle->make?>">
+        <input type="hidden" name="originalModel" value="<?=$motorcycle->model?>">
         <div class="form__control">
           <input class="form__input" type="text" id="make" name="make" value="<?=ucfirst($motorcycle->make)?>" placeholder="Make">
           <label class="form__label" for="make">Make</label>
@@ -36,28 +38,28 @@
           <label for="year" class="form__label">Year</label>
         </div>
         <div class="form__control">
-          <input type="text" class="form__input" id="displacement" name="displacement" placeholder="Displacement" value="<?=$motorcycle->displacement?>">
+          <input type="text" class="form__input" id="displacement" name="displacement" placeholder="Displacement" value="<?=$motorcycle->displacement?>"><span>cc</span>
           <label for="displacement" class="form__label">Displacement</label>
         </div>
         <div class="form__control__group">
         <div class="form__control">
-          <input type="text" class="form__input" id="horsepower" name="horsepower" placeholder="Horsepower" value="<?=$motorcycle->horsepower?>">
+          <input type="text" class="form__input" id="horsepower" name="horsepower" placeholder="Horsepower" value="<?=$motorcycle->horsepower?>"><span>hp</span>
           <label for="horsepower" class="form__label">Horsepower</label>
         </div>
         <span>@</span>
         <div class="form__control">
-          <input type="text" class="form__input" id="peakHorsepowerRpm" name="peakHorsepowerRpm" placeholder="Rpm" value="<?=$motorcycle->peakHorsepowerRpm?>">
-          <label for="peakHorsepowerRpm" class="form__label">Rpm</label>
+          <input type="text" class="form__input" id="peakHorsepowerRpm" name="peakHorsepowerRpm" placeholder="Rpm" value="<?=$motorcycle->peakHorsepowerRpm?>"><span>rpm</span>
+          <label for="peakHorsepowerRpm" class="form__label">rpm</label>
         </div>
         </div>
         <div class="form__control__group">
         <div class="form__control">
-          <input type="text" class="form__input" id="torque" name="torque" placeholder="Torque" value="<?=$motorcycle->torque?>">
+          <input type="text" class="form__input" id="torque" name="torque" placeholder="Torque" value="<?=$motorcycle->torque?>"><span>nm</span>
           <label for="torque" class="form__label">Torque</label>
         </div>
         <span>@</span>
         <div class="form__control">
-          <input type="text" class="form__input" id="peakTorqueRpm" name="peakTorqueRpm" placeholder="Rpm" value="<?=$motorcycle->peakTorqueRpm?>">
+          <input type="text" class="form__input" id="peakTorqueRpm" name="peakTorqueRpm" placeholder="Rpm" value="<?=$motorcycle->peakTorqueRpm?>"><span>rpm</span>
           <label for="peakTorqueRpm" class="form__label">Rpm</label>
         </div>
         </div>

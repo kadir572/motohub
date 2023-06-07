@@ -46,24 +46,33 @@ class Admin extends Controller {
           $this->view('editMotorcycle', ['id' => sanitize($_GET['id'])]);
           break;
         case 'update':
-          $make = sanitize($_POST['make']);
-          $model = sanitize($_POST['model']);
+          $id = sanitize($_GET['id']);
+
+          $originalMake = strtolower(sanitize($_POST['originalMake']));
+          $originalModel = strtolower(sanitize($_POST['originalModel']));
+
+          $make = strtolower(sanitize($_POST['make']));
+          $model = strtolower(sanitize($_POST['model']));
           $year = sanitize($_POST['year']);
           $displacement = sanitize($_POST['displacement']);
-          $horsepower = formatNumber(sanitize($_POST['horsepower']));
+          $horsepower = sanitize($_POST['horsepower']);
           $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
-          $torque = formatNumber(sanitize($_POST['torque']));
+          $torque = sanitize($_POST['torque']);
           $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
 
           $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
 
-          $redirectPath = '/admin/motorcycles?type=edit';
+          $redirectPath = '/admin/motorcycles?type=edit&id='.$id;
+
+          $foundMotorcycle = MotorcycleModel::first(['make' => $make, 'model' => $model]);
+
+          if ($originalMake !== $make && $originalModel !== $model && $foundMotorcycle) return redirectWithError("Motorcycle $make $model already exists", $redirectPath);
 
           if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
-
+          
           if ($_FILES['imageUpload']['error'] === 0) {
-            FileHandler::upload($_FILES['imageUpload'], '/admin/motorcycles');
-            $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
+            if (!FileHandler::upload($_FILES['imageUpload'], $redirectPath)) return;
+            $imagePath = FileHandler::moveFile('assets/images/motorcycles', ucfirst($make).'_'.ucfirst($model).'_'.'image', true);
             $inputsArr += ['imagePath' => $imagePath];
             MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);
           } else {
@@ -77,23 +86,27 @@ class Admin extends Controller {
           $this->view('newMotorcycle');
           break;
         case 'create':
-          $make = sanitize($_POST['make']);
-          $model = sanitize($_POST['model']);
+          $make = strtolower(sanitize($_POST['make']));
+          $model = strtolower(sanitize($_POST['model']));
           $year = sanitize($_POST['year']);
           $displacement = sanitize($_POST['displacement']);
-          $horsepower = formatNumber(sanitize($_POST['horsepower']));
+          $horsepower = sanitize($_POST['horsepower']);
           $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
-          $torque = formatNumber(sanitize($_POST['torque']));
+          $torque = sanitize($_POST['torque']);
           $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
 
           $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
 
           $redirectPath = '/admin/motorcycles?type=new';
 
+          $foundMotorcycle = MotorcycleModel::first(['make' => $make, 'model' => $model]);
+
+          if ($foundMotorcycle) return redirectWithError("Motorcycle $make $model already exists", $redirectPath);
+
           if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
 
-          FileHandler::upload($_FILES['imageUpload'], $redirectPath, $inputsArr);
-          $imagePath = FileHandler::moveFile('assets/images/motorcycles', $make.'_'.$model.'_'.'image');
+          if (!FileHandler::upload($_FILES['imageUpload'], $redirectPath)) return;
+          $imagePath = FileHandler::moveFile('assets/images/motorcycles', ucfirst($make).'_'.ucfirst($model).'_'.'image');
 
           $inputsArr += ['imagePath' => $imagePath];
 
