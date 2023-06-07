@@ -22,7 +22,7 @@
       <form action="<?=ROOT?>/admin/motorcycles?type=create" method="POST" enctype="multipart/form-data">
         
         <div class="form__control">
-          <input class="form__input" type="text" id="make" name="make" placeholder="Make" <?= !empty($_GET['make']) ? 'value="'.$_GET['make'].'"': '' ?>>
+          <input class="form__input" type="text" id="make" name="make" placeholder="Make" <?= !empty($_GET['make']) ? 'value="'.$_GET['make'].'"': '' ?> autofocus>
           <label class="form__label" for="make">Make</label>
         </div>
         <div class="form__control">

@@ -1,4 +1,9 @@
 @import 'components/components.css';
+
+:root {
+  --form-width: 30rem;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
@@ -11,7 +16,7 @@ main {
 }
 
 h1 {
-  font-size: 6rem;
+  font-size: 3rem;
   font-weight: 600;
   color: #fff;
 }
@@ -40,7 +45,8 @@ a {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  transform: translateX(10%);
+  width: 90%;
+  margin: 0 auto;
   min-height: 110vh;
 }
 
@@ -61,32 +67,4 @@ a {
 .link {
   color: #fff;
   text-decoration: underline;
-}
-
-@media (max-width: 100em) {
-  h1 {
-    font-size: 5rem;
-  }
-}
-
-@media (max-width: 83.125em) {
-  h1 {
-    font-size: 4rem;
-  }
-}
-
-@media (max-width: 31.25em) {
-  h1 {
-    font-size: 3.5rem;
-  }
-
-  h2 {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 21.875em) {
-  h2 {
-    font-size: 2rem;
-  }
 }

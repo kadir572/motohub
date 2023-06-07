@@ -6,12 +6,13 @@ form {
 
   position: relative;
 
-  max-width: fit-content;
+  max-width: var(--form-width);
 }
 
 .form__control__group {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.5rem;
 }
 

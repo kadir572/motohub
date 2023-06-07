@@ -50,9 +50,9 @@ class Admin extends Controller {
           $model = sanitize($_POST['model']);
           $year = sanitize($_POST['year']);
           $displacement = sanitize($_POST['displacement']);
-          $horsepower = sanitize($_POST['horsepower']);
+          $horsepower = formatNumber(sanitize($_POST['horsepower']));
           $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
-          $torque = sanitize($_POST['torque']);
+          $torque = formatNumber(sanitize($_POST['torque']));
           $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
 
           $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
@@ -81,9 +81,9 @@ class Admin extends Controller {
           $model = sanitize($_POST['model']);
           $year = sanitize($_POST['year']);
           $displacement = sanitize($_POST['displacement']);
-          $horsepower = sanitize($_POST['horsepower']);
+          $horsepower = formatNumber(sanitize($_POST['horsepower']));
           $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
-          $torque = sanitize($_POST['torque']);
+          $torque = formatNumber(sanitize($_POST['torque']));
           $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
 
           $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];

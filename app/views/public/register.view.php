@@ -17,7 +17,7 @@
     <input type="hidden" name="type" value="register">
     <input type="hidden" name="user" value="user">
     <div class="form__control">
-      <input class="form__input" type="text" id="username" name="username" placeholder="Username">
+      <input class="form__input" type="text" id="username" name="username" placeholder="Username" autofocus>
       <label class="form__label" for="username">Username</label>
     </div>
     <div class="form__control">

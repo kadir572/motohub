@@ -152,3 +152,14 @@ function capitalizeWordsInString($str) {
   $capitalizedStr = implode(' ', $capitalizedArr);
   return $capitalizedStr;
 }
+
+function formatNumber($num) {
+  if (str_contains($num, '.')) {
+    $numArr = explode('.', $num);
+    if ($numArr[1] && $numArr[1] > 0) {
+      return $num;
+    }
+    return $numArr[0];
+  }
+  return $num;
+}

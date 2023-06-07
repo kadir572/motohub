@@ -1,0 +1,11 @@
+.container {
+  padding-left: 5%;
+  padding-top: 10%;
+}
+
+@media (max-width: 50em) {
+  .container {
+    padding-left: 0;
+    max-width: var(--form-width);
+  }
+}

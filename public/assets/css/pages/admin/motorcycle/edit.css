@@ -1,8 +1,21 @@
+.container {
+  padding-left: 5%;
+}
+
 .requirements {
   color: #fff;
+  max-width: 100%;
 }
 
 .requirements ul {
   list-style-type: circle;
   margin-left: 1rem;
+  max-width: 100%;
+}
+
+@media (max-width: 50em) {
+  .container {
+    padding-left: 0;
+    max-width: var(--form-width);
+  }
 }
