@@ -87,6 +87,8 @@ class Auth {
             }
           }
 
+          LoginLimiter::reset();
+
           setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
           header("Location: ".ROOT."/user");
           break;
@@ -141,6 +143,8 @@ class Auth {
               return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
             }
           }
+
+          LoginLimiter::reset();
 
           setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
           header("Location: ".ROOT."/admin");
