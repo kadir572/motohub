@@ -25,7 +25,7 @@
       <h1>Listed Motorcycles</h1>
       <div class="motorcycle__list__actions">
         <div class="form__control">
-          <input type="text" name="search" id="search" class="form__input" placeholder="Search">
+          <input type="text" name="search" id="search" class="form__input" placeholder="Search" autocomplete="off">
           <label for="search" class="form__label">Search</label>
         </div>
         <a class="btn btn--secondary btn-small" href="<?=ROOT?>/admin/motorcycles?type=new"><i class="fa-solid fa-plus"></i>New</a>
