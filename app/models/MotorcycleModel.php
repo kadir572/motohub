@@ -29,7 +29,7 @@ class MotorcycleModel extends Model {
     }
 
     if ($hasErr) {
-      redirectWithError($errMsg, $redirectPath, $inputsArr);
+      Validator::redirectWithError($errMsg, $redirectPath, $inputsArr);
       return false;
     }
 
@@ -54,7 +54,7 @@ class MotorcycleModel extends Model {
     }
 
     if ($hasErr) {
-      redirectWithError($errMsg, $redirectPath, $inputsArr);
+      Validator::redirectWithError($errMsg, $redirectPath, $inputsArr);
       return false;
     }
 

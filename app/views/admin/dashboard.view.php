@@ -1,6 +1,6 @@
 <?php
   if (empty($_SESSION['username'])) {
-    redirectWithError('401 - Unauthorized', '/admin/login');
+    Validator::redirectWithError('401 - Unauthorized', '/admin/login');
   }
 ?>
 

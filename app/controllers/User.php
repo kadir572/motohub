@@ -8,7 +8,7 @@ class User extends Controller {
 
   public function index() {
     if (empty($_SESSION['username'])) {
-      return redirectWithError('401 - Unauthorized', '/home/login');
+      return Validator::redirectWithError('401 - Unauthorized', '/home/login');
     }
     $this->dashboard();
   }
@@ -24,30 +24,30 @@ class User extends Controller {
   public function delete() {
 
     if ($_SESSION['permission'] !== 0) {
-      redirectWithError('401 - Unauthorized', '/user/settings');
+      Validator::redirectWithError('401 - Unauthorized', '/user/settings');
       return;
     } 
 
     $user = UserModel::first(['username' => $_SESSION['username']]);
     if ($user->isAdmin) {
-      redirectWithError('401 - Unauthorized', '/user/settings');
+      Validator::redirectWithError('401 - Unauthorized', '/user/settings');
       return;
     }
 
-    UserModel::delete(sanitize($_GET['id']));
-    clearSessionLogin();
+    UserModel::delete(Utility::sanitize($_GET['id']));
+    SessionHandler::clearSessionLogin();
     header("Location: ".ROOT);
   }
 
   public function edit() {
 
       
-      $id = sanitize(trim($_POST['id']));
-      $username = sanitize(trim($_POST['username']));
-      $email = sanitize(trim($_POST['email']));
-      $currentPassword = sanitize(trim($_POST['currentPassword']));
-      $password = sanitize(trim($_POST['password']));
-      $password2 = sanitize(trim($_POST['password2']));
+      $id = Utility::sanitize(trim($_POST['id']));
+      $username = Utility::sanitize(trim($_POST['username']));
+      $email = Utility::sanitize(trim($_POST['email']));
+      $currentPassword = Utility::sanitize(trim($_POST['currentPassword']));
+      $password = Utility::sanitize(trim($_POST['password']));
+      $password2 = Utility::sanitize(trim($_POST['password2']));
 
       $inputsArr = ['username' => $username, 'email' => $email];
 
@@ -57,33 +57,33 @@ class User extends Controller {
 
       $userFromId = UserModel::first(['id' => $id]);
 
-      if (!$userFromId) return redirectWithError('User not found', $redirectPath, $inputsArr);
+      if (!$userFromId) return Validator::redirectWithError('User not found', $redirectPath, $inputsArr);
 
-      if ($username && !validateUsername($username, $redirectPath, $inputsArr)) return; 
+      if ($username && !Validator::validateUsername($username, $redirectPath, $inputsArr)) return; 
 
-      if ($email && !validateEmail($email, $redirectPath, $inputsArr)) return;
+      if ($email && !Validator::validateEmail($email, $redirectPath, $inputsArr)) return;
 
-      if ($username && $username === $userFromId->username) return redirectWithError('Username can not be the same as current username', $redirectPath, $inputsArr);
+      if ($username && $username === $userFromId->username) return Validator::redirectWithError('Username can not be the same as current username', $redirectPath, $inputsArr);
 
-      if ($email && $email === $userFromId->email) return redirectWithError('Email can not be the same as current email', $redirectPath, $inputsArr);
+      if ($email && $email === $userFromId->email) return Validator::redirectWithError('Email can not be the same as current email', $redirectPath, $inputsArr);
 
-      if ($username && $username !== $userFromId->username && UserModel::first(['username' => $username])) return redirectWithError('Username is taken', $redirectPath, $inputsArr);
+      if ($username && $username !== $userFromId->username && UserModel::first(['username' => $username])) return Validator::redirectWithError('Username is taken', $redirectPath, $inputsArr);
 
-      if ($email && $email !== $userFromId->email && UserModel::first(['email' => $email])) return redirectWithError('Email is taken', $redirectPath, $inputsArr);
+      if ($email && $email !== $userFromId->email && UserModel::first(['email' => $email])) return Validator::redirectWithError('Email is taken', $redirectPath, $inputsArr);
 
-      if ($username && !$currentPassword || $email && !$currentPassword) return redirectWithError('Current password is required', $redirectPath, $inputsArr);
+      if ($username && !$currentPassword || $email && !$currentPassword) return Validator::redirectWithError('Current password is required', $redirectPath, $inputsArr);
 
-      if ($currentPassword && !$username && !$email && !$password && !$password2) return redirectWithError('Please fill out fields you would like to update', $redirectPath);
+      if ($currentPassword && !$username && !$email && !$password && !$password2) return Validator::redirectWithError('Please fill out fields you would like to update', $redirectPath);
 
       if ($password || $password2) {
-        if(!validatePassword($password, $password2, $redirectPath, $inputsArr)) return;
+        if(!Validator::validatePassword($password, $password2, $redirectPath, $inputsArr)) return;
 
         $newPwdHash = password_hash($password, PASSWORD_DEFAULT);
       }
 
       $pwdMatch = password_verify($currentPassword, $userFromId->hash);
 
-      if (!$pwdMatch) return redirectWithError('Incorrect password', $redirectPath, $inputsArr);
+      if (!$pwdMatch) return Validator::redirectWithError('Incorrect password', $redirectPath, $inputsArr);
 
       $finalArr = [];
 

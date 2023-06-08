@@ -16,7 +16,7 @@ class Home extends Controller {
 
       switch ($_GET['type']) {
         case 'details':
-          $this->view('motorcycleDetails', ['id' => sanitize($_GET['id'])]);
+          $this->view('motorcycleDetails', ['id' => Utility::sanitize($_GET['id'])]);
           break;
       }
 
@@ -30,40 +30,40 @@ class Home extends Controller {
     if (isset($_GET['type'])) {
       switch ($_GET['type']) {
         case 'send':
-          $pronounce = sanitize(trim($_POST['pronounce']));
-          $name = sanitize(trim($_POST['name']));
-          $email = sanitize(trim($_POST['email']));
-          $reason = sanitize(trim($_POST['reason']));
-          $message = sanitize(trim($_POST['message']));
-          $getCopy = sanitize(trim($_POST['getCopy']));
+          $pronounce = Utility::sanitize(trim($_POST['pronounce']));
+          $name = Utility::sanitize(trim($_POST['name']));
+          $email = Utility::sanitize(trim($_POST['email']));
+          $reason = Utility::sanitize(trim($_POST['reason']));
+          $message = Utility::sanitize(trim($_POST['message']));
+          $getCopy = Utility::sanitize(trim($_POST['getCopy']));
           $formInfo = ['pronounce' => $pronounce, 'name' => $name, 'email' => $email, 'reason' => $reason, 'message' => $message, 'getCopy' => $getCopy];
 
           if (empty($pronounce)) {
-            redirectWithError('Pronounce is required', '/home/contact', $formInfo);
+            Validator::redirectWithError('Pronounce is required', '/home/contact', $formInfo);
             return;
           }
 
           if (empty($name)) {
-            redirectWithError('Name is required', '/home/contact', $formInfo);
+            Validator::redirectWithError('Name is required', '/home/contact', $formInfo);
             return;
           }
 
           if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            redirectWithError('Invalid email', '/home/contact', $formInfo);
+            Validator::redirectWithError('Invalid email', '/home/contact', $formInfo);
             return;
           }
 
           if (empty($reason)) {
-            redirectWithError('Reason is required', '/home/contact', $formInfo);
+            Validator::redirectWithError('Reason is required', '/home/contact', $formInfo);
             return;
           }
 
           if (empty($message)) {
-            redirectWithError('Message is required', '/home/contact', $formInfo);
+            Validator::redirectWithError('Message is required', '/home/contact', $formInfo);
             return;
           }
 
-          $capitalizedName = capitalizeWordsInString($name);
+          $capitalizedName = Utility::capitalizeWordsInString($name);
 
           $msg = "<p>From: ".$email."</p>";
           $msg .= "<p>To: support@motohub.com</p>";

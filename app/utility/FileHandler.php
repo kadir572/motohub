@@ -2,10 +2,10 @@
 
 class FileHandler {
   private static $maxFileSize = 10048576;
-  private static $minImageWidth = 800;
-  private static $minImageHeight = 600;
-  private static $imageAspectRatio = 4/3;
-  private static $allowedMimeTypes = ['image/png', 'image/jpeg', 'image/webp'];
+  private static $minImageWidth = MOTORCYCLE_IMAGE_MIN_WIDTH ?? 800;
+  private static $minImageHeight = MOTORCYCLE_IMAGE_MIN_HEIGHT ?? 600;
+  private static $imageAspectRatio = MOTORCYCLE_IMAGE_ASPECT_RATIO ?? 4/3;
+  private static $allowedMimeTypes = MOTORCYCLE_ALLOWED_MIME_TYPES ?? ['image/png', 'image/jpeg', 'image/webp'];
 
   private static function checkError($file, $path, $queries = []) {
     $hasErr = false;
@@ -34,12 +34,12 @@ class FileHandler {
       }
     }
     
-    return $hasErr ? redirectWithError($errMsg, $path, $queries) : true;
+    return $hasErr ? Validator::redirectWithError($errMsg, $path, $queries) : true;
   }
 
   private static function checkMaxFileSize($file, $path, $queries = []) {
     if ($file['size'] > self::$maxFileSize) {
-      return redirectWithError('Filesize too large', $path, $queries);
+      return Validator::redirectWithError('Filesize too large', $path, $queries);
     }
     return true;
   }
@@ -63,7 +63,7 @@ class FileHandler {
         break;
     }
 
-    return $hasErr ? redirectWithError($errMsg, $path, $queries) : true;
+    return $hasErr ? Validator::redirectWithError($errMsg, $path, $queries) : true;
   }
 
   private static function checkMimeType($file, $path, $queries = []) {
@@ -71,7 +71,7 @@ class FileHandler {
     $mimeType = $finfo->file($file['tmp_name']);
 
     if (!in_array($mimeType, self::$allowedMimeTypes)) {
-      return redirectWithError('Unsupported file type', $path, $queries);
+      return Validator::redirectWithError('Unsupported file type', $path, $queries);
     }
 
     return true;
@@ -112,7 +112,7 @@ class FileHandler {
 
 
     if (!move_uploaded_file($file['tmp_name'], $destination )) {
-      return redirectWithError('File upload failed', $path, $queries);
+      return Validator::redirectWithError('File upload failed', $path, $queries);
     }
 
     return true;

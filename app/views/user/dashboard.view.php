@@ -1,10 +1,10 @@
 <?php
   if (empty($_SESSION['username'])) {
-    redirectWithError('401 - Unauthorized', '/home/login');
+    Validator::redirectWithError('401 - Unauthorized', '/home/login');
   }
 
   if ($_SESSION['permission'] === 1) {
-    redirectWithError('401 - Unauthorized', '/admin');
+    Validator::redirectWithError('401 - Unauthorized', '/admin');
     return;
   }
 ?>

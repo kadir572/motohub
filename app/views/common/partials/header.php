@@ -1,9 +1,9 @@
 <?php
-$URL = splitUrl();
+$URL = Utility::splitUrl();
 $isAdminRoute = $URL[0] === 'admin' ? true : false;
 
 function setActiveLink($page = '') {
-  $URL = splitUrl();
+  $URL = Utility::splitUrl();
   if ($URL[0] === 'admin') return;
   
   if (isset($URL[1])) {

@@ -1,11 +1,11 @@
 <?php
   if (!isset($_GET['selector']) || !isset($_GET['validator'])) {
-    redirectWithError("Could not validate your request", "/resetpwd/resetPasswordForm");
+    Validator::redirectWithError("Could not validate your request", "/resetpwd/resetPasswordForm");
     return;
   }
 
-  $selector = sanitize(trim($_GET['selector']));
-  $validator = sanitize(trim($_GET['validator']));
+  $selector = Utility::sanitize(trim($_GET['selector']));
+  $validator = Utility::sanitize(trim($_GET['validator']));
 ?>
 
 <!DOCTYPE html>

@@ -13,7 +13,7 @@ class Admin extends Controller {
       if (!empty($_SESSION['permission'] && $_SESSION['permission'] === 1)) {
         header("Location: ".ROOT."/admin/dashboard");
       } else {
-        redirectWithError('401 - Unauthorized', '/auth/logout');
+        Validator::redirectWithError('401 - Unauthorized', '/auth/logout');
       }
     }
   }
@@ -35,7 +35,7 @@ class Admin extends Controller {
 
       switch ($_GET['type']) {
         case 'remove':
-          $id = sanitize($_GET['id']);
+          $id = Utility::sanitize($_GET['id']);
           $motorcycle = MotorcycleModel::first(['id' => $id]);
           $imagePath = $motorcycle->imagePath;
           FileHandler::removeFile($imagePath);
@@ -43,22 +43,22 @@ class Admin extends Controller {
           header("Location: ".ROOT."/admin/motorcycles");
           break;
         case 'edit':
-          $this->view('editMotorcycle', ['id' => sanitize($_GET['id'])]);
+          $this->view('editMotorcycle', ['id' => Utility::sanitize($_GET['id'])]);
           break;
         case 'update':
-          $id = sanitize($_GET['id']);
+          $id = Utility::sanitize($_GET['id']);
 
-          $originalMake = strtolower(sanitize($_POST['originalMake']));
-          $originalModel = strtolower(sanitize($_POST['originalModel']));
+          $originalMake = strtolower(Utility::sanitize($_POST['originalMake']));
+          $originalModel = strtolower(Utility::sanitize($_POST['originalModel']));
 
-          $make = strtolower(sanitize($_POST['make']));
-          $model = strtolower(sanitize($_POST['model']));
-          $year = sanitize($_POST['year']);
-          $displacement = sanitize($_POST['displacement']);
-          $horsepower = sanitize($_POST['horsepower']);
-          $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
-          $torque = sanitize($_POST['torque']);
-          $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
+          $make = strtolower(Utility::sanitize($_POST['make']));
+          $model = strtolower(Utility::sanitize($_POST['model']));
+          $year = Utility::sanitize($_POST['year']);
+          $displacement = Utility::sanitize($_POST['displacement']);
+          $horsepower = Utility::sanitize($_POST['horsepower']);
+          $peakHorsepowerRpm = Utility::sanitize($_POST['peakHorsepowerRpm']);
+          $torque = Utility::sanitize($_POST['torque']);
+          $peakTorqueRpm = Utility::sanitize($_POST['peakTorqueRpm']);
 
           $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
 
@@ -66,7 +66,7 @@ class Admin extends Controller {
 
           $foundMotorcycle = MotorcycleModel::first(['make' => $make, 'model' => $model]);
 
-          if ($originalMake !== $make && $originalModel !== $model && $foundMotorcycle) return redirectWithError("Motorcycle $make $model already exists", $redirectPath);
+          if ($originalMake !== $make && $originalModel !== $model && $foundMotorcycle) return Validator::redirectWithError("Motorcycle $make $model already exists", $redirectPath);
 
           if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
           
@@ -74,9 +74,9 @@ class Admin extends Controller {
             if (!FileHandler::upload($_FILES['imageUpload'], $redirectPath)) return;
             $imagePath = FileHandler::moveFile('assets/images/motorcycles', ucfirst($make).'_'.ucfirst($model).'_'.'image', true);
             $inputsArr['imagePath'] = $imagePath;
-            MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);
+            MotorcycleModel::update(Utility::sanitize($_GET['id']), $inputsArr);
           } else {
-            MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);
+            MotorcycleModel::update(Utility::sanitize($_GET['id']), $inputsArr);
           }
 
           
@@ -86,14 +86,14 @@ class Admin extends Controller {
           $this->view('newMotorcycle');
           break;
         case 'create':
-          $make = strtolower(sanitize($_POST['make']));
-          $model = strtolower(sanitize($_POST['model']));
-          $year = sanitize($_POST['year']);
-          $displacement = sanitize($_POST['displacement']);
-          $horsepower = sanitize($_POST['horsepower']);
-          $peakHorsepowerRpm = sanitize($_POST['peakHorsepowerRpm']);
-          $torque = sanitize($_POST['torque']);
-          $peakTorqueRpm = sanitize($_POST['peakTorqueRpm']);
+          $make = strtolower(Utility::sanitize($_POST['make']));
+          $model = strtolower(Utility::sanitize($_POST['model']));
+          $year = Utility::sanitize($_POST['year']);
+          $displacement = Utility::sanitize($_POST['displacement']);
+          $horsepower = Utility::sanitize($_POST['horsepower']);
+          $peakHorsepowerRpm = Utility::sanitize($_POST['peakHorsepowerRpm']);
+          $torque = Utility::sanitize($_POST['torque']);
+          $peakTorqueRpm = Utility::sanitize($_POST['peakTorqueRpm']);
 
           $inputsArr = ['make' => $make, 'model' => $model, 'year' => $year, 'displacement' => $displacement, 'horsepower' => $horsepower,'peakHorsepowerRpm' => $peakHorsepowerRpm, 'torque' => $torque, 'peakTorqueRpm' => $peakTorqueRpm];
 
@@ -101,7 +101,7 @@ class Admin extends Controller {
 
           $foundMotorcycle = MotorcycleModel::first(['make' => $make, 'model' => $model]);
 
-          if ($foundMotorcycle) return redirectWithError("Motorcycle $make $model already exists", $redirectPath, $inputsArr);
+          if ($foundMotorcycle) return Validator::redirectWithError("Motorcycle $make $model already exists", $redirectPath, $inputsArr);
 
           if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
 

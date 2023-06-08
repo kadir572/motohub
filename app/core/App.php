@@ -9,7 +9,7 @@ class App {
   private $method = 'index';
 
   private function loadController() {
-    $URL = splitUrl();
+    $URL = Utility::splitUrl();
     $filename = '../app/controllers/'. ucfirst($URL[0]) . '.php';
 
     if (file_exists($filename)) {
