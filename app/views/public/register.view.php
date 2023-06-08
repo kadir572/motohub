@@ -17,11 +17,11 @@
     <input type="hidden" name="type" value="register">
     <input type="hidden" name="user" value="user">
     <div class="form__control">
-      <input class="form__input" type="text" id="username" name="username" placeholder="Username" autofocus>
+      <input class="form__input" type="text" id="username" name="username" placeholder="Username" autofocus <?= !empty($_GET['username']) ? 'value="'.$_GET['username'].'"' : '' ?>>
       <label class="form__label" for="username">Username</label>
     </div>
     <div class="form__control">
-      <input class="form__input" type="email" id="email" name="email" placeholder="Email">
+      <input class="form__input" type="email" id="email" name="email" placeholder="Email" <?= !empty($_GET['email']) ? 'value="'.$_GET['email'].'"' : '' ?>>
       <label class="form__label" for="email">Email</label>
     </div>
     <div class="form__control">

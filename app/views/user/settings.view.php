@@ -17,11 +17,13 @@
 <head>
 <?php include_once '../app/views/common/partials/head-core.php'; ?>
 <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/user/settings.css">
+<script src="<?=ROOT?>/assets/js/confirmModal.js" defer></script>
 <title>MotoHub | Settings</title>
 </head>
 <body>
 <?php include_once '../app/views/common/partials/header.php'; ?>
   <main>
+    <?php include_once '../app/views/common/partials/modal.php'; ?>
     <div class="bg-img"></div>
     <div class="container">
     <h1>User Settings</h1>
@@ -77,7 +79,7 @@
     </div>
     <div class="form__buttons">
     <button class="btn btn--secondary btn--medium" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save</button>
-      <a class="btn btn--primary btn--medium" href="<?=ROOT?>/home/user/delete?id=<?=$user->id?>"><i class="fa-solid fa-trash"></i>Delete account</a>
+      <button type="button" class="btn btn--primary btn--medium" onclick="showModal('Delete account', 'Are you sure you want to delete this account permanently?', '<?=ROOT?>/user/delete?id=<?=$user->id?>')"><i class="fa-solid fa-trash"></i>Delete account</button>
     </div>
     </form>
     

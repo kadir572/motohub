@@ -156,14 +156,18 @@ class Auth {
   }
 
   private function register($data) {
+    $redirectPath = '/home/register';
+
+    $inputsArr = ['username' => $data['username'], 'email' => $data['email']];
+
     // user defines whether the register form is for a regular user or an admin. Currently only regular users can register.
     if ($data['user'] !== 'user') {
-      redirectWithError('401 - Permission denied', '/home/register');
+      redirectWithError('401 - Permission denied', $redirectPath, $inputsArr);
       return;
     }
 
     if (empty($data['username']) || empty($data['password']) || empty($data['password2']) || empty($data['email'])) {
-      redirectWithError('Missing credentials', '/home/register');
+      redirectWithError('Missing credentials', $redirectPath, $inputsArr);
       return;
       
     }
@@ -171,22 +175,22 @@ class Auth {
     $foundUserByUsername = UserModel::first(['username' => $data['username']]);
 
     if ($foundUserByUsername) {
-      redirectWithError('Username not available', '/home/register');
+      redirectWithError('Username not available', $redirectPath, $inputsArr);
       return;
     }
 
-    if (!validateUsername($data['username'], '/home/register')) return;
+    if (!validateUsername($data['username'], $redirectPath, $inputsArr)) return;
 
-    if (!validateEmail($data['email'], '/home/register')) return;
+    if (!validateEmail($data['email'], $redirectPath, $inputsArr)) return;
 
     $foundUserByEmail = UserModel::first(['email' => $data['email']]);
 
     if ($foundUserByEmail) {
-      redirectWithError('Email not available', '/home/register');
+      redirectWithError('Email not available', $redirectPath, $inputsArr);
       return;
     }
 
-    if (!validatePassword($data['password'], $data['password2'], '/home/register')) return;
+    if (!validatePassword($data['password'], $data['password2'], $redirectPath, $inputsArr)) return;
 
     $hash = password_hash($data['password'], PASSWORD_DEFAULT);
 
