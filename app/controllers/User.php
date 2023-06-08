@@ -35,7 +35,7 @@ class User extends Controller {
     }
 
     UserModel::delete(Utility::sanitize($_GET['id']));
-    SessionHandler::clearSessionLogin();
+    _SessionHandler::clearSessionLogin();
     header("Location: ".ROOT);
   }
 

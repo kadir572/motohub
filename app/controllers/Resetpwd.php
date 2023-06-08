@@ -81,7 +81,7 @@ class Resetpwd extends Controller {
 
      ResetPasswordModel::delete($email, 'email');
 
-     SessionHandler::setSessionLogin($user->username, $user->isAdmin);
+     _SessionHandler::setSessionLogin($user->username, $user->isAdmin);
 
      header("Location: ".ROOT."/resetpwd?success=Password was updated successfully");
   }

@@ -7,7 +7,7 @@ class Auth {
     if (!empty($_POST['type'])) {
       switch ($_POST['type']) {
         case 'login':
-          SessionHandler::clearSessionLogin();
+          _SessionHandler::clearSessionLogin();
 
           $username = $_POST['username'] ?? '';
           $password = $_POST['password'] ?? '';
@@ -15,7 +15,7 @@ class Auth {
           $this->login(['username' => Utility::sanitize(trim($username)), 'password' => Utility::sanitize(trim($password)), 'user' => Utility::sanitize($_POST['user'])]);
           break;
         case 'register':
-          SessionHandler::clearSessionLogin();
+          _SessionHandler::clearSessionLogin();
           
           $username = $_POST['username'] ?? '';
           $email = $_POST['email'] ?? '';
@@ -89,7 +89,7 @@ class Auth {
 
           LoginLimiter::reset();
 
-          SessionHandler::setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
+          _SessionHandler::setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
           header("Location: ".ROOT."/user");
           break;
         case 'admin':
@@ -146,7 +146,7 @@ class Auth {
 
           LoginLimiter::reset();
 
-          SessionHandler::setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
+          _SessionHandler::setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
           header("Location: ".ROOT."/admin");
           break;
         default:
@@ -201,7 +201,7 @@ class Auth {
 
     // Log in if successfully created
     if ($foundUser) {
-      SessionHandler::setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
+      _SessionHandler::setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
 
       header("Location: ".ROOT."/user");
     } else {
@@ -211,12 +211,23 @@ class Auth {
 
   public function logout() {
     $permission = $_SESSION['permission'];
-    SessionHandler::clearSessionLogin();
+    _SessionHandler::clearSessionLogin();
 
+    // if admin
     if ($permission === 1) {
-      header("Location: ".ROOT."/admin");
+      if (!empty($_GET['error'])) {
+        header("Location: ".ROOT."/admin?error=".$_GET['error']);
+      } else {
+        header("Location: ".ROOT."/admin?error=");
+      }
+      
+      // if user
     } else {
-      header("Location: ".ROOT."/home/login");
+      if (!empty($_GET['error'])) {
+        header("Location: ".ROOT."/home/login?error=".$_GET['error']);
+      } else {
+        header("Location: ".ROOT."/home/login?error=");
+      }
     }
   }
 }

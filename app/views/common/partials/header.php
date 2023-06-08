@@ -1,4 +1,6 @@
 <?php
+_SessionHandler::checkSessionActivity();
+
 $URL = Utility::splitUrl();
 $isAdminRoute = $URL[0] === 'admin' ? true : false;
 
