@@ -43,7 +43,7 @@
             <li>Password must contain at least one of each character: lower case, upper case, number, special character</li>
           </ul>
         </div>
-    <button class="form__submit" type="submit">Register</button>
+    <button class="btn btn--neutral btn--medium" type="submit">Register</button>
     <span>Already have an account? <a href="<?=ROOT?>/home/login" class="link">Log in</a></span>
   </form>
   </div>

@@ -37,3 +37,9 @@
 .btn--secondary:hover {
   background-color: var(--color-success-hover);
 }
+
+.btn--neutral {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+}

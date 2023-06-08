@@ -23,7 +23,7 @@
       <input class="form__input" type="password" name="password" id="password" placeholder="Password">
       <label class="form__label" for="password">Password</label>
     </div>
-    <button class="form__submit" type="submit">Login</button>
+    <button class="btn btn--neutral btn--medium" type="submit">Login</button>
     <div class="links">
     <a class="link" href="<?=ROOT?>/resetpwd">Forgot password?</a>
     <span>No account? <a class="link" href="<?=ROOT?>/home/register">Sign up</a></span>

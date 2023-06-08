@@ -82,7 +82,7 @@
         </div>
         <div class="form__buttons">
         <button class="btn btn--secondary btn--medium" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save</button>
-        <a class="btn btn--primary btn--medium" href="<?=ROOT?>/admin/motorcycles"><i class="fa-solid fa-ban"></i>Cancel</a>
+        <a class="btn btn--neutral btn--medium" href="<?=ROOT?>/admin/motorcycles"><i class="fa-solid fa-ban"></i>Cancel</a>
         <button type="button" class="btn btn--primary btn--medium" onclick="showModal('Delete item', 'Are you sure you want to delete this item?', '<?=ROOT?>/admin/motorcycles?type=remove&id=<?=$motorcycle->id?>')"><i class="fa-solid fa-trash"></i>Delete</button>
         </div>
       </form>
