@@ -1,7 +1,3 @@
-.container {
-  padding-left: 5%;
-}
-
 @media (max-width: 50em) {
   .container {
     padding-left: 0;

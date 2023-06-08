@@ -101,11 +101,11 @@ class Admin extends Controller {
 
           $foundMotorcycle = MotorcycleModel::first(['make' => $make, 'model' => $model]);
 
-          if ($foundMotorcycle) return redirectWithError("Motorcycle $make $model already exists", $redirectPath);
+          if ($foundMotorcycle) return redirectWithError("Motorcycle $make $model already exists", $redirectPath, $inputsArr);
 
           if (!MotorcycleModel::validate($inputsArr, $redirectPath)) return;
 
-          if (!FileHandler::upload($_FILES['imageUpload'], $redirectPath)) return;
+          if (!FileHandler::upload($_FILES['imageUpload'], $redirectPath, $inputsArr)) return;
           $imagePath = FileHandler::moveFile('assets/images/motorcycles', ucfirst($make).'_'.ucfirst($model).'_'.'image');
 
           $inputsArr += ['imagePath' => $imagePath];

@@ -1,3 +1,7 @@
+h1 {
+  letter-spacing: -1px;
+}
+
 .container a {
   align-self: flex-start;
 }

@@ -15,20 +15,24 @@
   <main>
     <div class="bg-img"></div>
     <div class="container">
-    <h1>Motorcycles</h1>
-    <div class="motorcycle__list">
-    <?php foreach($motorcycles as $motorcycle): ?>
-      <div class="motorcycle__item">
-      <span><?= $motorcycle->make?></span>
-      <span><?= $motorcycle->model?></span>
-      <div class="motorcycle__image-wrapper">
-        <img src="<?= ROOT.'/'.$motorcycle->imagePath?>" alt="Image of <?=$motorcycle->make?> <?=$motorcycle->model?>">
+      <h1>Motorcycles</h1>
+        <?php if ($motorcycles): ?>
+          <div class="motorcycle__list">
+          <?php foreach ($motorcycles as $motorcycle): ?>
+            <div class="motorcycle__item">
+              <img src="<?=ROOT?>/<?=$motorcycle->imagePath?>" alt="<?=ucfirst($motorcycle->make)?> <?=ucfirst($motorcycle->model)?> image">
+              <div class="motorcycle__info">
+                <span><?=ucfirst($motorcycle->make)?></span>
+                <span><?=ucfirst($motorcycle->model)?></span>
+              </div>
+              <div class="motorcycle__buttons">
+                <a class="btn btn--secondary btn--small" href="<?=ROOT?>/home/motorcycles?type=details&id=<?=$motorcycle->id?>"><i class="fa-solid fa-circle-info"></i>Details</a>
+              </div>
+            </div>
+          <?php endforeach; ?>
+          </div>
+        <?php endif; ?>
       </div>
-      <a href="<?=ROOT?>/home/motorcycles?type=details&id=<?=$motorcycle->id?>">Details</a>
-      </div>
-    <?php endforeach; ?>
-    </div>
-    </div>
   </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
   </body>

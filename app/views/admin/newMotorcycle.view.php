@@ -74,8 +74,10 @@
             <li>Allowed file types: image/jpeg, image/png, image/webp</li>
           </ul>
         </div>
-        <button class="form__submit" type="submit">Save</button>
-        <a class="form__submit" href="<?=ROOT?>/admin/motorcycles">Cancel</a>
+        <div class="form__buttons">
+        <button class="btn btn--secondary btn--medium" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save</button>
+        <a class="btn btn--primary btn--medium" href="<?=ROOT?>/admin/motorcycles"><i class="fa-solid fa-ban"></i>Cancel</a>
+        </div>
       </form>
       </div>
     </main>

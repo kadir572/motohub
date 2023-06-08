@@ -13,11 +13,13 @@
     <?php include_once '../app/views/common/partials/head-core.php'; ?>
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/admin/motorcycle/edit.css">
     <script src="<?=ROOT?>/assets/js/fileUpload.js" defer type="module"></script>
+    <script src="<?=ROOT?>/assets/js/confirmModal.js" defer></script>
     <title>MotoHub | Motorcycles</title>
   </head>
   <body>
     <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
+    <?php include_once '../app/views/common/partials/modal.php'; ?>
       <div class="bg-img"></div>
       <div class="container">
       <h1>Edit Motorcycle</h1>
@@ -66,7 +68,7 @@
         <div class="form__control--file">
             <input type="file" class="form__input--file" id="imageUpload" name="imageUpload">
             <label for="imageUpload" class="form__label--file" id="imageUploadLabel"><i class="fa-solid fa-upload"></i><span></span></label>
-            <img id="imageUploadImg" src="https://images.placeholders.dev?height=750&width=1000&text=Upload image&textColor=#000&bgColor=#fff" alt="">
+            <img id="imageUploadImg" src="<?=ROOT?>/<?=$motorcycle->imagePath?>" alt="">
           </div>
         <div class="requirements">
           <span>Requirements:</span>
@@ -78,8 +80,11 @@
             <li>Allowed file types: image/jpeg, image/png, image/webp</li>
           </ul>
         </div>
-        <button class="form__submit" type="submit">Save</button>
-        <a class="form__submit" href="<?=ROOT?>/admin/motorcycles">Cancel</a>
+        <div class="form__buttons">
+        <button class="btn btn--secondary btn--medium" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save</button>
+        <a class="btn btn--primary btn--medium" href="<?=ROOT?>/admin/motorcycles"><i class="fa-solid fa-ban"></i>Cancel</a>
+        <button type="button" class="btn btn--primary btn--medium" onclick="showModal('Delete item', 'Are you sure you want to delete this item?', '<?=ROOT?>/admin/motorcycles?type=remove&id=<?=$motorcycle->id?>')"><i class="fa-solid fa-trash"></i>Delete</button>
+        </div>
       </form>
       </div>
     </main>

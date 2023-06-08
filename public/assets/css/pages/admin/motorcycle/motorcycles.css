@@ -1,23 +1,74 @@
-.motorcycles__list {
-  width: 50vw;
-  display: grid;
-  grid-template-columns: 6rem 3fr 3fr 1fr 1fr;
+.container {
+  width: 86rem;
 }
 
-.motorcycles__list > * {
-  background-color: gray;
+.motorcycle__list__actions {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.motorcycles__list > *:nth-child(10n + 1),
-.motorcycles__list > *:nth-child(10n + 2),
-.motorcycles__list > *:nth-child(10n + 3),
-.motorcycles__list > *:nth-child(10n + 4),
-.motorcycles__list > *:nth-child(10n + 5) {
-  background-color: lightgray;
-}
-
-.motorcycles__list > div {
+.motorcycle__list__actions a {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+  width: fit-content;
+}
+
+.motorcycle__list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.motorcycle__item {
+  width: 20rem;
+  height: 22rem;
+  box-shadow: 2px 2px 5px 0 rgba(155, 155, 155, 0.2);
+  background-color: #000;
+  border-radius: 9px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.motorcycle__info {
+  padding: 1rem 1rem;
+  margin-bottom: auto;
+}
+
+.motorcycle__buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+
+  padding-inline: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+.motorcycle__buttons a,
+.motorcycle__buttons button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+@media (max-width: 87em) {
+  .container {
+    width: 64rem;
+  }
+}
+
+@media (max-width: 65em) {
+  .container {
+    width: 42rem;
+  }
+}
+
+@media (max-width: 43em) {
+  .container {
+    width: 20rem;
+  }
 }

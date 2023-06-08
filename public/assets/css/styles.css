@@ -2,6 +2,11 @@
 
 :root {
   --form-width: 30rem;
+
+  --color-danger: #d2232d;
+  --color-danger-hover: #b2232d;
+  --color-success: #02864a;
+  --color-success-hover: #02622a;
 }
 
 body {
@@ -45,7 +50,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   min-height: 110vh;
 }
