@@ -73,7 +73,7 @@ class Admin extends Controller {
           if ($_FILES['imageUpload']['error'] === 0) {
             if (!FileHandler::upload($_FILES['imageUpload'], $redirectPath)) return;
             $imagePath = FileHandler::moveFile('assets/images/motorcycles', ucfirst($make).'_'.ucfirst($model).'_'.'image', true);
-            $inputsArr += ['imagePath' => $imagePath];
+            $inputsArr['imagePath'] = $imagePath;
             MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);
           } else {
             MotorcycleModel::update(sanitize($_GET['id']), $inputsArr);

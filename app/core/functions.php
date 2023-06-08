@@ -23,33 +23,33 @@ function sanitize($str) {
   return $sanitized;
 }
 
-function validateEmail($email) {
+function validateEmail($email, $redirectPath, $queries = []) {
   if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirectWithError('Invalid email', '/home/register');
+    redirectWithError('Invalid email', $redirectPath, $queries);
     return false;
   }
 
   return true;
 }
 
-function validateUsername($username) {
+function validateUsername($username, $redirectPath, $queries = []) {
   if (strlen($username) < 4) {
-    redirectWithError('Username can not be shorter than 4 characters', '/home/register');
+    redirectWithError('Username can not be shorter than 4 characters', $redirectPath, $queries);
     return false;
   }
 
   if (strlen($username) > 16) {
-    redirectWithError('Username can not be longer than 16 characters', '/home/register');
+    redirectWithError('Username can not be longer than 16 characters', $redirectPath, $queries);
     return false;
   }
 
   if (preg_match('/\s/',$username)) {
-    redirectWithError('Username can not contain blank spaces', '/home/register');
+    redirectWithError('Username can not contain blank spaces', $redirectPath, $queries);
     return false;
   }
 
   if (preg_match("/[!\[^\'£$%^&*()}{@:\'#~?><>,;@\|\\\-=\-_+\-¬\`\]]/", $username)) {
-    redirectWithError('Username can not contain special characters', '/home/register');
+    redirectWithError('Username can not contain special characters', $redirectPath, $queries);
     return false;
   }
 
@@ -96,6 +96,13 @@ function validatePassword($password, $password2, $redirect, $queries = []) {
 }
 
 function redirectWithError($error, $redirectPath, $queries = []) {
+  $focusId = '';
+
+  if (strpos($redirectPath, '#')) {
+    $strArr = explode('#', $redirectPath);
+    $focusId = $strArr[1];
+    $redirectPath = $strArr[0];
+  }
   if (strpos($redirectPath, '?')) {
     $redirectPath = $redirectPath."&error=$error";
   } else {
@@ -106,6 +113,10 @@ function redirectWithError($error, $redirectPath, $queries = []) {
     foreach ($queries as $key => $value) {
       $redirectPath .= "&".$key."=".$value;
     }
+
+  if ($focusId) {
+    $redirectPath .= '#' . $focusId;
+  }
   }
   header("Location: ".ROOT.$redirectPath);
 }

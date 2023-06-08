@@ -175,9 +175,9 @@ class Auth {
       return;
     }
 
-    if (!validateUsername($data['username'])) return;
+    if (!validateUsername($data['username'], '/home/register')) return;
 
-    if (!validateEmail($data['email'])) return;
+    if (!validateEmail($data['email'], '/home/register')) return;
 
     $foundUserByEmail = UserModel::first(['email' => $data['email']]);
 

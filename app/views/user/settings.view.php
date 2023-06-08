@@ -25,8 +25,63 @@
     <div class="bg-img"></div>
     <div class="container">
     <h1>User Settings</h1>
+    <form action="<?=ROOT?>/user/edit" method="POST">
     <?php include_once '../app/views/common/partials/notification.php';?>
-    <a class="link" href="<?=ROOT?>/home/user/delete?id=<?=$user->id?>">Delete account</a>
+    <h3>Change username</h3>
+    <div class="form__control">
+      <input type="hidden" name="id" value="<?=$user->id?>">
+      <input class="form__input" type="text" id="username" name="username" placeholder="Username" <?= !empty($_GET['username']) ? 'value="'.$_GET['username'].'"' : '' ?>>
+      <label class="form__label" for="username">Username</label>
+    </div>
+    <div class="requirements">
+      <span>Requirements:</span>
+      <ul>
+        <li><a class="link" href="#currentPassword">Current password</a> field is required</li>
+        <li>Username must be between 4 and 16 characters long</li>
+        <li>Username can not contain blank spaces or special characters</li>
+      </ul>
+    </div>
+    <hr>
+    <h3>Change email</h3>
+    <div class="form__control">
+      <input class="form__input" type="email" id="email" name="email" placeholder="Email" <?= !empty($_GET['email']) ? 'value="'.$_GET['email'].'"' : '' ?>>
+      <label class="form__label" for="email">Email</label>
+    </div>
+    <div class="requirements">
+      <span>Requirements:</span>
+      <ul>
+        <li><a class="link" href="#currentPassword">Current password</a> field is required</li>
+      </ul>
+    </div>
+    <hr>
+    <h3>Change password</h3>
+    <div class="form__control">
+        <input type="password" name="currentPassword" id="currentPassword" class="form__input" placeholder="Current password">
+        <label for="currentPassword" class="form__label">Current password</label>
+      </div>
+      <div class="form__control">
+      <input class="form__input" type="password" name="password" id="password" placeholder="Password">
+      <label class="form__label" for="password">Password</label>
+    </div>
+    <div class="form__control">
+      <input class="form__input" type="password" name="password2" id="password2" placeholder="Repeat password">
+      <label class="form__label" for="password2">Repeat password</label>
+    </div>
+    <div class="requirements">
+      <span>Requirements:</span>
+      <ul>
+        <li>Password must be at least 8 characters long</li>
+        <li>Password can not contain blank spaces</li>
+        <li>Password must contain at least one of each character: lower case, upper case, number, special character</li>
+      </ul>
+    </div>
+    <div class="form__buttons">
+    <button class="btn btn--secondary btn--medium" type="submit"><i class="fa-solid fa-floppy-disk"></i>Save</button>
+      <a class="btn btn--primary btn--medium" href="<?=ROOT?>/home/user/delete?id=<?=$user->id?>"><i class="fa-solid fa-trash"></i>Delete account</a>
+    </div>
+    </form>
+    
+    
     </div>
   </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
