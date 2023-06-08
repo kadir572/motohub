@@ -50,7 +50,7 @@
       <input class="form__input--checkbox" type="checkbox" name="getCopy" id="getCopy" <?= !empty($_GET['getCopy']) && $_GET['getCopy'] === 'on' ? 'checked' : '' ?>>
         <label for="getCopy" class="form__label--checkbox">Get a copy</label>
       </div>
-      <button class="form__submit" type="submit">Send</button>
+      <button class="btn btn--neutral btn--medium" type="submit">Send</button>
     </form>
     </div>
   </main>

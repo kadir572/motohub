@@ -15,16 +15,30 @@
   <main>
     <div class="bg-img"></div>
     <div class="container">
-    <h1>Motorcycles</h1>
-    <div class="motorcycle__list">
-      <div class="motorcycle__item">
-      <span><?= $motorcycle->make?></span>
-      <span><?= $motorcycle->model?></span>
-      <div class="motorcycle__image-wrapper">
-        <img src="<?= ROOT.'/'.$motorcycle->imagePath?>" alt="Image of <?=$motorcycle->make?> <?=$motorcycle->model?>">
+      <div class="motorcycle__header">
+        
+        <div class="motorcycle__header__info">
+          <h1 class="motorcycle__header__title"><?=ucfirst($motorcycle->make)?> <?=ucfirst($motorcycle->model)?></h1>
+          <div class="motorcycle__header__content">
+            <h3 class="motorcycle__header__content__title">Specification</h3>
+            <div class="motorcycle__header__specs">
+              <span>Make:</span>
+              <span><?=ucfirst($motorcycle->make)?></span>
+              <span>Model:</span>
+              <span><?=ucfirst($motorcycle->model)?></span>
+              <span>Displacement:</span>
+              <span><?=$motorcycle->displacement?> cc</span>
+              <span>Horsepower:</span>
+              <span><?=$motorcycle->horsepower?> hp @ <?=$motorcycle->peakHorsepowerRpm?> rpm</span>
+              <span>Torque:</span>
+              <span><?=$motorcycle->torque?> nm @ <?=$motorcycle->peakTorqueRpm?> rpm</span>
+            </div>
+          </div>
+        </div>
+        <div class="motorcycle__header__image">
+          <img src="<?= ROOT.'/'.$motorcycle->imagePath?>" alt="Image of <?=$motorcycle->make?> <?=$motorcycle->model?>">
+        </div>
       </div>
-      </div>
-    </div>
     </div>
   </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>

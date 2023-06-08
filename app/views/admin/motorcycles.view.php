@@ -21,7 +21,7 @@
       <div class="container">
       <h1>Listed Motorcycles</h1>
       <div class="motorcycle__list__actions">
-        <a class="btn btn--secondary" href="<?=ROOT?>/admin/motorcycles?type=new"><i class="fa-solid fa-plus"></i>New</a>
+        <a class="btn btn--secondary btn-small" href="<?=ROOT?>/admin/motorcycles?type=new"><i class="fa-solid fa-plus"></i>New</a>
       </div>
         <?php if ($motorcycles): ?>
           <div class="motorcycle__list">
