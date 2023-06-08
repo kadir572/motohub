@@ -2,6 +2,10 @@
   width: 86rem;
 }
 
+.motorcycle__list__actions {
+  display: flex;
+}
+
 .motorcycle__list {
   display: flex;
   align-items: center;
