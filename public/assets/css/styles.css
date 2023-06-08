@@ -1,7 +1,7 @@
 @import 'components/components.css';
 
 :root {
-  --form-width: 30rem;
+  --form-width: 22rem;
 
   --color-danger: #d2232d;
   --color-danger-hover: #b2232d;

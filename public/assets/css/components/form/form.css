@@ -14,6 +14,7 @@ form {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
+  max-width: var(--form-width);
 }
 
 .form__control span {
@@ -28,7 +29,7 @@ form {
   align-items: center;
   justify-content: space-between;
 
-  max-width: 30rem;
+  max-width: var(--form-width);
   position: relative;
 }
 
@@ -116,7 +117,8 @@ form {
 .form__buttons {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .form__buttons a,

@@ -15,8 +15,8 @@ let detailsButton
 searchInput.addEventListener('keyup', e => {
   const result = motorcyclesList.filter(
     motorcycle =>
-      motorcycle.make.toLowerCase().includes(e.target.value) ||
-      motorcycle.model.toLowerCase().includes(e.target.value)
+      motorcycle.make.toLowerCase().includes(e.target.value.toLowerCase()) ||
+      motorcycle.model.toLowerCase().includes(e.target.value.toLowerCase())
   )
 
   list = e.target.value.trim().length === 0 ? motorcyclesList : result
