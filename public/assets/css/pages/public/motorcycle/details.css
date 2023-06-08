@@ -19,7 +19,7 @@
 .motorcycle__header__content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .motorcycle__header__content__title {
@@ -38,7 +38,7 @@
 .motorcycle__header__specs {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 3fr;
   row-gap: 0.5rem;
 }
 
