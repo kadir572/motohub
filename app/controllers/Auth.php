@@ -34,7 +34,6 @@ class Auth {
     }
   }
   private function login($data) {
-    
       switch ($data['user']) {
         case 'user':
           if (empty($data['username']) || empty($data['password'])) {
@@ -42,23 +41,50 @@ class Auth {
             return;
           }
 
+          if (!LoginLimiter::canLogin()) {
+            $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+            $timeRequired = 60 - $timePassed;
+            return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+          }
+
           $foundUser = UserModel::first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
-            redirectWithError('Invalid credentials', '/home/login');
-            return;
+            $attemptsLeft = LoginLimiter::setLoginAttempt();
+            if ($attemptsLeft > 0) {
+              redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/home/login');
+              return;
+            } else {
+              $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+              $timeRequired = 60 - $timePassed;
+              return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+            }
           }
 
           if ($foundUser->isAdmin !== 0) {
-            redirectWithError('Invalid credentials', '/home/login');
-            return;
+            $attemptsLeft = LoginLimiter::setLoginAttempt();
+            if ($attemptsLeft > 0) {
+              redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/home/login');
+              return;
+            } else {
+              $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+              $timeRequired = 60 - $timePassed;
+              return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+            }
           }
 
           $pwdMatches = password_verify($data['password'], $foundUser->hash);
 
           if (!$pwdMatches) {
-            redirectWithError('Invalid credentials', '/home/login');
-            return;
+            $attemptsLeft = LoginLimiter::setLoginAttempt();
+            if ($attemptsLeft > 0) {
+              redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/home/login');
+              return;
+            } else {
+              $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+              $timeRequired = 60 - $timePassed;
+              return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+            }
           }
 
           setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
@@ -70,23 +96,50 @@ class Auth {
             return;
           }
 
+          if (!LoginLimiter::canLogin()) {
+            $timePassed = 60 - LoginLimiter::getLastLoginAttempt();
+            $timeRequired = 60 - $timePassed;
+            return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+          }
+
           $foundUser = UserModel::first(['username' => $data['username']]);
 
           if (empty($foundUser)) {
-            redirectWithError('Invalid credentials', '/admin/login');
-            return;
+            $attemptsLeft = LoginLimiter::setLoginAttempt();
+            if ($attemptsLeft > 0) {
+              redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/admin/login');
+              return;
+            } else {
+              $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+              $timeRequired = 60 - $timePassed;
+              return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
+            }
           }
 
           if ($foundUser->isAdmin !== 1) {
-            redirectWithError('Invalid credentials', '/admin/login');
-            return;
+            $attemptsLeft = LoginLimiter::setLoginAttempt();
+            if ($attemptsLeft > 0) {
+              redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/admin/login');
+              return;
+            } else {
+              $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+              $timeRequired = 60 - $timePassed;
+              return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
+            }
           }
 
           $pwdMatches = password_verify($data['password'], $foundUser->hash);
 
           if (!$pwdMatches) {
-            redirectWithError('Invalid credentials', '/admin/login');
-            return;
+            $attemptsLeft = LoginLimiter::setLoginAttempt();
+            if ($attemptsLeft > 0) {
+              redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/admin/login');
+              return;
+            } else {
+              $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+              $timeRequired = 60 - $timePassed;
+              return redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
+            }
           }
 
           setSessionLogin(ucfirst($foundUser->username), $foundUser->isAdmin);
