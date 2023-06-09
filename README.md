@@ -18,6 +18,10 @@ The app/utility folder contains custom classes for various functionality on the 
 
 Path: {ROOT}/app/core/config.php
 
+## Session Data
+
+The session data is available only after login on the dashboard of each user.
+
 ## CMS
 
 The CMS can be accessed over the route {ROOT}/public/admin.

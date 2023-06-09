@@ -218,7 +218,7 @@ class Auth {
       if (!empty($_GET['error'])) {
         header("Location: ".ROOT."/admin?error=".$_GET['error']);
       } else {
-        header("Location: ".ROOT."/admin?error=");
+        header("Location: ".ROOT."/admin");
       }
       
       // if user
@@ -226,7 +226,7 @@ class Auth {
       if (!empty($_GET['error'])) {
         header("Location: ".ROOT."/home/login?error=".$_GET['error']);
       } else {
-        header("Location: ".ROOT."/home/login?error=");
+        header("Location: ".ROOT."/home/login");
       }
     }
   }
