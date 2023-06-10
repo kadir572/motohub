@@ -216,7 +216,7 @@ class Auth {
     // if admin
     if ($permission === 1) {
       if (!empty($_GET['error'])) {
-        header("Location: ".ROOT."/admin?error=".$_GET['error']);
+        header("Location: ".ROOT."/admin/login?error=".$_GET['error']);
       } else {
         header("Location: ".ROOT."/admin");
       }

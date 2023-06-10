@@ -29,7 +29,13 @@
       <div class="session">
         <span style="color: #fff">SESSION DATA:</span><br>
         <?php foreach ($_SESSION as $key => $value) : ?>
-          <span style="color: #fff">$_SESSION['<?=$key?>']&emsp;=>&emsp;<?=$value?></span><br>
+          <?php if (is_array($value)){ ?>
+            <?php foreach ($value as $key2 => $value2): ?>
+              <span style="color: #fff">$_SESSION['<?=$key?>']['<?=$key2?>']&emsp;=>&emsp;<?=$value2?></span><br>
+            <?php endforeach; ?>
+          <?php } else { ?>
+            <span style="color: #fff">$_SESSION['<?=$key?>']&emsp;=>&emsp;<?=$value?></span><br>
+          <?php } ?>
         <?php endforeach; ?>
       </div>
     <?php endif; ?>

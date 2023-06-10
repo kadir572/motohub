@@ -8,9 +8,12 @@ const motorcycleListDOM = document.querySelector('.motorcycle__list')
 const motorcyclesList = JSON.parse(motorcyclesListJSON)
 const url = window.location.href
 
-let editButton
-let deleteButton
-let detailsButton
+document.addEventListener('readystatechange', e => {
+  if (e.target.readyState === 'complete') {
+    removeAllChildren(motorcycleListDOM)
+    createMotorcycleList(motorcycleListDOM, motorcyclesList)
+  }
+})
 
 searchInput.addEventListener('keyup', e => {
   const result = motorcyclesList.filter(
@@ -24,8 +27,14 @@ searchInput.addEventListener('keyup', e => {
   createMotorcycleList(motorcycleListDOM, list)
 })
 
-const createMotorcycleList = (DOMList, myList) => {
-  myList.forEach(motorcycle => {
+const createMotorcycleList = (DOMList, _list) => {
+  _list.forEach(motorcycle => {
+    let editButton
+    let deleteButton
+
+    let compareButton
+    let detailsButton
+
     const motorcycleItem = document.createElement('div')
     motorcycleItem.classList.add('motorcycle__item')
 
@@ -58,6 +67,7 @@ const createMotorcycleList = (DOMList, myList) => {
       deleteButton.classList.add('btn', 'btn--primary', 'btn--small')
       deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i>Delete'
       deleteButton.addEventListener('click', () => {
+        // function from confirmModa.js
         showModal(
           'Delete item',
           'Are you sure you want to delete this item?',
@@ -65,6 +75,23 @@ const createMotorcycleList = (DOMList, myList) => {
         )
       })
     } else {
+      compareButton = document.createElement('button')
+      compareButton.classList.add('btn', 'btn--secondary', 'btn--small')
+      compareButton.innerHTML = '<i class="fa-solid fa-plus"></i>Compare'
+      compareButton.addEventListener('click', () => {
+        // function from compareMotorcycles.js
+        if (checkIsInIdsList(motorcycle.id)) {
+          const buttons = Array.from(
+            compareList.querySelectorAll('button')
+          ).filter(el => el.textContent === motorcycle.model)
+          removeFromComparer(motorcycle.id, buttons[0], compareButton)
+          compareButton.innerHTML = '<i class="fa-solid fa-plus"></i>Compare'
+        } else {
+          addToComparer(motorcycle.id)
+          compareButton.innerHTML = '<i class="fa-solid fa-minus"></i>Compare'
+        }
+      })
+
       detailsButton = document.createElement('a')
       detailsButton.classList.add('btn', 'btn--secondary', 'btn--small')
       detailsButton.href =
@@ -78,6 +105,7 @@ const createMotorcycleList = (DOMList, myList) => {
       buttons.appendChild(editButton)
       buttons.appendChild(deleteButton)
     } else {
+      buttons.appendChild(compareButton)
       buttons.appendChild(detailsButton)
     }
     motorcycleItem.appendChild(image)

@@ -18,6 +18,22 @@ class Home extends Controller {
         case 'details':
           $this->view('motorcycleDetails', ['id' => Utility::sanitize($_GET['id'])]);
           break;
+        case 'compare':
+          $prefix = 'id';
+          $idsArr = array_filter($_GET, function ($key) use ($prefix) {
+            return strpos($key, $prefix) === 0;
+          }, ARRAY_FILTER_USE_KEY);
+
+          $motorcycles = [];
+          foreach($idsArr as $id) {
+            $motorcycle = MotorcycleModel::first(['id' => $id]);
+            array_push($motorcycles, $motorcycle);
+          }
+
+
+
+          $this->view('compareMotorcycles', $motorcycles);
+          break;
       }
 
     } else {

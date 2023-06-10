@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="<?=ROOT?>/assets/css/pages/public/motorcycle/motorcycles.css">
     <script src="<?=ROOT?>/assets/js/motorcyclesFilter.js" defer></script>
+    <script src="<?=ROOT?>/assets/js/compareMotorcycles.js" defer></script>
     <title>MotoHub | Motorcycles</title>
   </head>
   <body>
@@ -24,21 +25,11 @@
           <input type="text" name="search" id="search" class="form__input" placeholder="Search" autocomplete="off">
           <label for="search" class="form__label">Search</label>
         </div>
+        <div class="compare__list"></div>
+        <a href="<?=ROOT?>/home/motorcycles?type=compare" class="btn btn--secondary btn--medium compare__btn"><i class="fa-solid fa-check"></i>Compare</a>
       </div>
         <?php if ($motorcycles): ?>
           <div class="motorcycle__list">
-          <?php foreach ($motorcycles as $motorcycle): ?>
-            <div class="motorcycle__item">
-              <img src="<?=ROOT?>/<?=$motorcycle->imagePath?>" alt="<?=ucfirst($motorcycle->make)?> <?=ucfirst($motorcycle->model)?> image">
-              <div class="motorcycle__info">
-                <span><?=ucfirst($motorcycle->make)?></span>
-                <span><?=ucfirst($motorcycle->model)?></span>
-              </div>
-              <div class="motorcycle__buttons">
-                <a class="btn btn--secondary btn--small" href="<?=ROOT?>/home/motorcycles?type=details&id=<?=$motorcycle->id?>"><i class="fa-solid fa-circle-info"></i>Details</a>
-              </div>
-            </div>
-          <?php endforeach; ?>
           </div>
         <?php endif; ?>
       </div>
