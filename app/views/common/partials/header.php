@@ -63,7 +63,9 @@ function isUserLoggedIn() {
       <?php } ?>
     </nav>
     <div class="mobile__nav__btn mobile__nav__btn--open"><i class="fa-solid fa-bars"></i></div>
-    <div class="mobile__menu">
+    
+  </div>
+  <div class="mobile__menu">
     <div class="mobile__nav__btn mobile__nav__btn--close"><i class="fa-solid fa-x"></i>
     </div>
     <div class="mobile__menu__container">
@@ -90,5 +92,4 @@ function isUserLoggedIn() {
         </nav>
       </div>
     </div>
-  </div>
 </header>
