@@ -85,10 +85,8 @@ const createMotorcycleList = (DOMList, _list) => {
             compareList.querySelectorAll('button')
           ).filter(el => el.textContent === motorcycle.model)
           removeFromComparer(motorcycle.id, buttons[0], compareButton)
-          compareButton.innerHTML = '<i class="fa-solid fa-plus"></i>Compare'
         } else {
-          addToComparer(motorcycle.id)
-          compareButton.innerHTML = '<i class="fa-solid fa-minus"></i>Compare'
+          addToComparer(motorcycle.id, compareButton)
         }
       })
 

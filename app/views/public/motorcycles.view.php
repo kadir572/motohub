@@ -13,6 +13,7 @@
     <title>MotoHub | Motorcycles</title>
   </head>
   <body>
+  <div class="body__wrapper">
   <?php include_once '../app/views/common/partials/header.php'; ?>
   <main>
     <div id="motorcyclesList" style="display:none"><?=json_encode($motorcycles)?></div>
@@ -35,5 +36,6 @@
       </div>
   </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
+  </div>
   </body>
 </html>

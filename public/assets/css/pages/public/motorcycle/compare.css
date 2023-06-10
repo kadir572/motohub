@@ -1,11 +1,36 @@
 .grid {
   display: grid;
-  column-gap: 1rem;
-  row-gap: 2rem;
-  grid-auto-rows: auto;
+  column-gap: 0.5rem;
+  row-gap: 0.2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 5px;
+}
+
+.grid > span {
+  display: flex;
+  align-items: center;
+
+  padding: 1rem 2rem;
+  background-color: #000;
 }
 
 .grid > * {
-  align-self: center;
-  justify-self: start;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px 0 rgba(155, 155, 155, 0.3);
+}
+
+@media (max-width: 68.75em) {
+  main {
+    padding-block: 2rem;
+    overflow-x: auto;
+  }
+
+  .container {
+    height: 100%;
+    width: 100%;
+  }
+
+  .grid {
+    height: 100%;
+  }
 }
