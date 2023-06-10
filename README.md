@@ -1,6 +1,6 @@
 # Motohub Developer Manual
 
-## Folder Structure
+## Folder Structure (MVC)
 
 The project is divided into two main folders. The **public** folder contains all the data that the client is going to see. The **app** folder contains all the backend related files.
 
@@ -45,6 +45,28 @@ Use admin credentials to log in as admin. Go to {ROOT}/public/admin/pages or vis
 Create a new user at {ROOT}/public/home/register or log in the provided user at {ROOT}/public/home/login and go to {ROOT}/user/settings to update the user settings or delete the user. A confirmation popup window will be displayed to confirm the deletion of the user.
 
 All of these links can also be accessed via the navigation.
+
+## Extra Features
+
+### Filtering
+
+For the public motorcycles page as well as the CMS page there is an option to filter the items to be shown with a text input.
+
+### Compare motorcycles
+
+In the public motorcycles page you have the option to select 2 to 4 motorcycles and compare their specs on another page.
+
+### Session Timeout
+
+After 30 min of inactivity the user/admin is automatically logged out and redirected to the corresponding login page.
+
+### Login Limiter
+
+After 3 failed login attempts you can not log in for 60 seconds. This timer is shared for both user and admin.
+
+### Password Reset via Email
+
+It is possible to reset the password via the email with a generated password reset link that will be sent which is valid for 30 min.
 
 ## Credentials
 
