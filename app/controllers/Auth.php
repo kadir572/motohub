@@ -22,7 +22,15 @@ class Auth {
           $password = $_POST['password'] ?? '';
           $password2 = $_POST['password2'] ?? '';
 
-          $this->register(['username' => Utility::sanitize(trim($username)), 'email' => Utility::sanitize(trim($email)), 'password' => Utility::sanitize(trim($password)), 'password2' => Utility::sanitize(trim($password2)), 'user' => Utility::sanitize($_POST['user'])]);
+          $this->register(
+            [
+              'username' => Utility::sanitize(trim($username)), 
+              'email' => Utility::sanitize(trim($email)), 
+              'password' => Utility::sanitize(trim($password)), 
+              'password2' => Utility::sanitize(trim($password2)), 
+              'user' => Utility::sanitize($_POST['user'])
+              ]
+          );
 
           break;
         default:
@@ -41,8 +49,10 @@ class Auth {
             return;
           }
 
+          $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+          if ($timePassed > 60) LoginLimiter::reset();
+
           if (!LoginLimiter::canLogin()) {
-            $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
             $timeRequired = 60 - $timePassed;
             return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
           }
@@ -98,8 +108,10 @@ class Auth {
             return;
           }
 
+          $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+          if ($timePassed > 60) LoginLimiter::reset();
+
           if (!LoginLimiter::canLogin()) {
-            $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
             $timeRequired = 60 - $timePassed;
             return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
           }

@@ -32,7 +32,6 @@ function isAdmin() {
 function isUserLoggedIn() {
   return isset($_SESSION['username']) && !empty($_SESSION['username'] && isset($_SESSION['permission'])) ? true : false;
 }
-
 ?>
 
 <header>
