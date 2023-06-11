@@ -99,9 +99,9 @@ class Auth {
           }
 
           if (!LoginLimiter::canLogin()) {
-            $timePassed = 60 - LoginLimiter::getLastLoginAttempt();
+            $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
             $timeRequired = 60 - $timePassed;
-            return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+            return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
           }
 
           $foundUser = UserModel::first(['username' => $data['username']]);
