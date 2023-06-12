@@ -23,7 +23,7 @@ class User extends Controller {
 
   public function delete() {
 
-    if ($_SESSION['permission'] !== 0) {
+    if ($_SESSION['permission'] != 0) {
       Validator::redirectWithError('401 - Unauthorized', '/user/settings');
       return;
     } 

@@ -18,7 +18,7 @@
       <input class="form__input" type="email" id="email" name="email" placeholder="Email">
       <label class="form__label" for="email">Email</label>
     </div>
-    <button class="form__submit" type="submit">Submit</button>
+    <button class="btn btn--neutral btn--medium" type="submit">Submit</button>
   </form>
   </div>
 </main>

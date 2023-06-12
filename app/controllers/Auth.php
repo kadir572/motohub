@@ -71,7 +71,7 @@ class Auth {
             }
           }
 
-          if ($foundUser->isAdmin !== 0) {
+          if ($foundUser->isAdmin != 0) {
             $attemptsLeft = LoginLimiter::setLoginAttempt();
             if ($attemptsLeft > 0) {
               Validator::redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/home/login');
@@ -130,7 +130,7 @@ class Auth {
             }
           }
 
-          if ($foundUser->isAdmin !== 1) {
+          if ($foundUser->isAdmin != 1) {
             $attemptsLeft = LoginLimiter::setLoginAttempt();
             if ($attemptsLeft > 0) {
               Validator::redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/admin/login');
@@ -226,7 +226,7 @@ class Auth {
     _SessionHandler::clearSessionLogin();
 
     // if admin
-    if ($permission === 1) {
+    if ($permission == 1) {
       if (!empty($_GET['error'])) {
         header("Location: ".ROOT."/admin/login?error=".$_GET['error']);
       } else {
