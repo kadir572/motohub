@@ -12,10 +12,11 @@ document.addEventListener('readystatechange', e => {
   }
 })
 
-const addToComparer = id => {
+const addToComparer = (id, motorcycleCompareBtn) => {
   if (idsList.length >= 4) return
   if (!idsList.includes(id)) {
     idsList.push(id)
+    motorcycleCompareBtn.innerHTML = '<i class="fa-solid fa-minus"></i>Compare'
     const motorcycle = motorcyclesList.find(motorcycle => motorcycle.id === id)
     const name = motorcycle.model
     const btn = createTagButton(name, motorcycle.id)

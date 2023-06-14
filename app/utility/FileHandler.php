@@ -10,7 +10,7 @@ class FileHandler {
   private static function checkError($file, $path, $queries = []) {
     $hasErr = false;
     $errMsg = '';
-    if ($file['error'] !== 0) {
+    if ($file['error'] != 0) {
       $hasErr = true;
       switch ($file['error']) {
         case 1:

@@ -53,7 +53,7 @@ class Validator {
       return false;
      }
    
-     if(!preg_match('/(?=\S*[^a-zA-Z0-9])/', $password)) {
+     if(!preg_match('/(?=.*[^\w])/', $password)) {
       self::redirectWithError('Password must contain special characters', $redirect, $queries);
       return false;
      }
@@ -82,7 +82,7 @@ class Validator {
       return false;
     }
   
-    if (preg_match("/[!\[^\'£$%^&*()}{@:\'#~?><>,;@\|\\\-=\-_+\-¬\`\]]/", $username)) {
+    if (preg_match("/[!\\[\\^\'£$%^&*()}{@:\'#~?><>,;@\\|\\\=\-_+\\-¬\`\\]]/", $username)) {
       self::redirectWithError('Username can not contain special characters', $redirectPath, $queries);
       return false;
     }

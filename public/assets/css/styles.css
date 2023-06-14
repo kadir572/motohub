@@ -12,8 +12,16 @@
 body {
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
+}
+
+.body__wrapper {
   overflow-x: hidden;
   position: relative;
+}
+
+.scroll-lock {
+  height: 100vh;
+  overflow: hidden;
 }
 
 main {
@@ -78,4 +86,10 @@ a {
 .link {
   color: #fff;
   text-decoration: underline;
+}
+
+@media (max-width: 68.75em) {
+  .body__wrapper {
+    min-height: 100vh;
+  }
 }

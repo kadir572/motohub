@@ -16,6 +16,7 @@
   <title>MotoHub | User Reset Password</title>
 </head>
 <body>
+  <div class="body__wrapper">
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
@@ -33,10 +34,11 @@
       <input class="form__input" type="password" name="password2" id="password2" placeholder="Repeat password">
       <label class="form__label" for="password2">Repeat password</label>
     </div>
-    <button class="form__submit" type="submit">Register</button>
+    <button class="btn btn--neutral btn--medium" type="submit">Register</button>
   </form>
   </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
+  </div>
 </body>
 </html>

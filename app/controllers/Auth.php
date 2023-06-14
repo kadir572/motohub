@@ -22,7 +22,15 @@ class Auth {
           $password = $_POST['password'] ?? '';
           $password2 = $_POST['password2'] ?? '';
 
-          $this->register(['username' => Utility::sanitize(trim($username)), 'email' => Utility::sanitize(trim($email)), 'password' => Utility::sanitize(trim($password)), 'password2' => Utility::sanitize(trim($password2)), 'user' => Utility::sanitize($_POST['user'])]);
+          $this->register(
+            [
+              'username' => Utility::sanitize(trim($username)), 
+              'email' => Utility::sanitize(trim($email)), 
+              'password' => Utility::sanitize(trim($password)), 
+              'password2' => Utility::sanitize(trim($password2)), 
+              'user' => Utility::sanitize($_POST['user'])
+              ]
+          );
 
           break;
         default:
@@ -41,8 +49,10 @@ class Auth {
             return;
           }
 
+          $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+          if ($timePassed > 60) LoginLimiter::reset();
+
           if (!LoginLimiter::canLogin()) {
-            $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
             $timeRequired = 60 - $timePassed;
             return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
           }
@@ -61,7 +71,7 @@ class Auth {
             }
           }
 
-          if ($foundUser->isAdmin !== 0) {
+          if ($foundUser->isAdmin != 0) {
             $attemptsLeft = LoginLimiter::setLoginAttempt();
             if ($attemptsLeft > 0) {
               Validator::redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/home/login');
@@ -98,10 +108,12 @@ class Auth {
             return;
           }
 
+          $timePassed = date('U') - LoginLimiter::getLastLoginAttempt();
+          if ($timePassed > 60) LoginLimiter::reset();
+
           if (!LoginLimiter::canLogin()) {
-            $timePassed = 60 - LoginLimiter::getLastLoginAttempt();
             $timeRequired = 60 - $timePassed;
-            return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/home/login');
+            return Validator::redirectWithError("Please wait $timeRequired seconds before trying to log in again.", '/admin/login');
           }
 
           $foundUser = UserModel::first(['username' => $data['username']]);
@@ -118,7 +130,7 @@ class Auth {
             }
           }
 
-          if ($foundUser->isAdmin !== 1) {
+          if ($foundUser->isAdmin != 1) {
             $attemptsLeft = LoginLimiter::setLoginAttempt();
             if ($attemptsLeft > 0) {
               Validator::redirectWithError("Invalid credentials. Attempts left: $attemptsLeft", '/admin/login');
@@ -214,7 +226,7 @@ class Auth {
     _SessionHandler::clearSessionLogin();
 
     // if admin
-    if ($permission === 1) {
+    if ($permission == 1) {
       if (!empty($_GET['error'])) {
         header("Location: ".ROOT."/admin/login?error=".$_GET['error']);
       } else {

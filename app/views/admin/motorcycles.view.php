@@ -15,6 +15,7 @@
     <title>MotoHub | Motorcycles</title>
   </head>
   <body>
+    <div class="body__wrapper">
     <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <?php include_once '../app/views/common/partials/modal.php'; ?>
@@ -28,7 +29,7 @@
           <input type="text" name="search" id="search" class="form__input" placeholder="Search" autocomplete="off">
           <label for="search" class="form__label">Search</label>
         </div>
-        <a class="btn btn--secondary btn-small" href="<?=ROOT?>/admin/motorcycles?type=new"><i class="fa-solid fa-plus"></i>New</a>
+        <a class="btn btn--secondary btn--  small" href="<?=ROOT?>/admin/motorcycles?type=new"><i class="fa-solid fa-plus"></i>New</a>
       </div>
         <?php if ($motorcycles): ?>
           <div class="motorcycle__list">
@@ -37,5 +38,6 @@
       </div>
     </main>
     <?php include_once '../app/views/common/partials/footer.php'; ?>
+    </div>
   </body>
 </html>

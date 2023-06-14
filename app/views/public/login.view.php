@@ -6,6 +6,7 @@
   <title>MotoHub | Login</title>
 </head>
 <body>
+  <div class="body__wrapper">
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
@@ -32,5 +33,6 @@
   </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
+  </div>
 </body>
 </html>

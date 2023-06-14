@@ -6,14 +6,14 @@
   <title>MotoHub | Login</title>
 </head>
 <body>
+  <div class="body__wrapper">
   <?php include_once '../app/views/common/partials/header.php'; ?>
 <main>
   <div class="bg-img"></div>
   <div class="container">
   <h2>Admin Login</h2>
-  <?php include_once '../app/views/common/partials/notification.php';?>
   <form method="POST" action="<?=ROOT?>/auth">
-    
+  <?php include_once '../app/views/common/partials/notification.php';?>
     <input type="hidden" name="type" value="login">
     <input type="hidden" name="user" value="admin">
     <div class="form__control">
@@ -31,5 +31,6 @@
   </div>
 </main>
   <?php include_once '../app/views/common/partials/footer.php'; ?>
+  </div>
 </body>
 </html>

@@ -10,7 +10,7 @@ class Admin extends Controller {
     if (empty($_SESSION['username'])) {
       header("Location: ".ROOT."/admin/login");
     } else {
-      if (!empty($_SESSION['permission'] && $_SESSION['permission'] === 1)) {
+      if (!empty($_SESSION['permission'] && $_SESSION['permission'] == 1)) {
         header("Location: ".ROOT."/admin/dashboard");
       } else {
         Validator::redirectWithError('401 - Unauthorized', '/auth/logout');

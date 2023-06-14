@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2023 at 03:36 PM
+-- Generation Time: Jun 10, 2023 at 11:29 PM
 -- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,7 +62,8 @@ INSERT INTO `motorcycle` (`id`, `make`, `model`, `year`, `imagePath`, `displacem
 (56, 'yamaha', 'yzf-r3', 2019, 'assets/images/motorcycles/Yamaha_Yzf-r3_image.jpg', 321, '42', 10750, '29.6', 9000),
 (57, 'kawasaki', 'ninja 400', 2018, 'assets/images/motorcycles/Kawasaki_Ninja 400_image.webp', 399, '45', 10000, '37', 8000),
 (58, 'aprilia', 'rs 660', 2020, 'assets/images/motorcycles/Aprilia_Rs 660_image.jpg', 659, '100', 10500, '67', 8500),
-(59, 'yamaha', 'yzf-r7', 2022, 'assets/images/motorcycles/Yamaha_Yzf-r7_image.jpg', 689, '73.4', 8750, '67', 6500);
+(59, 'yamaha', 'yzf-r7', 2022, 'assets/images/motorcycles/Yamaha_Yzf-r7_image.jpg', 689, '73.4', 8750, '67', 6500),
+(66, 'honda', 'cb650r', 2023, 'assets/images/motorcycles/Honda_Cb650r_image.webp', 649, '95', 12000, '63', 9500);
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ ALTER TABLE `content`
 -- AUTO_INCREMENT for table `motorcycle`
 --
 ALTER TABLE `motorcycle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `pwdreset`
