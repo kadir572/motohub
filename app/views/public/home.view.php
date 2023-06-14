@@ -8,7 +8,6 @@
   <body>
     <div class="body__wrapper">
     <?php include_once '../app/views/common/partials/header.php'; ?>
-    <?php include_once '../app/views/common/partials/header.php'; ?>
     <main>
       <div class="bg-img"></div>
       <div class="container">
