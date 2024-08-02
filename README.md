@@ -83,10 +83,3 @@ Login Page:&emsp;{ROOT}/public/home/login
 
 username:&emsp;user<br>
 password:&emsp;User123!
-
-### MailTrap Credentials
-
-Login Page:&emsp;https://mailtrap.io/signin
-
-email:&emsp;&emsp;&emsp;kadir9625+mailtrap@gmail.com<br>
-password:&emsp;Admin123!
